@@ -119,7 +119,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'gunicorn',
-    'timelinejs',
+    #'timelinejs',
     
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
