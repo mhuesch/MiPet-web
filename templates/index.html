@@ -260,7 +260,28 @@ rel="stylesheet">
                   <h3>Add an Event</h3>
              
               
-              
+                  <script>
+                      function addEvent()
+                      {
+                          var inputs = "";
+                          inputs += "input-type: " + document.getElementById("input-type").checked + "\n";
+                          inputs += "select-type: " + document.getElementById("select-type").value + "\n";
+                          
+                          inputs += "input-start: " + document.getElementById("input-start").value + "\n";
+                          inputs += "input-isInterval: " + document.getElementById("input-isInterval").checked + "\n";
+                          inputs += "input-end: " + document.getElementById("input-end").value + "\n";
+                          
+                          inputs += "input-headline: " + document.getElementById("input-headline").value + "\n";
+                          inputs += "input-text: " + document.getElementById("input-text").value + "  ";
+                          
+                          inputs += "input-asset: " + document.getElementById("input-asset").value + "\n";
+                          inputs += "input-credit: " + document.getElementById("input-credit").value + "\n";
+                          inputs += "input-caption: " + document.getElementById("input-caption").value + "\n";
+                          //inputs += ": " + document.getElementById("").value + "\n";
+                          
+                          alert(inputs);
+                      }
+                      </script>
               
               
               </div>
@@ -279,7 +300,7 @@ rel="stylesheet">
                           <input type="checkbox" id="input-type" name="type" value="title"> Make this the title slide </input>
                       </div>
                       
-                      <select id="selectType" onchange="selectChange(this.value)">
+                      <select id="select-type" onchange="selectChange(this.value)">
                           <option value="image"> Image </option>
                     <!--  <option>flickr</option>
                           <option>instagram</option> -->
@@ -316,7 +337,7 @@ rel="stylesheet">
                       
                       <!-- <h4>End Date</h4> <!-- param 2 = end date -->
                       <!-- <input name="something" value="end date" /> -->
-                      <div id="endDateInput" class="inputField">
+                      <div id="endDateInput" class="inputField hide">
                       End date:
                       <input type="date" id="input-end"  class="dateDemo" value="" />
                       </div>
@@ -330,7 +351,7 @@ rel="stylesheet">
                       <!--<h4>Text</h4> <!-- param 4 = text -->
                       <div id="textInput" class="inputField">
                       Text: 
-                      <input name="text" value="Describe this event!" />
+                      <input type="text" id="input-text" name="text" value="Describe this event!" />
                           </div>
                       
                     <div id="mediaInputs">
@@ -340,7 +361,7 @@ rel="stylesheet">
                       <!--<h4>Asset</h4> <!-- param 6 = asset -->
                       <!-- also has media, credit, caption, thumbnail -->
                           Asset
-                          <input name="asset" value="" />
+                          <input id="input-asset" name="asset" value="" />
                       </div>
                       
                       
@@ -435,18 +456,7 @@ rel="stylesheet">
           <a data-toggle="modal" href="#add-event" class="btn btn-primary btn-large">Launch demo modal</a></p>
       </div>
         
-        <script>
-         function addEvent()
-         {
-             var inputs = "";
-             inputs += "input-type: " + document.getElementById("input-type").value + "  ";
-             inputs += "selectType: " + document.getElementById("selectType").value + "  ";
-             inputs += " " + document.getElementById("input-type-title").value + "  ";
-             inputs += " " + document.getElementById("input-type-title").value + "  ";
-             
-             alert(inputs);
-         }
-         </script>
+
         
       
       <script>
