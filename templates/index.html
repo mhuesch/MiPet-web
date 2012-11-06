@@ -1,10 +1,246 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-  </head>
+<html lang="en"><!--
+                 
+                 88888888888 d8b                        888 d8b                888888   d8888b
+                 888     Y8P                        888 Y8P                   88b d88P  Y88b
+                 888                                888                       888 Y88b
+                 888     888 88888b d88b     d88b   888 888 88888b     d88b   888   Y888b
+                 888     888 888  888  88b d8P  Y8b 888 888 888  88b d8P  Y8b 888      Y88b
+                 888     888 888  888  888 88888888 888 888 888  888 88888888 888        888
+                 888     888 888  888  888 Y8b      888 888 888  888 Y8b      88P Y88b  d88P
+                 888     888 888  888  888   Y8888  888 888 888  888   Y8888  888   Y8888P
+                 d88P
+                 d88P
+                 888P
+                 -->
+    <head>
+        <title>Timeline JS Example</title>
+        <meta charset="utf-8">
+            <meta name="description" content="TimelineJS example">
+                <meta name="apple-mobile-web-app-capable" content="yes">
+                    <meta name="apple-touch-fullscreen" content="yes">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+                            
+                            
+                            <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css"
+                                rel="stylesheet">
+                                <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
+                                    <!-- Style-->
+                                    <style>
+                                        html, body {
+                                            height:100%;
+                                            padding: 0px;
+                                            margin: 0px;
+                                        }
+                                        
+                                        itemDemo {
+                                            /*width: 494px; height: 279px; display: table; overflow-y: auto; left: 769px;*/
+                                            
+                                        }
+                                        
+                                        h2.dateDemo {
+                                            text-align: center;
+                                            color: #999;
+                                            font-size: 15px;
+                                            line-height: 15px;
+                                            font-weight: normal;
+                                            margin-bottom: 3.75px;
+                                            font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;"
+                                        }
+                                        
+                                        
+                                        h3.headlineDemo {
+                                            text-align: center;
+                                            color: black;
+                                            font-size: 28px;
+                                            line-height: 30px;
+                                            font-weight: normal;
+                                            font-family: 'Georgia', Times New Roman, Times, serif;
+                                            margin-bottom: 15px;
+                                            text-transform: none; clear: none;
+                                        }
+                                        
+                                        captionDemo {
+                                            color: #666;
+                                            text-align: left;
+                                            margin-top: 10px;
+                                            font-size: 11px;
+                                            line-height: 14px;
+                                            word-wrap: break-word;
+                                            clear: both;
+                                            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+                                            max-width: 300px;
+                                            
+                                        }
+                                        
+                                        modal { width: 400px;}
+                                        
+                                        </style>
+                                    <!-- HTML5 shim, for IE6-8 support of HTML elements--><!--[if lt IE 9]>
+                                                                                           <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+                                    </head>
 
   <body>
 
+      <div class="container">
+          <div id="example" class="modal hide fade in" style="display:none;">
+              <div class="modal-header">
+                  <a class="close" data-dismiss="modal">×</a>
+                  <h3>Add Event</h3>
+              </div>
+              
+              <div class="modal-body">
+                  <p>You can add some text here.</p>
+                  
+                  
+                  <form id="modal-form" accept-charset="UTF-8" action="/tagging" data-remote="true" method="post">
+                      
+                      <select>
+                          <option>image</option>
+                          <option>flickr</option>
+                          <option>instagram</option>
+                          <option>youtube</option>
+                          <option>googledoc</option>
+                          <option>vimeo</option>
+                          <option>dailymotion</option>
+                          <option>twitter</option>
+                          <option>twitter-ready</option>
+                          <option>soundcloud</option>
+                          <option>google-map</option>
+                          <option>googleplus</option>
+                          <option>wikipedia</option>
+                          <option>storify</option>
+                          <option>quote</option>
+                          <option>unknown</option> <!--blockquote see line 4170 -->
+                          <option>website</option>
+                          <option> </option> <!-- plaintext -->
+                      </select>
+                      
+                      
+                      <h2 class="date dateDemo"> Start Date</h2>
+                      <h3 class="headlineDemo"> Headline </h3>
+                      
+                      <h4>Start Date</h4> <!-- param 1 = start date (required!)-->
+                      <input name="something" value="start date" />
+                      
+                      <h4>Headline</h4> <!-- param 3 = headline -->
+                      <input name="something" value="headline" />
+                      
+                      
+                      
+                      
+                      <!--  <div class="itemDemo"> <!-- vco slider slider-item  --
+                       <div class="content">
+                       <div class="content-container layout-media">
+                       <div class="text">
+                       <div class="container">
+                       <h2 class="date dateDemo"> Start Date</h2>
+                       <h3 class="headlineDemo"> Headline </h3>
+                       </div>
+                       </div>
+                       <div class="media">
+                       <div class="media-wrapper">
+                       <div class="media-container" style="/*max-width: 340px;*/">
+                       <div class="media-shadow">
+                       <!--<iframe frameborder="0" allowfullscreen="" class="media-frame video youtube" id="MOIFRcB" style="width: 338px; height: 191px; max-height: 169px; max-width: 300px; " title="YouTube video player" height="191" width="338" src="http://www.youtube.com/embed/u-yLGIH7W9Y?enablejsapi=1&amp;color=white&amp;showinfo=0&amp;theme=light&amp;start=0&amp;rel=0&amp;origin=file%3A%2F%2Flocalhost"> --
+                       </iframe>
+                       </div>
+                       <div class="caption captionDemo">
+                       Writers &amp; Creators: Kyle Humphrey &amp; Graydon Sheppard
+                       </div>
+                       </div>
+                       </div>
+                       </div> <!-- end media? --
+                       
+                       </div>
+                       </div>
+                       </div> -->
+                      
+                      
+                      
+                      
+                      <!-- param 0 = type -->
+                      <h4>Type (is title?)</h4>
+                      <input name="something" value="type" />
+                      
+                      
+                      <h4>End Date</h4> <!-- param 2 = end date -->
+                      <input name="something" value="end date" />
+                      
+                      <h4>Text</h4> <!-- param 4 = text -->
+                      <input name="something" value="text" />
+                      
+                      <h4>Tag</h4> <!-- param 5 = tag -->
+                      <input name="something" value="tag" />
+                      
+                      <h4>Asset</h4> <!-- param 6 = asset --> <!-- also has media, credit, caption, thumbnail -->
+                      <input name="something" value="asset" />
+                      
+                      <h5> Media </h5>
+                      <h5> Credit </h5>
+                      <h5> Caption </h5>
+                      <h5> Thumbnail </h5>
+                      
+                      
+                      
+                      
+                      
+                      
+                  </form>
+                  
+              </div>
+              
+              
+              
+              <div class="modal-footer">
+                  <a href="#" class="btn btn-success">Call to action</a>
+                  <a href="#" class="btn" data-dismiss="modal">Close</a>
+                  <a id="modal-form-submit" class='btn btn-primary' href="#">Submit</a>
+              </div>
+          </div>
+          <p>
+          <a data-toggle="modal" href="#example" class="btn btn-primary btn-large">Launch demo modal</a></p>
+      </div>
+      
+      <script>
+          $('#modal-form-submit').on('click', function(e){
+                                     // We don't want this to act as a link so cancel the link action
+                                     e.preventDefault();
+                                     
+                                     // Find form and submit it
+                                     $('#modal-form').submit();
+                                     });
+          
+          // Since we want both pressing 'Enter' and clicking the button to work
+          // We'll subscribe to the submit event, which is triggered by both
+          
+          $('#modal-form').on('submit', function(){
+                              
+                              //Serialize the form and post it to the server
+                              $.post("/yourReceivingPage", $(this).serialize(), function(){
+                                     
+                                     // When this executes, we know the form was submitted
+                                     
+                                     // To give some time for the animation,
+                                     // let's add a delay of 200 ms before the redirect
+                                     var delay = 200;
+                                     setTimeout(function(){
+                                                window.location.href = 'successUrl.html';
+                                                }, delay);
+                                     
+                                     // Hide the modal
+                                     $("#my-modal").modal('hide');
+                                     
+                                     });
+                              
+                              // Stop the normal form submission
+                              return false;
+                              });
+          
+          </script>
+      
+      
+      
     <div id="timeline-embed"></div>
         <script type="text/javascript">
             var timeline_config = {
@@ -26,5 +262,31 @@
         </script>
         <script type="text/javascript" src="/static/timelinejs/js/storyjs-embed.js"></script>
 
-    </body>
+
+
+
+<!--
+<div id="timeline-embed"></div>
+<script type="text/javascript">
+    var timeline_config = {
+        width: "100%",
+        height: "100%",
+        source: 'example_jsonp.jsonp'
+    }
+    </script> 
+      
+<script type="text/javascript" src="../compiled/js/storyjs-embed.js"></script>-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-modal.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-alert.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-transition.js"> </script>
+<script src="http://twitter.github.com/bootstrap/assets/js/jquery.js"> </script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-popover.js"> </script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-button.js"> </script>
+<script src="http://twitter.github.com/bootstrap/assets/js/jquery.js"> </script>
+
+<!-- END Timeline Embed-->
+</body>
+
 </html>
