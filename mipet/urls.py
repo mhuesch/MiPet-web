@@ -6,9 +6,13 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
+    
     url(r'^$', 'timeline.views.index', name='index'),
-    # url(r'^mipet/', include('mipet.foo.urls')),
+
+    url(r'^api/v1/pet/(?P<id>\d+)/$', 'timeline.views.api_pet'),
+    url(r'^api/v1/event/(?P<id>\d+)/$', 'timeline.views.api_event'),
+    url(r'^api/v1/media/(?P<id>\d+)/$', 'timeline.views.api_media'),
+
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
