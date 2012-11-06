@@ -34,12 +34,26 @@ rel="stylesheet">
             margin: 0px;
         }
         
+        
+        
+        modal { width: 400px;}
+        
+        addEvent { }
+        
+        
+        
+        
         itemDemo {
             /*width: 494px;
              height: 279px;
              display: table;
              overflow-y: auto;
              left: 769px;*/
+        }
+        
+        #input-type-title {
+            float: right;
+            display: inline;
         }
         
         h2.dateDemo {
@@ -49,8 +63,22 @@ rel="stylesheet">
             line-height: 15px;
             font-weight: normal;
             margin-bottom: 3.75px;
-            font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;"
+            font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;
         }
+        
+        input[type=date]#input-start, input[type=date]#input-end {
+            /*height: 30px;*/
+            width: 150px;
+            margin: auto;
+            text-align: center;
+            color: #999;
+            font-size: 15px;
+            line-height: 15px;
+            font-weight: normal;
+            margin-bottom: 3.75px;
+            font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;
+        }
+        
         
         
         h3.headlineDemo {
@@ -64,6 +92,79 @@ rel="stylesheet">
             text-transform: none; clear: none;
         }
         
+        input[type=text]#input-headline {
+            height: 30px;
+            /*width: 300px;*/
+            
+            margin: auto;
+            text-align: center;
+            color: black;
+            font-size: 28px;
+            line-height: 30px;
+            font-weight: normal;
+            font-family: 'Georgia', Times New Roman, Times, serif;
+            margin-bottom: 15px;
+            text-transform: none; clear: none;
+        }
+        
+        creditDemo {
+            color: #999;
+            text-align: right;
+            display: block;
+            margin: 0 auto;
+            margin-top: 6px; /*removed for vco-storyjs .credit */
+            font-size: 10px;
+            line-height: 13px; /* 10px */
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+            /*clear:both; removed for vco-slider .slider-item .content .content-container .media .media-wrapper .credit */
+        
+        }
+        input[type=text]#input-credit {
+            color: #666;
+            text-align: left;
+            text-rendering: optimizeLegibility;
+            margin-top: 10px; /*5px for .vco-storyjs */
+            word-wrap: break-word;
+            font-size: 11px;
+            line-height: 14px;
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+            
+        }
+        
+        
+        
+        .captionDemo {
+            text-align: left;
+            margin-top: 10px; /*5px for .vco-storyjs */
+            color: #666;
+            font-size: 11px;
+            line-height: 14px;
+            text-rendering: optimizeLegibility;
+            word-wrap: break-word;
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+            /*display: block;*/
+            /*clear:both; for .vco-storyjs .caption */
+        }
+        
+        input[type=text]#input-caption {
+            text-align: left;
+            margin-top: 10px; /*5px for .vco-storyjs */
+            color: #666;
+            font-size: 11px;
+            line-height: 14px;
+            text-rendering: optimizeLegibility;
+            word-wrap: break-word;
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+            
+        }
+        
+        .inputField {
+            
+            padding: 0px;
+            margin: 0px;
+        }
+        
+        /* old
         .captionDemo {
             color: #666;
             text-align: left;
@@ -74,13 +175,53 @@ rel="stylesheet">
             clear: both;
             font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
             max-width: 300px;
-            
+        }*/
+
+        
+        /*
+        
+        .vco-slider .slider-item .content .content-container .text .container p {
+            -webkit-hyphens: auto;
+            -moz-hyphens: auto;
+            -ms-hyphens: auto;
+            hyphens: auto;
+            word-wrap: break-word;
         }
+
+        .vco-storyjs p {
+            font-size: 15px;
+            font-weight: normal;
+            line-height: 20px;
+            margin-bottom: 20px;
+            color: #666;
+        }
+        .vco-storyjs p, .vco-storyjs blockquote, .vco-storyjs blockquote p, .vco-storyjs .twitter blockquote p {
+            font-family: "Georgia",Times New Roman,Times,serif !important;
+        }*/
         
-        modal { width: 400px;}
+        /*input[type=text]#input-headline {
+            height: 30px;
+            width: 300px;
+            background-color: #CEEEFA;
+            font-family: arial;
+            font-size: 25px;
+            color: #636768;
+         }*/
         
-        addEvent { }
+        /*INPUT:focus { border: 2px solid green; }
+         INPUT:invalid { border : 2px solid red; }*/
         
+        
+        
+
+        
+
+
+
+        
+
+        
+
         </style>
 <!-- HTML5 shim, for IE6-8 support of HTML elements--><!--[if lt IE 9]>
 <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
@@ -112,11 +253,16 @@ rel="stylesheet">
          </form>
          </div> -->
 
-      <div class="container">
+      <div class="container">
           <div id="add-event" class="modal hide fade in" style="display:none;">
               <div class="modal-header">
                   <a class="close" data-dismiss="modal">×</a>
                   <h3>Add an Event</h3>
+             
+              
+              
+              
+              
               </div>
               
               <div class="modal-body">
@@ -127,12 +273,18 @@ rel="stylesheet">
                       accept-charset="UTF-8" action="/tagging"
                       data-remote="true" method="post">
                       
-                      <select>
-                          <option>image</option>
-                         <!-- <option>flickr</option>
+                      <!-- param 0 = type -->
+                      <!--<h4>Type (is title?)</h4> -->
+                      <div id="input-type-title">
+                          <input type="checkbox" id="input-type" name="type" value="title"> Make this the title slide </input>
+                      </div>
+                      
+                      <select id="selectType" onchange="selectChange(this.value)">
+                          <option value="image"> Image </option>
+                    <!--  <option>flickr</option>
                           <option>instagram</option> -->
-                          <option>youtube</option>
-                         <!-- <option>googledoc</option>
+                          <option value="youtube"> YouTube </option>
+                    <!--  <option>googledoc</option>
                           <option>vimeo</option>
                           <option>dailymotion</option>
                           <option>twitter</option>
@@ -140,29 +292,106 @@ rel="stylesheet">
                           <option>soundcloud</option>
                           <option>google-map</option>
                           <option>googleplus</option>
-                          <option>wikipedia</option>
-                          <option>storify</option>
-                          <option>quote</option>
-                          <option>unknown</option> <!--blockquote see line 4170 -->
-                         <!-- <option>website</option> -->
-                          <option>plaintext</option> <!-- plaintext -->
+                          <option value="wikipedia"> Wikipedia </option>
+                          <option value="storify"> Storify</option>
+                          <option value="quote"> Quote </option>
+                          <option value="unknown"> unknown </option> <!--blockquote see line 4170 -->
+                         <!-- <option value="website"> Website </option> -->
+                          <option value="plaintext"> text </option> <!-- plaintext -->
                       </select>
                       
+
+                                            
                       
-                      
-                      <h2 class="date dateDemo"> Start Date</h2>
+                      <h2 class="dateDemo"> Start Date</h2>
                       <h3 class="headlineDemo"> Headline </h3>
                       
-                      <h4>Start Date</h4> <!-- param 1 = start date (required!)-->
-                      <input name="something" value="start date" />
+                      <br/>
                       
-                      <h4>Headline</h4> <!-- param 3 = headline -->
-                      <input name="something" value="headline" />
+                      <!--<h4>Start Date</h4> <!-- param 1 = start date (required!)-->
+                      Start date:
+                      <input type="date" id="input-start"  class="dateDemo" value="" />
+                      
+                      <input type="checkbox" id="input-isInterval" name="" value="" onclick="timeRange(this.checked)"> Make time range</input>
+                      
+                      <!-- <h4>End Date</h4> <!-- param 2 = end date -->
+                      <!-- <input name="something" value="end date" /> -->
+                      <div id="endDateInput" class="inputField">
+                      End date:
+                      <input type="date" id="input-end"  class="dateDemo" value="" />
+                      </div>
+                      <br/>
+                      
+                      <!--<h4>Headline</h4> <!-- param 3 = headline -->
+                      Headline: 
+                      <input type="text" id="input-headline" class="headlineDemo" value="Headline" />
+                      
+                      
+                      <!--<h4>Text</h4> <!-- param 4 = text -->
+                      <div id="textInput" class="inputField">
+                      Text: 
+                      <input name="text" value="Describe this event!" />
+                          </div>
+                      
+                    <div id="mediaInputs">
+                      <h5> Media </h5>
+                      
+                      <div id="assetInput">
+                      <!--<h4>Asset</h4> <!-- param 6 = asset -->
+                      <!-- also has media, credit, caption, thumbnail -->
+                          Asset
+                          <input name="asset" value="" />
+                      </div>
                       
                       
                       
+                      <div id="creditInput" class="inputField">
+                          Media Credit:
+                          <input type="text" id="input-credit" value="Media credit" />
+                      </div>
                       
-                      <!--  <div class="itemDemo"> <!-- vco slider slider-item  --
+                      <div id="captionInput" class="inputField">
+                          Media Caption:
+                          <input type="text" id="input-caption" value="Media caption" />
+                      </div>
+                      
+                      <h5> Media Thumbnail </h5>
+                      </div>
+                      
+                      
+                      <script type="text/javascript">
+                          
+                          // Hide end date field
+                          $("#endDateInput").hide();
+                          
+                          
+                          function selectChange(value) {
+                              if(value == 'plaintext')
+                              {
+                                  $('#mediaInputs').hide();
+                                  //$('#assetInput').hide();
+                                  //$('#captionInput').hide();
+                                  //$('#creditInput').hide();
+                              }
+                              
+                          }
+                          
+                          function timeRange(checked) {
+                              if (checked) {
+                                  $('#endDateInput').show();
+                              }
+                              else $('#endDateInput').hide();
+                          }
+                          
+                          
+                          </script>
+                      
+                      <!-- <h4>Tag</h4> <!-- param 5 = tag -->
+                      <!-- <input name="something" value="tag" /> -->
+                      
+                      
+                      <!-- 
+                       <div class="itemDemo"> <!-- vco slider slider-item  --
                        <div class="content">
                        <div class="content-container layout-media">
                        <div class="text">
@@ -190,36 +419,6 @@ rel="stylesheet">
                        </div> -->
                       
                       
-                      
-                      
-                      <!-- param 0 = type -->
-                      <h4>Type (is title?)</h4>
-                      <input name="something" value="type" />
-                      
-                      
-                      <h4>End Date</h4> <!-- param 2 = end date -->
-                      <input name="something" value="end date" />
-                      
-                      <h4>Text</h4> <!-- param 4 = text -->
-                      <input name="something" value="text" />
-                      
-                      <h4>Tag</h4> <!-- param 5 = tag -->
-                      <input name="something" value="tag" />
-                      
-                      <h4>Asset</h4> <!-- param 6 = asset --> <!-- also has media, credit, caption, thumbnail -->
-                      <input name="something" value="asset" />
-                      
-                      <h5> Media </h5>
-                      <h5> Media Credit </h5>
-                      <h5> Media Caption </h5>
-                      <div class="caption captionDemo"> </div>
-                      <h5> Media Thumbnail </h5>
-                      
-                      
-                      
-                      
-                      
-                      
                   </form>
                   
               </div>
@@ -229,12 +428,26 @@ rel="stylesheet">
               <div class="modal-footer">
                   <a href="#" class="btn btn-success">Call to action</a>
                   <a href="#" class="btn" data-dismiss="modal">Close</a>
-                  <a id="modal-form-submit" class='btn btn-primary' href="#">Submit</a>
+                  <a id="modal-form-submit" class='btn btn-primary' href="#" onclick="addEvent()">Submit</a>
               </div>
           </div>
           <p>
-          <a data-toggle="modal" href="#add-event" class="btn btn-primary btn-large">Launch demo modal</a></p>
+          <a data-toggle="modal" href="#add-event" class="btn btn-primary btn-large">Launch demo modal</a></p>
       </div>
+        
+        <script>
+         function addEvent()
+         {
+             var inputs = "";
+             inputs += "input-type: " + document.getElementById("input-type").value + "  ";
+             inputs += "selectType: " + document.getElementById("selectType").value + "  ";
+             inputs += " " + document.getElementById("input-type-title").value + "  ";
+             inputs += " " + document.getElementById("input-type-title").value + "  ";
+             
+             alert(inputs);
+         }
+         </script>
+        
       
       <script>
           $('#modal-form-submit').on('click', function(e){
@@ -294,7 +507,7 @@ var timeline_config = {
         js:                 '/static/timelinejs/js/timeline-min.js'    //OPTIONAL PATH TO JS
         }
         </script>
-        <script type="text/javascript" src="/static/timelinejs/js/storyjs-embed.js"></script>
+        <script src="/static/timelinejs/js/storyjs-embed.js"></script>
 
 
 
