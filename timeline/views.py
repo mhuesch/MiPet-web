@@ -19,7 +19,7 @@ def api_pet(request,id):
     except DoesNotExist:
         return HttpResponse()
 
-    # Store pet data
+    # Pet data
     response_data = dict()
     response_data['id'] = id
     response_data['name'] = pet_model.name
@@ -34,11 +34,13 @@ def api_pet(request,id):
 
     # Get pet event ids
     pet_events = Event.objects.filter(pet__id=id)
-    response_data['events'] = pet_events.values_list('id',flat=True)
+    response_data['events'] = map(lambda x: str(x), pet_events.values_list('id',flat=True))
 
     return HttpResponse(json.dumps(response_data), mimetype="application/json")
 
 def api_event(request,id):
+    
+    
     response_data = dict()
     response_data['result'] = 'test'
     return HttpResponse(json.dumps(response_data), mimetype="application/json")
