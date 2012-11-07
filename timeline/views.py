@@ -35,6 +35,7 @@ def api_pet(request,id):
 
     return HttpResponse(json.dumps(response_data), mimetype="application/json")
 
+
 def api_event(request,id):
     try:
         event_model = Event.objects.get(id=id)
@@ -55,7 +56,23 @@ def api_event(request,id):
 
     return HttpResponse(json.dumps(response_data), mimetype="application/json")
 
+
 def api_media(request,id):
+    try:
+        media_model = Media.objects.get(id=id)
+    except Media.DoesNotExist:
+        return HttpResponse()
+
     response_data = dict()
-    response_data['result'] = 'test'
+    
+    # Media data
+    response_data['event'] = media_model.event.id
+    response_data['url'] = media_model.url
+    response_data['credit'] = media_model.credit
+    response_data['caption'] = media_model.caption
+    
     return HttpResponse(json.dumps(response_data), mimetype="application/json")
+
+
+
+
