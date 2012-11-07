@@ -25,6 +25,100 @@
 rel="stylesheet">
     
 <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <!-- script type="text/javascript" -->
+<script>
+    
+    
+    function addEvent()
+    {
+        var inputs = "";
+        // if checked, type = title (only 1 slide), otherwise type = ""
+        inputs += "input-type: " + document.getElementById("input-type").checked + "\n";
+        inputs += "select-type: " + document.getElementById("select-type").value + "\n";
+        
+        inputs += "input-start: " + document.getElementById("input-start").value + "\n";
+        inputs += "input-isInterval: " + document.getElementById("input-isInterval").checked + "\n";
+        inputs += "input-end: " + document.getElementById("input-end").value + "\n";
+        
+        inputs += "input-headline: " + document.getElementById("input-headline").value + "\n";
+        inputs += "input-text: " + document.getElementById("input-text").value + "  ";
+        
+        inputs += "input-asset: " + document.getElementById("input-asset").value + "\n";
+        inputs += "input-credit: " + document.getElementById("input-credit").value + "\n";
+        inputs += "input-caption: " + document.getElementById("input-caption").value + "\n";
+        //inputs += ": " + document.getElementById("").value + "\n";
+        
+        alert(inputs);
+    }
+    
+
+    
+    // Hide end date field
+    $("#endDateInput").hide();
+    
+    
+    function selectChange(value) {
+        if(value == 'plaintext')
+        {
+            $('#mediaInputs').hide();
+            //$('#assetInput').hide();
+            //$('#captionInput').hide();
+            //$('#creditInput').hide();
+        }
+        else
+        {
+            $('#mediaInputs').show();
+        }
+    }
+    
+    
+    function timeRange(checked) {
+        if (checked) {
+            $('#endDateInput').show();
+        }
+        else $('#endDateInput').hide();
+    }
+    
+
+    // from which URL ...... ,,,,,,,,,,,,,,,??????????? //
+    
+    $('#modal-form-submit').on('click', function(e){
+       // We don't want this to act as a link so cancel the link action
+       e.preventDefault();
+    
+       // Find form and submit it
+       $('#modal-form').submit();
+       });
+
+    // Since we want both pressing 'Enter' and clicking the button to work
+    // We'll subscribe to the submit event, which is triggered by both
+
+    $('#modal-form').on('submit', function(){
+                        
+        //Serialize the form and post it to the server
+        $.post("/yourReceivingPage", $(this).serialize(), function(){
+               
+               // When this executes, we know the form was submitted
+               
+               // To give some time for the animation,
+               // let's add a delay of 200 ms before the redirect
+               var delay = 200;
+               setTimeout(function(){
+                          window.location.href = 'successUrl.html';
+                          }, delay);
+               
+               // Hide the modal
+               $("#my-modal").modal('hide');
+               
+               });
+        
+        // Stop the normal form submission
+        return false;
+        });
+        
+</script>
+    
+    
     
     <!-- ----- Style ----- -->
     <style>
@@ -36,7 +130,7 @@ rel="stylesheet">
         
         
         
-        modal { width: 400px;}
+        /*modal { width: 400px;}*/
         
         addEvent { }
         
@@ -107,6 +201,11 @@ rel="stylesheet">
             text-transform: none; clear: none;
         }
         
+        input[type=text]#input-text {
+            height: 30px;
+            width: 300px;
+        }
+        
         creditDemo {
             color: #999;
             text-align: right;
@@ -156,6 +255,16 @@ rel="stylesheet">
             word-wrap: break-word;
             font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
             
+        }
+        
+        
+        input[type=text]#input-text {
+            font-size: 15px;
+            font-weight: normal;
+            line-height: 20px;
+            margin-bottom: 20px;
+            color: #666;
+            font-family: "Georgia",Times New Roman,Times,serif !important;
         }
         
         .inputField {
@@ -210,115 +319,60 @@ rel="stylesheet">
         
         /*INPUT:focus { border: 2px solid green; }
          INPUT:invalid { border : 2px solid red; }*/
-        
-        
-        
 
-        
-
-
-
-        
-
-        
 
         </style>
+    
 <!-- HTML5 shim, for IE6-8 support of HTML elements--><!--[if lt IE 9]>
 <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     </head>
     
     <body>
         
-        <!-- <script>
-         function addEvent()
-         {
-         var string = '<form name="input" action="html_form_action.asp" method="get"> Username: <input type="text" name="user"> <input type="submit" value="Submit"> </form>';
-         var name = prompt(string, "lizz");
-         document.getElementById("demo").innerHTML=name;
-         }
-         </script>
-         
-         <button type="button" onclick="addEvent()">Add Event</button>
-         <div id="demo"> </div>-->
-        
-        <!--
-         <div class="modal">
-         <form class="modal-form">
-         <div class="modal-header"></div>
-         <div class="modal-body"> input elements here </div>
-         <div class="modal-footer">
-         <button type="submit" class="btn" data-dismiss="modal">Cancel</button>
-         <button type="submit" class="btn btn-primary">Save</button>
-         </div>
-         </form>
-         </div> -->
-
+    
       <div class="container">
           <div id="add-event" class="modal hide fade in" style="display:none;">
               <div class="modal-header">
                   <a class="close" data-dismiss="modal">×</a>
                   <h3>Add an Event</h3>
-             
-              
-                  <script>
-                      function addEvent()
-                      {
-                          var inputs = "";
-                          inputs += "input-type: " + document.getElementById("input-type").checked + "\n";
-                          inputs += "select-type: " + document.getElementById("select-type").value + "\n";
-                          
-                          inputs += "input-start: " + document.getElementById("input-start").value + "\n";
-                          inputs += "input-isInterval: " + document.getElementById("input-isInterval").checked + "\n";
-                          inputs += "input-end: " + document.getElementById("input-end").value + "\n";
-                          
-                          inputs += "input-headline: " + document.getElementById("input-headline").value + "\n";
-                          inputs += "input-text: " + document.getElementById("input-text").value + "  ";
-                          
-                          inputs += "input-asset: " + document.getElementById("input-asset").value + "\n";
-                          inputs += "input-credit: " + document.getElementById("input-credit").value + "\n";
-                          inputs += "input-caption: " + document.getElementById("input-caption").value + "\n";
-                          //inputs += ": " + document.getElementById("").value + "\n";
-                          
-                          alert(inputs);
-                      }
-                      </script>
-              
-              
               </div>
               
               <div class="modal-body">
-                 <!-- <p>You can add some text here.</p> -->
+                 <!-- <p>You can add some text here.</p> -->
                   
-                  
-                  <form id="modal-form"
-                      accept-charset="UTF-8" action="/tagging"
+                  <form id="modal-form" accept-charset="UTF-8" action="/tagging"
                       data-remote="true" method="post">
                       
-                      <!-- param 0 = type -->
-                      <!--<h4>Type (is title?)</h4> -->
+                      
+                      <!--<h4>Type (is title?)</h4> --> <!-- param 0 = type -->
                       <div id="input-type-title">
-                          <input type="checkbox" id="input-type" name="type" value="title"> Make this the title slide </input>
+                          <input type="checkbox" id="input-type" name="type" value="title">
+                              Make this the title slide
+                          </input>
                       </div>
                       
                       <select id="select-type" onchange="selectChange(this.value)">
-                          <option value="image"> Image </option>
+                          <option value="media"> Media </option>
+                          <option value="plaintext"> Text </option>
+                          
+                    <!--  <option value="image"> Image </option>
                     <!--  <option>flickr</option>
                           <option>instagram</option> -->
-                          <option value="youtube"> YouTube </option>
-                    <!--  <option>googledoc</option>
-                          <option>vimeo</option>
-                          <option>dailymotion</option>
-                          <option>twitter</option>
-                          <option>twitter-ready</option>
-                          <option>soundcloud</option>
-                          <option>google-map</option>
-                          <option>googleplus</option>
+                    <!--  <option value="youtube"> YouTube </option>
+                    <!--  <option value="googledoc"> GoogleDoc </option>
+                          <option value="vimeo"> Vimeo </option>
+                          <option value="dailymotion"> DailyMotion </option>
+                          <option value="twitter"> Twitter </option>
+                          <option value="twitter-ready"> Twitter-Ready </option>
+                          <option value="soundcloud"> SoundCloud </option>
+                          <option value="google-map"> Google Map </option>
+                          <option value="googleplus"> Google+ </option>
                           <option value="wikipedia"> Wikipedia </option>
-                          <option value="storify"> Storify</option>
+                          <option value="storify"> Storify </option>
                           <option value="quote"> Quote </option>
                           <option value="unknown"> unknown </option> <!--blockquote see line 4170 -->
                          <!-- <option value="website"> Website </option> -->
-                          <option value="plaintext"> text </option> <!-- plaintext -->
+                    <!-- <option value="plaintext"> text </option> <!-- plaintext -->
                       </select>
                       
 
@@ -343,107 +397,50 @@ rel="stylesheet">
                       </div>
                       <br/>
                       
-                      <!--<h4>Headline</h4> <!-- param 3 = headline -->
+                      <!-- param 3 = headline -->
                       Headline: 
-                      <input type="text" id="input-headline" class="headlineDemo" value="Headline" />
+                      <input type="text" id="input-headline" class="headlineDemo" placeholder="Title of Event" />
                       
                       
-                      <!--<h4>Text</h4> <!-- param 4 = text -->
+                      <!-- param 4 = text -->
                       <div id="textInput" class="inputField">
-                      Text: 
-                      <input type="text" id="input-text" name="text" value="Describe this event!" />
-                          </div>
-                      
-                    <div id="mediaInputs">
-                      <h5> Media </h5>
-                      
-                      <div id="assetInput">
-                      <!--<h4>Asset</h4> <!-- param 6 = asset -->
-                      <!-- also has media, credit, caption, thumbnail -->
-                          Asset
-                          <input id="input-asset" name="asset" value="" />
+                          Text: 
+                          <input type="text" id="input-text" name="text" placeholder="Describe this epic event in  your pet's life!" />
                       </div>
                       
                       
+                     
+                      <!-- also has media, credit, caption, thumbnail -->
+                    <div id="mediaInputs">
+                      <!--<h5> Media </h5>-->
+                      
+                        <!-- param 6 = asset -->
+                      <div id="assetInput" class="inputField">
+                          Media URL (Asset):
+                          <input type="url" id="input-asset" name="asset" value="" />
+                      </div>
+                      
                       
                       <div id="creditInput" class="inputField">
-                          Media Credit:
+                          Media Credit: 
                           <input type="text" id="input-credit" value="Media credit" />
                       </div>
                       
                       <div id="captionInput" class="inputField">
-                          Media Caption:
+                          Media Caption: 
                           <input type="text" id="input-caption" value="Media caption" />
                       </div>
-                      
-                      <h5> Media Thumbnail </h5>
+                    
+                      <!--<h5> Media Thumbnail </h5>-->
                       </div>
-                      
-                      
-                      <script type="text/javascript">
-                          
-                          // Hide end date field
-                          $("#endDateInput").hide();
-                          
-                          
-                          function selectChange(value) {
-                              if(value == 'plaintext')
-                              {
-                                  $('#mediaInputs').hide();
-                                  //$('#assetInput').hide();
-                                  //$('#captionInput').hide();
-                                  //$('#creditInput').hide();
-                              }
-                              
-                          }
-                          
-                          function timeRange(checked) {
-                              if (checked) {
-                                  $('#endDateInput').show();
-                              }
-                              else $('#endDateInput').hide();
-                          }
-                          
-                          
-                          </script>
                       
                       <!-- <h4>Tag</h4> <!-- param 5 = tag -->
                       <!-- <input name="something" value="tag" /> -->
                       
-                      
-                      <!-- 
-                       <div class="itemDemo"> <!-- vco slider slider-item  --
-                       <div class="content">
-                       <div class="content-container layout-media">
-                       <div class="text">
-                       <div class="container">
-                       <h2 class="date dateDemo"> Start Date</h2>
-                       <h3 class="headlineDemo"> Headline </h3>
-                       </div>
-                       </div>
-                       <div class="media">
-                       <div class="media-wrapper">
-                       <div class="media-container" style="/*max-width: 340px;*/">
-                       <div class="media-shadow">
-                       <!--<iframe frameborder="0" allowfullscreen="" class="media-frame video youtube" id="MOIFRcB" style="width: 338px; height: 191px; max-height: 169px; max-width: 300px; " title="YouTube video player" height="191" width="338" src="http://www.youtube.com/embed/u-yLGIH7W9Y?enablejsapi=1&amp;color=white&amp;showinfo=0&amp;theme=light&amp;start=0&amp;rel=0&amp;origin=file%3A%2F%2Flocalhost"> --
-                       </iframe>
-                       </div>
-                       <div class="caption captionDemo">
-                       Writers &amp; Creators: Kyle Humphrey &amp; Graydon Sheppard
-                       </div>
-                       </div>
-                       </div>
-                       </div> <!-- end media? --
-                       
-                       </div>
-                       </div>
-                       </div> -->
-                      
-                      
                   </form>
                   
               </div>
-              
+
               
               
               <div class="modal-footer">
@@ -453,53 +450,42 @@ rel="stylesheet">
               </div>
           </div>
           <p>
-          <a data-toggle="modal" href="#add-event" class="btn btn-primary btn-large">Launch demo modal</a></p>
+          <a data-toggle="modal" href="#add-event" class="btn btn-primary btn-large"> <big>+</big> Add an Event </a></p>
       </div>
+        
+        <!--
+         <div class="modal">
+         <form class="modal-form">
+         <div class="modal-header"></div>
+         <div class="modal-body"> input elements here </div>
+         <div class="modal-footer">
+         <button type="submit" class="btn" data-dismiss="modal">Cancel</button>
+         <button type="submit" class="btn btn-primary">Save</button>
+         </div>
+         </form>
+         </div> -->
         
 
         
       
-      <script>
-          $('#modal-form-submit').on('click', function(e){
-             // We don't want this to act as a link so cancel the link action
-             e.preventDefault();
-             
-             // Find form and submit it
-             $('#modal-form').submit();
-             });
-          
-          // Since we want both pressing 'Enter' and clicking the button to work
-          // We'll subscribe to the submit event, which is triggered by both
-          
-          $('#modal-form').on('submit', function(){
-                              
-          //Serialize the form and post it to the server
-          $.post("/yourReceivingPage", $(this).serialize(), function(){
-                 
-                 // When this executes, we know the form was submitted
-                 
-                 // To give some time for the animation,
-                 // let's add a delay of 200 ms before the redirect
-                 var delay = 200;
-                 setTimeout(function(){
-                            window.location.href = 'successUrl.html';
-                            }, delay);
-                 
-                 // Hide the modal
-                 $("#my-modal").modal('hide');
-                 
-                 });
-          
-          // Stop the normal form submission
-          return false;
-          });
-          
-          </script>
+
       
+        
+        <!--
+         <div id="timeline-embed"></div>
+         <script type="text/javascript">
+         var timeline_config = {
+         width: "100%",
+         height: "100%",
+         source: 'example_jsonp.jsonp'
+         }
+         </script>
+         
+         <script type="text/javascript" src="../compiled/js/storyjs-embed.js"></script>-->
       
-      
-    <div id="timeline-embed"></div>
-<script type="text/javascript">
+<div id="timeline-embed"></div>
+
+    <script type="text/javascript">
 var timeline_config = {
         width:              '100%',
         height:             '600',
@@ -522,17 +508,6 @@ var timeline_config = {
 
 
 
-<!--
-<div id="timeline-embed"></div>
-<script type="text/javascript">
-    var timeline_config = {
-        width: "100%",
-        height: "100%",
-        source: 'example_jsonp.jsonp'
-    }
-    </script> 
-      
-<script type="text/javascript" src="../compiled/js/storyjs-embed.js"></script>-->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-modal.js"></script>
