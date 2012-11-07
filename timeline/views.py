@@ -30,7 +30,7 @@ def api_pet(request,id):
     join['year'] = joined.year
     join['month'] = joined.month
     join['day'] = joined.day
-     response_data['joined_date'] = join
+    response_data['joined_date'] = join
 
     # Get pet event ids
     pet_events = Event.objects.filter(pet__id=id)
