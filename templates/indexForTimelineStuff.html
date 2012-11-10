@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en"><!--
+     
+     88888888888 d8b                        888 d8b                888888   d8888b
+     888     Y8P                        888 Y8P                   88b d88P  Y88b
+     888                                888                       888 Y88b
+     888     888 88888b d88b     d88b   888 888 88888b     d88b   888   Y888b
+     888     888 888  888  88b d8P  Y8b 888 888 888  88b d8P  Y8b 888      Y88b
+     888     888 888  888  888 88888888 888 888 888  888 88888888 888        888
+     888     888 888  888  888 Y8b      888 888 888  888 Y8b      88P Y88b  d88P
+     888     888 888  888  888   Y8888  888 888 888  888   Y8888  888   Y8888P
+     d88P
+     d88P
+     888P
+     -->
+    <head>
+        <title> miPet </title>
+<meta charset="utf-8">
+<meta name="description" content="TimelineJS example miPet">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    
+
+<link rel="Shortcut Icon" href="/favicon.ico">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" type="image/ico" href="/favicon.ico"/>
+    
+<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css"
+rel="stylesheet">
+    
+<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <!-- script type="text/javascript" -->
+<script>
+    
+    
+    function addEvent()
+    {
+        if(!document.getElementById("input-isInterval").checked){
+            document.getElementById("input-end").value = document.getElementById("input-start").value;
+        }
+        
+        
+        var inputs = "";
+        // if checked, type = title (only 1 slide), otherwise type = ""
+        inputs += "input-type: " + document.getElementById("input-type").checked + "\n";
+        inputs += "select-type: " + document.getElementById("select-type").value + "\n";
+        
+        inputs += "input-start: " + document.getElementById("input-start").value + "\n";
+        inputs += "input-isInterval: " + document.getElementById("input-isInterval").checked + "\n";
+        inputs += "input-end: " + document.getElementById("input-end").value + "\n";
+        
+        inputs += "input-headline: " + document.getElementById("input-headline").value + "\n";
+        inputs += "input-text: " + document.getElementById("input-text").value + "\n";
+        
+        inputs += "input-asset: " + document.getElementById("input-asset").value + "\n";
+        inputs += "input-credit: " + document.getElementById("input-credit").value + "\n";
+        inputs += "input-caption: " + document.getElementById("input-caption").value + "\n";
+        //inputs += ": " + document.getElementById("").value + "\n";
+        
+        alert(inputs);
+    }
+    
+
+    
+    // Hide end date field
+    $("#endDateInput").hide();
+    
+    
+    function selectChange(value) {
+        if(value == 'plaintext')
+        {
+            $('#mediaInputs').hide();
+            //$('#assetInput').hide();
+            //$('#captionInput').hide();
+            //$('#creditInput').hide();
+        }
+        else
+        {
+            $('#mediaInputs').show();
+        }
+    }
+    
+    
+    function timeRange(checked) {
+        if (checked) {
+            $('#endDateInput').show();
+        }
+        else {
+            $('#endDateInput').hide();
+        }
+        
+    }
+    
+
+    // from which URL ...... ,,,,,,,,,,,,,,,??????????? //
+    
+    $('#modal-form-submit').on('click', function(e){
+       // We don't want this to act as a link so cancel the link action
+       e.preventDefault();
+    
+       // Find form and submit it
+       $('#modal-form').submit();
+       });
+
+    // Since we want both pressing 'Enter' and clicking the button to work
+    // We'll subscribe to the submit event, which is triggered by both
+
+    $('#modal-form').on('submit', function(){
+                        
+        //Serialize the form and post it to the server
+        $.post("/yourReceivingPage", $(this).serialize(), function(){
+               
+               // When this executes, we know the form was submitted
+               
+               // To give some time for the animation,
+               // let's add a delay of 200 ms before the redirect
+               var delay = 200;
+               setTimeout(function(){
+                          window.location.href = 'successUrl.html';
+                          }, delay);
+               
+               // Hide the modal
+               $("#my-modal").modal('hide');
+               
+               });
+        
+        // Stop the normal form submission
+        return false;
+        });
+        
+</script>
+    
+    
+    
+    <!-- ----- Style ----- -->
+    <style>
+        html, body {
+            height:100%;
+            padding: 0px;
+            margin: 0px;
+        }
+        
+        
+        
+        /*modal { width: 400px;}*/
+        
+        addEvent { }
+        
+        
+        
+        
+        itemDemo {
+            /*width: 494px;
+             height: 279px;
+             display: table;
+             overflow-y: auto;
+             left: 769px;*/
+        }
+        
+        .inputField {
+            color: teal;
+            font-size: 9.5pt;
+            
+        }
+        
+        #input-type-title {
+            float: right;
+            display: inline;
+        }
+        
+        h2.dateDemo {
+            text-align: center;
+            color: #999;
+            font-size: 15px;
+            line-height: 15px;
+            font-weight: normal;
+            margin-bottom: 3.75px;
+            font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;
+        }
+        
+        input[type=date]#input-start, input[type=date]#input-end {
+            /*height: 30px;*/
+            width: 150px;
+            margin: auto;
+            text-align: center;
+            color: #999;
+            font-size: 15px;
+            line-height: 15px;
+            font-weight: normal;
+            margin-bottom: 3.75px;
+            font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;
+        }
+        
+        
+        
+        h3.headlineDemo {
+            text-align: center;
+            color: black;
+            font-size: 28px;
+            line-height: 30px;
+            font-weight: normal;
+            font-family: 'Georgia', Times New Roman, Times, serif;
+            margin-bottom: 15px;
+            text-transform: none; clear: none;
+        }
+        
+        input[type=text]#input-headline {
+            height: 30px;
+            /*width: 300px;*/
+            
+            margin: auto;
+            text-align: center;
+            color: black;
+            font-size: 28px;
+            line-height: 30px;
+            font-weight: normal;
+            font-family: 'Georgia', Times New Roman, Times, serif;
+            margin-bottom: 15px;
+            text-transform: none; clear: none;
+        }
+        
+        input[type=text]#input-text {
+            height: 30px;
+            width: 300px;
+        }
+        
+        input[type=url]#input-asset {
+            height: 20px;
+            width: 300px;
+        }
+        
+        creditDemo {
+            color: #999;
+            text-align: right;
+            display: block;
+            margin: 0 auto;
+            margin-top: 6px; /*removed for vco-storyjs .credit */
+            font-size: 10px;
+            line-height: 13px; /* 10px */
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+            /*clear:both; removed for vco-slider .slider-item .content .content-container .media .media-wrapper .credit */
+        
+        }
+        input[type=text]#input-credit {
+            color: #666;
+            text-align: left;
+            text-rendering: optimizeLegibility;
+            margin-top: 10px; /*5px for .vco-storyjs */
+            word-wrap: break-word;
+            font-size: 11px;
+            line-height: 14px;
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+            
+        }
+        
+        
+        
+        .captionDemo {
+            text-align: left;
+            margin-top: 10px; /*5px for .vco-storyjs */
+            color: #666;
+            font-size: 11px;
+            line-height: 14px;
+            text-rendering: optimizeLegibility;
+            word-wrap: break-word;
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+            /*display: block;*/
+            /*clear:both; for .vco-storyjs .caption */
+        }
+        
+        input[type=text]#input-caption {
+            text-align: left;
+            margin-top: 10px; /*5px for .vco-storyjs */
+            color: #666;
+            font-size: 11px;
+            line-height: 14px;
+            text-rendering: optimizeLegibility;
+            word-wrap: break-word;
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+            
+        }
+        
+        
+        input[type=text]#input-text {
+            font-size: 15px;
+            font-weight: normal;
+            line-height: 20px;
+            margin-bottom: 20px;
+            color: #666;
+            font-family: "Georgia",Times New Roman,Times,serif !important;
+        }
+        
+        .inputField {
+            
+            padding: 0px;
+            margin: 0px;
+        }
+        
+        /* old
+        .captionDemo {
+            color: #666;
+            text-align: left;
+            margin-top: 10px;
+            font-size: 11px;
+            line-height: 14px;
+            word-wrap: break-word;
+            clear: both;
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+            max-width: 300px;
+        }*/
+
+        
+        /*
+        
+        .vco-slider .slider-item .content .content-container .text .container p {
+            -webkit-hyphens: auto;
+            -moz-hyphens: auto;
+            -ms-hyphens: auto;
+            hyphens: auto;
+            word-wrap: break-word;
+        }
+
+        .vco-storyjs p {
+            font-size: 15px;
+            font-weight: normal;
+            line-height: 20px;
+            margin-bottom: 20px;
+            color: #666;
+        }
+        .vco-storyjs p, .vco-storyjs blockquote, .vco-storyjs blockquote p, .vco-storyjs .twitter blockquote p {
+            font-family: "Georgia",Times New Roman,Times,serif !important;
+        }*/
+        
+        /*input[type=text]#input-headline {
+            height: 30px;
+            width: 300px;
+            background-color: #CEEEFA;
+            font-family: arial;
+            font-size: 25px;
+            color: #636768;
+         }*/
+        
+        /*INPUT:focus { border: 2px solid green; }
+         INPUT:invalid { border : 2px solid red; }*/
+
+
+        </style>
+    
+<!-- HTML5 shim, for IE6-8 support of HTML elements--><!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    </head>
+    
+    <body>
+        
+    
+      <div class="container">
+          <div id="add-event" class="modal hide fade in" style="display:none;">
+              <div class="modal-header">
+                  <a class="close" data-dismiss="modal">×</a>
+                  <h3>Add an Event</h3>
+              </div>
+              
+              <div class="modal-body">
+                 <!-- <p>You can add some text here.</p> -->
+                  
+                  <form id="modal-form" accept-charset="UTF-8" action="/tagging"
+                      data-remote="true" method="post">
+                      
+                      
+                      <!--<h4>Type (is title?)</h4> --> <!-- param 0 = type -->
+                      <div id="input-type-title">
+                          <input type="checkbox" id="input-type" name="type" value="title">
+                              Make this the title slide
+                          </input>
+                      </div>
+                      
+                      <select id="select-type" onchange="selectChange(this.value)">
+                          <option value="media"> Media </option>
+                          <option value="plaintext"> Text </option>
+                          
+                    <!--  <option value="image"> Image </option>
+                    <!--  <option>flickr</option>
+                          <option>instagram</option> -->
+                    <!--  <option value="youtube"> YouTube </option>
+                    <!--  <option value="googledoc"> GoogleDoc </option>
+                          <option value="vimeo"> Vimeo </option>
+                          <option value="dailymotion"> DailyMotion </option>
+                          <option value="twitter"> Twitter </option>
+                          <option value="twitter-ready"> Twitter-Ready </option>
+                          <option value="soundcloud"> SoundCloud </option>
+                          <option value="google-map"> Google Map </option>
+                          <option value="googleplus"> Google+ </option>
+                          <option value="wikipedia"> Wikipedia </option>
+                          <option value="storify"> Storify </option>
+                          <option value="quote"> Quote </option>
+                          <option value="unknown"> unknown </option> <!--blockquote see line 4170 -->
+                         <!-- <option value="website"> Website </option> -->
+                    <!-- <option value="plaintext"> text </option> <!-- plaintext -->
+                      </select>
+                      
+                                            
+                      <!--
+                      <h2 class="dateDemo"> Start Date</h2>
+                      <h3 class="headlineDemo"> Headline </h3>
+                       -->
+                      
+                      <br/>
+                     
+                      
+                      <!--<h4>Start Date</h4> <!-- param 1 = start date (required!)-->
+                      <div id="dateInput" class="inputField">
+                          Start date:
+                          <input type="date" id="input-start"  class="dateDemo" placeholder="Start Date"/>
+                      
+                          <input type="checkbox" id="input-isInterval" name="" value="" onclick="timeRange(this.checked)"> Make time range</input>
+                      </div>
+                      
+                      <!-- <h4>End Date</h4> <!-- param 2 = end date -->
+                      <!-- <input name="something" value="end date" /> -->
+                      
+                      <div id="endDateInput" class="inputField hide">
+                          End date:
+                          <input type="date" id="input-end"  class="dateDemo inputField" value="" />
+                      <br/>
+                      
+                      </div>
+                      
+                      
+                      
+                      <!-- param 3 = headline -->
+                      <div id="headlineInput" class="inputField">
+                          Headline: 
+                          <input type="text" id="input-headline" class="headlineDemo" placeholder="Title of Event" />
+                      </div>
+                      
+                      
+                      <!-- param 4 = text -->
+                      <div id="textInput" class="inputField">
+                          Text: 
+                          <input type="text" id="input-text" name="text" placeholder="Describe this epic event in  your pet's life!" />
+                      </div>
+                      
+                      
+                     
+                      <!-- also has media, credit, caption, thumbnail -->
+                    <div id="mediaInputs">
+                      <!--<h5> Media </h5>-->
+                      
+                        <!-- param 6 = asset -->
+                      <div id="assetInput" class="inputField">
+                          Media (asset) URL:
+                          <input type="url" id="input-asset" name="asset" placeholder="http://i.imgur.com/yourimage.png" />
+                      </div>
+                      
+                      <!--
+                      <div id="creditInput" class="inputField">
+                          Media Credit: 
+                          <input type="text" id="input-credit" placeholder="media credit (optional)" />
+                      </div>
+                      
+                      <div id="captionInput" class="inputField">
+                          Media Caption: 
+                          <input type="text" id="input-caption" placeholder="media caption (optional)" />
+                      </div>
+                    -->
+                      <!--<h5> Media Thumbnail </h5>-->
+                      </div>
+                      
+                      <!-- <h4>Tag</h4> <!-- param 5 = tag -->
+                      <!-- <input name="something" value="tag" /> -->
+                      
+                  
+                  
+              </div>
+
+              
+              
+              <div class="modal-footer">
+                  <a href="#" class="btn btn-success">Call to action</a>
+                  <a href="#" class="btn" data-dismiss="modal">Close</a>
+                  <a id="modal-form-submit" class='btn btn-primary' href="#" onclick="addEvent()">Submit</a>
+                  
+                  <!--
+                   <button type="submit" class="btn" data-dismiss="modal">Cancel</button>
+                   <button type="submit" class="btn btn-primary">Save</button>
+                   -->
+              </div>
+              </form>
+          </div>
+          <p>
+          <a data-toggle="modal" href="#add-event" class="btn btn-primary btn-large"> <big>+</big> Add an Event </a></p>
+      </div>
+        
+
+    
+      
+        
+        <!--
+         <div id="timeline-embed"></div>
+         <script type="text/javascript">
+         var timeline_config = {
+         width: "100%",
+         height: "100%",
+         source: 'example_jsonp.jsonp'
+         }
+         </script>
+         
+         <script type="text/javascript" src="../compiled/js/storyjs-embed.js"></script>-->
+      
+<div id="timeline-embed"></div>
+
+    <script type="text/javascript">
+var timeline_config = {
+        width:              '100%',
+        height:             '600',
+        source:             '/static/kermit.json',
+        embed_id:           'timeline-embed',       //OPTIONAL USE A DIFFERENT DIV ID FOR EMBED
+        start_at_end:       false,                  //OPTIONAL START AT LATEST DATE
+        start_at_slide:     '1',                    //OPTIONAL START AT SPECIFIC SLIDE
+        start_zoom_adjust:  '3',                    //OPTIONAL TWEAK THE DEFAULT ZOOM LEVEL
+        hash_bookmark:      true,                   //OPTIONAL LOCATION BAR HASHES
+        //font:               'Bevan-PotanoSans',   //OPTIONAL FONT
+        debug:              true,                   //OPTIONAL DEBUG TO CONSOLE
+        //lang:               'fr',                 //OPTIONAL LANGUAGE
+        maptype:            'watercolor',           //OPTIONAL MAP STYLE
+        css:                '/static/timelinejs/css/timeline.css',     //OPTIONAL PATH TO CSS
+        js:                 '/static/timelinejs/js/timeline-min.js'    //OPTIONAL PATH TO JS
+        }
+        </script>
+        <script src="/static/timelinejs/js/storyjs-embed.js"></script>
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-modal.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-alert.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-transition.js"> </script>
+<script src="http://twitter.github.com/bootstrap/assets/js/jquery.js"> </script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-popover.js"> </script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-button.js"> </script>
+<script src="http://twitter.github.com/bootstrap/assets/js/jquery.js"> </script>
+
+<!-- END Timeline Embed-->
+</body>
+
+</html>

@@ -1,0 +1,251 @@
+
+
+/*    <!-- Styles -->
+    <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <style>
+*/
+ 
+
+ /*-------------------------- Header/Top css -------------------------------*/   
+
+/* 60px to make the container go all the way to the bottom of the topbar */ 
+body { 
+    padding-top: 60px;
+    margin-left: 0px; 
+    width=100%;
+}
+ 
+container {
+    padding-left: 0px;
+    margin-left: 0px
+    width = 100%;
+}
+   
+
+html, body {
+            height:100%;
+            padding: 0px;
+            margin: 0px;
+        }
+        
+        
+        
+        /*modal { width: 400px;}*/
+        
+        addEvent { }
+        
+        
+        itemDemo {
+            /*width: 494px;
+             height: 279px;
+             display: table;
+             overflow-y: auto;
+             left: 769px;*/
+        }
+        
+        .inputField {
+            color: teal;
+            font-size: 9.5pt;
+            
+        }
+        
+        #input-type-title {
+            float: right;
+            display: inline;
+        }
+        
+        h2.dateDemo {
+            text-align: center;
+            color: #999;
+            font-size: 15px;
+            line-height: 15px;
+            font-weight: normal;
+            margin-bottom: 3.75px;
+            font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;
+        }
+        
+        input[type=date]#input-start, input[type=date]#input-end {
+            /*height: 30px;*/
+            width: 150px;
+            margin: auto;
+            text-align: center;
+            color: #999;
+            font-size: 15px;
+            line-height: 15px;
+            font-weight: normal;
+            margin-bottom: 3.75px;
+            font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;
+        }
+        
+        
+        
+        h3.headlineDemo {
+            text-align: center;
+            color: black;
+            font-size: 28px;
+            line-height: 30px;
+            font-weight: normal;
+            font-family: 'Georgia', Times New Roman, Times, serif;
+            margin-bottom: 15px;
+            text-transform: none; clear: none;
+        }
+        
+        input[type=text]#input-headline {
+            height: 30px;
+            /*width: 300px;*/
+            
+            margin: auto;
+            text-align: center;
+            color: black;
+            font-size: 28px;
+            line-height: 30px;
+            font-weight: normal;
+            font-family: 'Georgia', Times New Roman, Times, serif;
+            margin-bottom: 15px;
+            text-transform: none; clear: none;
+        }
+        
+        input[type=text]#input-text {
+            height: 30px;
+            width: 300px;
+        }
+        
+        input[type=url]#input-asset {
+            height: 20px;
+            width: 300px;
+        }
+        
+        creditDemo {
+            color: #999;
+            text-align: right;
+            display: block;
+            margin: 0 auto;
+            margin-top: 6px; /*removed for vco-storyjs .credit */
+            font-size: 10px;
+            line-height: 13px; /* 10px */
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+            /*clear:both; removed for vco-slider .slider-item .content .content-container .media .media-wrapper .credit */
+        
+        }
+        input[type=text]#input-credit {
+            color: #666;
+            text-align: left;
+            text-rendering: optimizeLegibility;
+            margin-top: 10px; /*5px for .vco-storyjs */
+            word-wrap: break-word;
+            font-size: 11px;
+            line-height: 14px;
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+            
+        }
+        
+        
+        
+        .captionDemo {
+            text-align: left;
+            margin-top: 10px; /*5px for .vco-storyjs */
+            color: #666;
+            font-size: 11px;
+            line-height: 14px;
+            text-rendering: optimizeLegibility;
+            word-wrap: break-word;
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+            /*display: block;*/
+            /*clear:both; for .vco-storyjs .caption */
+        }
+        
+        input[type=text]#input-caption {
+            text-align: left;
+            margin-top: 10px; /*5px for .vco-storyjs */
+            color: #666;
+            font-size: 11px;
+            line-height: 14px;
+            text-rendering: optimizeLegibility;
+            word-wrap: break-word;
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+            
+        }
+        
+        
+        input[type=text]#input-text {
+            font-size: 15px;
+            font-weight: normal;
+            line-height: 20px;
+            margin-bottom: 20px;
+            color: #666;
+            font-family: "Georgia",Times New Roman,Times,serif !important;
+        }
+        
+        .inputField {
+            
+            padding: 0px;
+            margin: 0px;
+        }
+        
+        /* old
+        .captionDemo {
+            color: #666;
+            text-align: left;
+            margin-top: 10px;
+            font-size: 11px;
+            line-height: 14px;
+            word-wrap: break-word;
+            clear: both;
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+            max-width: 300px;
+        }*/
+
+        
+        /*
+        
+        .vco-slider .slider-item .content .content-container .text .container p {
+            -webkit-hyphens: auto;
+            -moz-hyphens: auto;
+            -ms-hyphens: auto;
+            hyphens: auto;
+            word-wrap: break-word;
+        }
+
+        .vco-storyjs p {
+            font-size: 15px;
+            font-weight: normal;
+            line-height: 20px;
+            margin-bottom: 20px;
+            color: #666;
+        }
+        .vco-storyjs p, .vco-storyjs blockquote, .vco-storyjs blockquote p, .vco-storyjs .twitter blockquote p {
+            font-family: "Georgia",Times New Roman,Times,serif !important;
+        }*/
+        
+        /*input[type=text]#input-headline {
+            height: 30px;
+            width: 300px;
+            background-color: #CEEEFA;
+            font-family: arial;
+            font-size: 25px;
+            color: #636768;
+         }*/
+        
+        /*INPUT:focus { border: 2px solid green; }
+         INPUT:invalid { border : 2px solid red; }*/
+
+
+/*-------------------------- Hall listing css -------------------------------*/
+
+/*-------------------------- Menu display css -------------------------------*/        
+    
+
+
+
+/*
+    <link href="/static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    
+
+    <!-- Le fav and touch icons
+    <link rel="shortcut icon" href="../assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+    -->
+*/
