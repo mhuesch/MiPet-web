@@ -21,7 +21,7 @@ class Tag(models.Model):
 
 class Media(models.Model):
     event = models.ForeignKey(Event)
-    url = models.CharField(max_length=2000)
+    media_url = models.CharField(max_length=2000)
     credit = models.CharField(max_length=100)
     caption = models.CharField(max_length=280)
     def __unicode__(self):

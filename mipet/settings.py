@@ -122,6 +122,7 @@ INSTALLED_APPS = (
     'gunicorn',
     'south',
     'timeline',
+    'rest_framework',
     #'timelinejs',
     
     # Uncomment the next line to enable admin documentation:

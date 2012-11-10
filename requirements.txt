@@ -1,6 +1,8 @@
 Django==1.4.2
 Django-TimelineJS==0.2
+Markdown==2.2.1
 South==0.7.6
+djangorestframework==2.1.2
 gunicorn==0.14.6
 psycopg2==2.4.5
 wsgiref==0.1.2
