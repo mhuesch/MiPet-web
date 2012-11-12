@@ -8,7 +8,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     
     url(r'^$', 'timeline.views.index', name='index'),
-    url(r'^profile/(?P<id>\d+)/$', 'timeline.views.timeline', name='profile'),
+    url(r'^profile/(?P<id>\d+)/$', 'timeline.views.profile', name='profile'),
 
     # Django REST framework
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
