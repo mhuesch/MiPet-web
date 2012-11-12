@@ -37,20 +37,14 @@ var PetView = Backbone.View.extend({
 // ---------- Event View ----------//
 var EventView = Backbone.View.extend({
 
-<<<<<<< HEAD
-    tagName:'li',
-=======
-    //tagName:'ul',
->>>>>>> edited how events are displayed, now boxes with title bars sorta
+    //tagName:'li',
 
     initialize:function () {
         _.bindAll(this, 'render');
     },
 
     render:function () {
-<<<<<<< HEAD
-        $(this.el).html("<span>Title: "+this.model.get('title')+"</span>");
-=======
+                                     
         var outputString = "";
         /*outputString += "<a class='btn event-btn'";
         outputString += "<span class='eventTitle'>Title: "+this.model.get('title')+"</span>"
@@ -65,7 +59,7 @@ var EventView = Backbone.View.extend({
         outputString += "<span class='eventDesc'>"+this.model.get('description')+"</span>";
         outputString += "</div>";
         $(this.el).html(outputString);
->>>>>>> edited how events are displayed, now boxes with title bars sorta
+
         return this;
     }
 });
