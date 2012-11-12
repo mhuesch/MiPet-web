@@ -38,10 +38,10 @@ def index(request):
     })
     return HttpResponse(t.render(c))
 
-def timeline(request, id):
-    t = loader.get_template('timeline.html')
+def profile(request, id):
+    t = loader.get_template('profile.html')
     c = Context({
                 #
-                'user_id': id,
+                'pet_id': id,
                 })
     return HttpResponse(t.render(c))
