@@ -6,8 +6,9 @@ var Pet = Backbone.Model.extend({
     // Called when generating a new instance of a model
     initialize:function () {
         this.myEvents = new EventCollection();
-        _.each(this.events, function(num){
-            var ev = new Event({id: id});
+        _.each(this.events, function(pet_id){
+            var ev = new Event({id: pet_id});
+            ev.fetch();
             this.myEvents.add(ev);
         });
 
