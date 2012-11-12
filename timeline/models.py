@@ -8,7 +8,7 @@ class Pet(models.Model):
         return self.name
 
 class Event(models.Model):
-    pet = models.ForeignKey(Pet)
+    pets = models.ManyToManyField(Pet, related_name='events')
     moment = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=700)
@@ -21,7 +21,7 @@ class Tag(models.Model):
 
 class Media(models.Model):
     event = models.ForeignKey(Event)
-    media_url = models.CharField(max_length=2000)
+    media_url = models.URLField()
     credit = models.CharField(max_length=100)
     caption = models.CharField(max_length=280)
     def __unicode__(self):
