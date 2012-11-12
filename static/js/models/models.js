@@ -6,11 +6,7 @@ var Pet = Backbone.Model.extend({
     // Called when generating a new instance of a model
     initialize:function () {
         this.myEvents = new EventCollection();
-        _.each(this.events, function(num){
-            var ev = new Event({id: num});
-            this.myEvents.add(ev);
-        });
-
+        this.myEvents.url = '/api/v1/pet/' + this.id + '/events/';
     }
 });
 
@@ -28,5 +24,5 @@ var Event = Backbone.Model.extend({
 var EventCollection = Backbone.Collection.extend({
     model: Event,
     
-    url:"/api/v1/events"
+    url:"/api/v1/event/"
 });
