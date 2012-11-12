@@ -9,15 +9,14 @@ urlpatterns = patterns('',
     
     url(r'^$', 'timeline.views.index', name='index'),
     url(r'^profile/(?P<id>\d+)/$', 'timeline.views.timeline', name='profile'),
-    
-    #url(r'^api/v1/pet/(?P<id>\d+)/$', 'timeline.views.api_pet'),
-    #url(r'^api/v1/event/(?P<id>\d+)/$', 'timeline.views.api_event'),
-    #url(r'^api/v1/media/(?P<id>\d+)/$', 'timeline.views.api_media'),
+    url(r'^api/v1/pet/(?P<id>\d+)/$', 'timeline.views.api_pet'),
+    url(r'^api/v1/event/(?P<id>\d+)/$', 'timeline.views.api_event'),
+    url(r'^api/v1/media/(?P<id>\d+)/$', 'timeline.views.api_media'),
     url(r'^api/v1/timeline/(?P<id>\d+)/$', 'timeline.views.api_timeline', name='timeline'),
 
     # Django REST framework
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^api/v1/', include('timeline.urls')),
+    url(r'^rest/', include('timeline.urls')),
     
 
     # Uncomment the admin/doc line below to enable admin documentation:
