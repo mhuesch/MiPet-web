@@ -13,7 +13,7 @@ class Event(models.Model):
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=700)
     def __unicode__(self):
-        return u'%s - %s' % (self.pets.all(), self.title)
+        return self.title
 
 class Tag(models.Model):
     name = models.CharField(max_length=50)
