@@ -79,9 +79,7 @@ img {
 .google-maps img {
   max-width: none;
 }
-/*-------------------------------------------------------------------
-    inputs
--------------------------------------------------------------------*/
+
 button,
 input,
 select,
@@ -972,10 +970,6 @@ label {
   margin-bottom: 5px;
 }
 
-/*-------------------------------------------------------------------
-    inputs
--------------------------------------------------------------------*/
-
 select,
 textarea,
 input[type="text"],
@@ -1732,11 +1726,6 @@ input.search-query {
           border-radius: 15px;
 }
 
-
-/*-------------------------------------------------------------------
-    forms
--------------------------------------------------------------------*/
-
 /* Allow for input prepend/append in search forms */
 
 .form-search .input-append .search-query,
@@ -1892,11 +1881,6 @@ legend + .control-group {
 .form-horizontal .form-actions {
   padding-left: 180px;
 }
-
-
-/*-------------------------------------------------------------------
-    TABLE
--------------------------------------------------------------------*/
 
 table {
   max-width: 100%;
@@ -2157,11 +2141,6 @@ table th[class*="span"],
 .table-hover tbody tr.info:hover td {
   background-color: #c4e3f3;
 }
-
-
-/*-------------------------------------------------------------------
-    ICON / ICONS
--------------------------------------------------------------------*/
 
 [class^="icon-"],
 [class*=" icon-"] {
@@ -2757,11 +2736,6 @@ table th[class*="span"],
   background-position: -456px -144px;
 }
 
-/*-------------------------------------------------------------------
-    dropup / drowdown
--------------------------------------------------------------------*/
-
-
 .dropup,
 .dropdown {
   position: relative;
@@ -2983,10 +2957,6 @@ table th[class*="span"],
           border-radius: 4px;
 }
 
-/*-------------------------------------------------------------------
-    WELL
--------------------------------------------------------------------*/
-
 .well {
   min-height: 20px;
   padding: 19px;
@@ -3032,10 +3002,6 @@ table th[class*="span"],
   opacity: 1;
 }
 
-/*-------------------------------------------------------------------
-    COLLAPSE / accordion classes
--------------------------------------------------------------------*/
-
 .collapse {
   position: relative;
   height: 0;
@@ -3049,10 +3015,6 @@ table th[class*="span"],
 .collapse.in {
   height: auto;
 }
-
-/*-------------------------------------------------------------------
-    close button
--------------------------------------------------------------------*/
 
 .close {
   float: right;
@@ -3080,10 +3042,6 @@ button.close {
   border: 0;
   -webkit-appearance: none;
 }
-
-/*-------------------------------------------------------------------
-    BTN for anchor a button tags
--------------------------------------------------------------------*/
 
 .btn {
   display: inline-block;
@@ -3711,10 +3669,6 @@ input[type="submit"].btn.btn-mini {
   border-bottom-color: #ffffff;
 }
 
-/*-------------------------------------------------------------------
-    btn-group
--------------------------------------------------------------------*/
-
 .btn-group-vertical {
   display: inline-block;
   *display: inline;
@@ -3760,13 +3714,6 @@ input[type="submit"].btn.btn-mini {
      -moz-border-radius: 0 0 6px 6px;
           border-radius: 0 0 6px 6px;
 }
-
-
-/*-------------------------------------------------------------------
-    end btn and btn-group
-
-    start alert
--------------------------------------------------------------------*/
 
 .alert {
   padding: 8px 35px 8px 14px;
@@ -3823,10 +3770,6 @@ input[type="submit"].btn.btn-mini {
 .alert-block p + p {
   margin-top: 5px;
 }
-
-/*-------------------------------------------------------------------
-    NAVIGATION
--------------------------------------------------------------------*/
 
 .nav {
   margin-bottom: 20px;
@@ -4090,11 +4033,6 @@ input[type="submit"].btn.btn-mini {
   filter: alpha(opacity=100);
 }
 
-
-/*-------------------------------------------------------------------
-    tabs, tabbable
--------------------------------------------------------------------*/
-
 .tabs-stacked .open > a:hover {
   border-color: #999999;
 }
@@ -4226,10 +4164,6 @@ input[type="submit"].btn.btn-mini {
   cursor: default;
   background-color: transparent;
 }
-
-/*-------------------------------------------------------------------
-    navbar
--------------------------------------------------------------------*/
 
 .navbar {
   *position: relative;
@@ -5016,10 +4950,6 @@ input[type="submit"].btn.btn-mini {
   background-color: #fff;
 }
 
-/*-------------------------------------------------------------------
-    MODAL stuff
--------------------------------------------------------------------*/
-
 .modal-backdrop {
   position: fixed;
   top: 0;
@@ -5138,10 +5068,6 @@ input[type="submit"].btn.btn-mini {
   margin-left: 0;
 }
 
-/*-------------------------------------------------------------------
-    tooltip
--------------------------------------------------------------------*/
-
 .tooltip {
   position: absolute;
   z-index: 1030;
@@ -5225,10 +5151,6 @@ input[type="submit"].btn.btn-mini {
   border-bottom-color: #000000;
   border-width: 0 5px 5px;
 }
-
-/*-------------------------------------------------------------------
-    popover
--------------------------------------------------------------------*/
 
 .popover {
   position: absolute;
@@ -5366,10 +5288,6 @@ input[type="submit"].btn.btn-mini {
   border-width: 11px 0 11px 11px;
 }
 
-/*-------------------------------------------------------------------
-    thumbnails
--------------------------------------------------------------------*/
-
 .thumbnails {
   margin-left: -20px;
   list-style: none;
@@ -5470,11 +5388,6 @@ a.thumbnail:hover {
   list-style: none;
 }
 
-
-/*-------------------------------------------------------------------
-    LABELS AND BADGES
--------------------------------------------------------------------*/
-
 .label,
 .badge {
   display: inline-block;
@@ -5571,11 +5484,6 @@ a.badge:hover {
   top: 0;
 }
 
-/*-------------------------------------------------------------------
-    progress bar
--------------------------------------------------------------------*/
-
-
 @-webkit-keyframes progress-bar-stripes {
   from {
     background-position: 40px 0;
@@ -5620,7 +5528,6 @@ a.badge:hover {
     background-position: 0 0;
   }
 }
-
 
 .progress {
   height: 20px;
@@ -5785,10 +5692,6 @@ a.badge:hover {
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
 }
 
-/*-------------------------------------------------------------------
-    accordion stuff
--------------------------------------------------------------------*/
-
 .accordion {
   margin-bottom: 20px;
 }
@@ -5818,10 +5721,6 @@ a.badge:hover {
   padding: 9px 15px;
   border-top: 1px solid #e5e5e5;
 }
-
-/*-------------------------------------------------------------------
-    carousel stuff
--------------------------------------------------------------------*/
 
 .carousel {
   position: relative;
