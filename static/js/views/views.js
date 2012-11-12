@@ -51,8 +51,8 @@ var EventListView = Backbone.View.extend({
     },
 
     appendEvent: function(item){
-    	//fetch the item (this should really be done as a collection so it doesn't go sequentially, but
-    	// oh well for now. Render the response.
+    	//fetch the item (this should really be done as a collection so it doesn't go 
+    	// sequentially, but oh well for now). Render the response with EventView.
         item.fetch({
             success: function (data) {
                 var eventView = new EventView({
