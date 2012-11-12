@@ -2,18 +2,18 @@ from timeline.models import Pet, Event, Media
 from rest_framework import serializers
 
 class PetSerializer(serializers.HyperlinkedModelSerializer):
-    events = serializers.ManyRelatedField(source='events')
+    events = serializers.ManyRelatedField()
 
     class Meta:
         model = Pet
         fields = ('name', 'joined_date', 'events')
 
 class EventSerializer(serializers.HyperlinkedModelSerializer):
-    pets = serializers.ManyRelatedField(source='pets')
+    pet = serializers.RelatedField(source='pet')
 
     class Meta:
         model = Event
-        fields = ('pets', 'moment', 'title', 'description')
+        fields = ('pet', 'moment', 'title', 'description')
 
 class MediaSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
