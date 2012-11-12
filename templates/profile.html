@@ -1,316 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title> miPet </title>
-<meta charset="utf-8">
-<meta name="description" content="TimelineJS example miPet">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-touch-fullscreen" content="yes">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    
-    
+    <title> miPet </title>
+    <meta charset="utf-8">
+    <meta name="description" content="TimelineJS example miPet">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        
+        
     <link rel="Shortcut Icon" href="/favicon.ico">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    
-<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css"
-rel="stylesheet">
-    
-<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
+        
+    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">    
+    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
     <!-- script type="text/javascript" -->
-<script>
+        
+    <!-- HTML5 shim, for IE6-8 support of HTML elements--><!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
     
-    
-    function addEvent()
-    {
-        if(!document.getElementById("input-isInterval").checked){
-            document.getElementById("input-end").value = document.getElementById("input-start").value;
-        }
-        
-        
-        var inputs = "";
-        // if checked, type = title (only 1 slide), otherwise type = ""
-        inputs += "input-type: " + document.getElementById("input-type").checked + "\n";
-        inputs += "select-type: " + document.getElementById("select-type").value + "\n";
-        
-        inputs += "input-start: " + document.getElementById("input-start").value + "\n";
-        inputs += "input-isInterval: " + document.getElementById("input-isInterval").checked + "\n";
-        inputs += "input-end: " + document.getElementById("input-end").value + "\n";
-        
-        inputs += "input-headline: " + document.getElementById("input-headline").value + "\n";
-        inputs += "input-text: " + document.getElementById("input-text").value + "\n";
-        
-        inputs += "input-asset: " + document.getElementById("input-asset").value + "\n";
-        inputs += "input-credit: " + document.getElementById("input-credit").value + "\n";
-        inputs += "input-caption: " + document.getElementById("input-caption").value + "\n";
-        //inputs += ": " + document.getElementById("").value + "\n";
-        
-        alert(inputs);
-    }
-    
+<body>
 
-    
-    // Hide end date field
-    $("#endDateInput").hide();
-    
-    
-    function selectChange(value) {
-        if(value == 'plaintext')
-        {
-            $('#mediaInputs').hide();
-            //$('#assetInput').hide();
-            //$('#captionInput').hide();
-            //$('#creditInput').hide();
-        }
-        else
-        {
-            $('#mediaInputs').show();
-        }
-    }
-    
-    
-    function timeRange(checked) {
-        if (checked) {
-            $('#endDateInput').show();
-        }
-        else {
-            $('#endDateInput').hide();
-        }
-        
-    }
-    
+    <div id="container">
+    	<div id="pet-info"></div>
+    	<div id="events"></div>
+    </div>
 
-    // from which URL ...... ,,,,,,,,,,,,,,,??????????? //
-    
-    $('#modal-form-submit').on('click', function(e){
-       // We don't want this to act as a link so cancel the link action
-       e.preventDefault();
-    
-       // Find form and submit it
-       $('#modal-form').submit();
-       });
-
-    // Since we want both pressing 'Enter' and clicking the button to work
-    // We'll subscribe to the submit event, which is triggered by both
-
-    $('#modal-form').on('submit', function(){
-                        
-        //Serialize the form and post it to the server
-        $.post("/yourReceivingPage", $(this).serialize(), function(){
-               
-               // When this executes, we know the form was submitted
-               
-               // To give some time for the animation,
-               // let's add a delay of 200 ms before the redirect
-               var delay = 200;
-               setTimeout(function(){
-                          window.location.href = 'successUrl.html';
-                          }, delay);
-               
-               // Hide the modal
-               $("#my-modal").modal('hide');
-               
-               });
         
-        // Stop the normal form submission
-        return false;
-        });
-        
-</script>
-    
-    
-    
-    <!-- ----- Style ----- -->
-    <style>
-        html, body {
-            height:100%;
-            padding: 0px;
-            margin: 0px;
-        }
-        
-        
-        
-        /*modal { width: 400px;}*/
-        
-        addEvent { }
-        
-        
-        
-        
-        itemDemo {
-            /*width: 494px;
-             height: 279px;
-             display: table;
-             overflow-y: auto;
-             left: 769px;*/
-        }
-        
-        .inputField {
-            color: teal;
-            font-size: 9.5pt;
-            
-        }
-        
-        #input-type-title {
-            float: right;
-            display: inline;
-        }
-        
-        h2.dateDemo {
-            text-align: center;
-            color: #999;
-            font-size: 15px;
-            line-height: 15px;
-            font-weight: normal;
-            margin-bottom: 3.75px;
-            font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;
-        }
-        
-        input[type=date]#input-start, input[type=date]#input-end {
-            /*height: 30px;*/
-            width: 150px;
-            margin: auto;
-            text-align: center;
-            color: #999;
-            font-size: 15px;
-            line-height: 15px;
-            font-weight: normal;
-            margin-bottom: 3.75px;
-            font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;
-        }
-        
-        
-        
-        h3.headlineDemo {
-            text-align: center;
-            color: black;
-            font-size: 28px;
-            line-height: 30px;
-            font-weight: normal;
-            font-family: 'Georgia', Times New Roman, Times, serif;
-            margin-bottom: 15px;
-            text-transform: none; clear: none;
-        }
-        
-        input[type=text]#input-headline {
-            height: 30px;
-            /*width: 300px;*/
-            
-            margin: auto;
-            text-align: center;
-            color: black;
-            font-size: 28px;
-            line-height: 30px;
-            font-weight: normal;
-            font-family: 'Georgia', Times New Roman, Times, serif;
-            margin-bottom: 15px;
-            text-transform: none; clear: none;
-        }
-        
-        input[type=text]#input-text {
-            height: 30px;
-            width: 300px;
-        }
-        
-        input[type=url]#input-asset {
-            height: 20px;
-            width: 300px;
-        }
-        
-        creditDemo {
-            color: #999;
-            text-align: right;
-            display: block;
-            margin: 0 auto;
-            margin-top: 6px; /*removed for vco-storyjs .credit */
-            font-size: 10px;
-            line-height: 13px; /* 10px */
-            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
-            /*clear:both; removed for vco-slider .slider-item .content .content-container .media .media-wrapper .credit */
-        
-        }
-        input[type=text]#input-credit {
-            color: #666;
-            text-align: left;
-            text-rendering: optimizeLegibility;
-            margin-top: 10px; /*5px for .vco-storyjs */
-            word-wrap: break-word;
-            font-size: 11px;
-            line-height: 14px;
-            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
-            
-        }
-        
-        
-        
-        .captionDemo {
-            text-align: left;
-            margin-top: 10px; /*5px for .vco-storyjs */
-            color: #666;
-            font-size: 11px;
-            line-height: 14px;
-            text-rendering: optimizeLegibility;
-            word-wrap: break-word;
-            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
-            /*display: block;*/
-            /*clear:both; for .vco-storyjs .caption */
-        }
-        
-        input[type=text]#input-caption {
-            text-align: left;
-            margin-top: 10px; /*5px for .vco-storyjs */
-            color: #666;
-            font-size: 11px;
-            line-height: 14px;
-            text-rendering: optimizeLegibility;
-            word-wrap: break-word;
-            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
-            
-        }
-        
-        
-        input[type=text]#input-text {
-            font-size: 15px;
-            font-weight: normal;
-            line-height: 20px;
-            margin-bottom: 20px;
-            color: #666;
-            font-family: "Georgia",Times New Roman,Times,serif !important;
-        }
-        
-        .inputField {
-            
-            padding: 0px;
-            margin: 0px;
-        }
-        
-                </style>
-    
-<!-- HTML5 shim, for IE6-8 support of HTML elements--><!--[if lt IE 9]>
-<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-    </head>
-    
-    <body>
-        
-<div id="container">
-	<div id="pet-info"></div>
-	
-	<div id="events"></div>
-
-</div>
-
-    
 
 
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-modal.js"></script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-alert.js"></script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-transition.js"> </script>
-<script src="http://twitter.github.com/bootstrap/assets/js/jquery.js"> </script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-popover.js"> </script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-button.js"> </script>
-<script src="http://twitter.github.com/bootstrap/assets/js/jquery.js"> </script>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-modal.js"></script>
+    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-alert.js"></script>
+    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-transition.js"> </script>
+    <script src="http://twitter.github.com/bootstrap/assets/js/jquery.js"> </script>
+    <!--<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-popover.js"> </script>-->
+    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-button.js"> </script>
+    <script src="http://twitter.github.com/bootstrap/assets/js/jquery.js"> </script>
+    <script src="http://underscorejs.org/underscore-min.js"> </script>
+    <script src="http://backbonejs.org/backbone-min.js"> </script>
+    <script type="text/javascript" src="/static/js/models/models.js"> </script>
+    <script type="text/javascript" src="/static/js/views/views.js"> </script>
+
+    <script type="text/javascript">
+        var pet = new Pet({id: {{pet_id}} });
+        var test = pet.toJSON();
+        console.debug(test);
+        var eventView = new EventListView({myPet: pet});
+    </script>
+
 
 <!-- END Timeline Embed-->
 </body>

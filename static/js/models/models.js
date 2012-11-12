@@ -1,25 +1,21 @@
-window.Pet = Backbone.Model.extend({
+var Pet = Backbone.Model.extend({
 
     urlRoot:"/api/v1/pet",
 
-    defaults:{
-        myEvents: new EventCollection();
-    }
 
     // Called when generating a new instance of a model
     initialize:function () {
-        _.each(this.events, )
+        this.myEvents = new EventCollection();
+        _.each(this.events, function(num){
+            var ev = new Event({id: id});
+            this.myEvents.add(ev);
+        });
 
-    },
-
-    getEvent:function(id) {
-        var ev = new Event({id: id});
-        this.myEvents.add(ev);
     }
 });
 
 
-window.Event = Backbone.Model.extend({
+var Event = Backbone.Model.extend({
 
     urlRoot:"/api/v1/event",
 
@@ -29,6 +25,6 @@ window.Event = Backbone.Model.extend({
 });
 
 
-window.EventCollection = Backbone.Collection.extend({
+var EventCollection = Backbone.Collection.extend({
     model: Event
 });

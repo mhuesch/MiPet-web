@@ -1,37 +1,38 @@
-window.PetView = Backbone.View.extend({
+var PetView = Backbone.View.extend({
 
-    tagName:"div",
+    tagName:'div',
 
     initialize:function () {
         this.render();
     },
 
     render:function () {
-        $(this.el).html('<h2>This pet is named '+this.model.get('name')+'</h2>');
+        $(this.el).append("<h2>This pet is named "+this.model.get('name')+"</h2>");
     }
 });
 
 
-window.EventView = Backbone.View.extend({
+var EventView = Backbone.View.extend({
 
-    tagName:"li",
+    tagName:'li',
 
     initialize:function () {
         _.bindAll(this, 'render');
     },
 
     render:function () {
-        $(this.el).html('<span>Title: '+this.model.get('title')+'</span>');
+        $(this.el).html("<span>Title: "+this.model.get('title')+"</span>");
         return this;
     }
 });
 
-window.EventListView = Backbone.View.extend({
+var EventListView = Backbone.View.extend({
 
-    el: $('events'),
+    el:$('#events'),
 
     initialize:function () {
         _.bindAll(this, 'render', 'appendEvent');
+        this.collection = this.options.myPet.myEvents;
         this.render();
     },
 
@@ -39,7 +40,16 @@ window.EventListView = Backbone.View.extend({
         var self = this;
         $(this.el).append("<p>This is a list of events</p>");
         $(this.el).append("<ul></ul>");
-        _(this.collection.)
+        _(this.collection.models).each(function(item){
+            self.appendEvent(item);
+        }, this);
+    },
+
+    appendEvent: function(item){
+        var eventView = new EventView({
+            model: item
+        })
+        $('ul',this.el).append(eventView.render().el);
     }
 });
 
