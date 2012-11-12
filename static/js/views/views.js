@@ -1,3 +1,10 @@
+
+// Global variables - naughty!
+// But don't know how to have accessor functions...
+var PetName = ""; // This pet's name
+var PetJoinDate = ""; // Pet's joined date
+
+// ---------- Pet View ----------//
 var PetView = Backbone.View.extend({
 
     el:$('#pet-info'),
@@ -8,7 +15,11 @@ var PetView = Backbone.View.extend({
     },
 
     render:function () {
-        $(this.el).html("<h2>This pet is named "+this.model.get('name')+"</h2>");
+        PetName = this.model.get('name');
+        PetJoinDate = this.model.get('joined_date');
+        var outputHTML = "<h2>This pet is named "+ PetName +"</h2>";
+        outputHTML += "<span class='joinDate'> Joined miPet: " + PetJoinDate;
+        $(this.el).html(outputHTML);
         var myEvents = this.model.get('events');
         this.model.myEvents.fetch({
             success:function (data) {
@@ -23,21 +34,43 @@ var PetView = Backbone.View.extend({
     }
 });
 
-
+// ---------- Event View ----------//
 var EventView = Backbone.View.extend({
 
+<<<<<<< HEAD
     tagName:'li',
+=======
+    //tagName:'ul',
+>>>>>>> edited how events are displayed, now boxes with title bars sorta
 
     initialize:function () {
         _.bindAll(this, 'render');
     },
 
     render:function () {
+<<<<<<< HEAD
         $(this.el).html("<span>Title: "+this.model.get('title')+"</span>");
+=======
+        var outputString = "";
+        /*outputString += "<a class='btn event-btn'";
+        outputString += "<span class='eventTitle'>Title: "+this.model.get('title')+"</span>"
+        outputString += "<br/>"
+        outputString += "<span class='eventDesc'>Description: "+this.model.get('description')+"</span>"
+        outputString += "</a>";*/
+
+        outputString += "<div class='event-listing'>";
+        outputString += "<div class='event-listing-title'>";
+        outputString += "<span class='eventTitle'>"+this.model.get('title')+"</span>";
+        outputString += "</div>";
+        outputString += "<span class='eventDesc'>"+this.model.get('description')+"</span>";
+        outputString += "</div>";
+        $(this.el).html(outputString);
+>>>>>>> edited how events are displayed, now boxes with title bars sorta
         return this;
     }
 });
 
+// ---------- Event List View ----------//
 var EventListView = Backbone.View.extend({
 
     el:$('#events'),
@@ -49,7 +82,7 @@ var EventListView = Backbone.View.extend({
 
     render:function () {
         var self = this;
-        $(this.el).append("<p>This is a list of events</p>");
+        $(this.el).append("<p>List of events in "+ PetName +"'s timeline.</p>");
         $(this.el).append("<ul id='eventlist'></ul>");
         /*//for this, forget the collection for now, make a new event for each part of the list
         _.each(this.options.events, function(num){
@@ -79,7 +112,6 @@ var EventListView = Backbone.View.extend({
         $('#eventlist').append(eventView.render().el);
     }
 });
-
 
 
 
