@@ -3,6 +3,8 @@ from timeline.serializers import PetSerializer, EventSerializer, MediaSerializer
 from django.template import Context, loader
 from django.http import HttpResponse
 from rest_framework import generics
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 
 import json
 
@@ -29,6 +31,15 @@ class MediaList(generics.ListCreateAPIView):
 class MediaDetail(generics.RetrieveUpdateDestroyAPIView):
     model = Media
     serializer_class = MediaSerializer
+
+
+@api_view(['GET'])
+def pet_event_list(request, pk):
+    if request.method == 'GET':
+        events = Event.objects.filter(pets__in=[pk]).order_by('-moment')
+        serializer = EventSerializer(events)
+        return Response(serializer.data)
+
 
 
 def index(request):
