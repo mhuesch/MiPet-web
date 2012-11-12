@@ -13,7 +13,7 @@ class EventSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Event
-        fields = ('pets', 'moment', 'title', 'description', 'media')
+        fields = ('pets', 'moment', 'title', 'description')
 
 class MediaSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
