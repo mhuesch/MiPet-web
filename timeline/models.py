@@ -5,6 +5,8 @@ from datetime import datetime
 class Pet(models.Model):
     name = models.CharField(max_length=50)
     joined_date = models.DateField()
+    bio = models.CharField(max_length=140)
+    prof_pic = models.URLField()
     def __unicode__(self):
         return u'%s' % self.name
 
