@@ -43,10 +43,12 @@ def pet_event_list(request, pk):
 
 
 def index(request):
+    pet_profiles = Pet.objects.all()
+    
     t = loader.get_template('index.html')
     c = Context({
-        #
-    })
+                'pets': pet_profiles,
+                })
     return HttpResponse(t.render(c))
 
 def profile(request, id):
