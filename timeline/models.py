@@ -30,7 +30,7 @@ class Media(models.Model):
         ('VID', 'Video'),
     )
 
-    event = models.ForeignKey(Event, related_name='media')
+    event = models.ManyToManyField(Event, related_name='media')
     media_url = models.URLField()
     credit = models.CharField(max_length=100)
     caption = models.CharField(max_length=280)
