@@ -7,23 +7,37 @@
  
 
  /*-------------------------- Header/Top css -------------------------------*/   
-html,
+/*html,
 body {
     height:100%;
     padding: 0px;
     margin: 0px;
-}
+}*/
 
 
 /* 60px to make the container go all the way to the bottom of the topbar */ 
-/*body*/ 
+/*body*
 container {
-    /*padding-top: 60px;*/
+    /*padding-top: 60px;*
     margin-top: 60px;
     padding-left: 0px;
     margin-left: 0px
     width = 100%;
-}
+}*/
+
+    /* 60px to make the container go all the way to the bottom of the topbar */
+    body {
+        padding-top: 60px;
+        margin-left: 0px;
+        width=100%;
+    }
+    
+    container {
+        padding-left: 0px;
+        margin-left: 0px
+        width = 100%;
+    }
+
 
 /*modal { width: 400px;}*/
 addEvent { }
