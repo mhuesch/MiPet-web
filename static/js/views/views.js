@@ -17,7 +17,7 @@ var PetView = Backbone.View.extend({
     render:function () {
         PetName = this.model.get('name');
         PetJoinDate = this.model.get('joined_date');
-        var outputHTML = "<h2>This pet is named "+ PetName +"</h2>";
+        var outputHTML = "<h1 class='timelineTitle'>This pet is named "+ PetName +"</h1>";
         outputHTML += "<span class='joinDate'> Joined miPet: " + PetJoinDate;
         $(this.el).html(outputHTML);
         var myEvents = this.model.get('events');

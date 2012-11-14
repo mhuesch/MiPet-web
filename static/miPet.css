@@ -2,7 +2,7 @@
 
 /*    <!-- Styles -->
     <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <style>
+    <link href="/static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 */
  
 
@@ -25,39 +25,37 @@ container {
     width = 100%;
 }
 
-        /*modal { width: 400px;}*/
+/*modal { width: 400px;}*/
 addEvent { }
 
-.event-btn { max-width: 680px; }
+
+h1.timelineTitle { font-size: 16pt;}
 
 
+/*.event-btn { max-width: 680px; }*/
 
-.event-listing {
+
+.event-listing
+{
     position: relative;
-    margin: 15px 0;
+    margin: 15px;
     padding: 39px 19px 14px;
-    *padding-top: 19px;
-    padding-right: 0;
+    /*padding-top: 19px;
+    padding-right: 0;*/
 
     background-color: #fff;
     border: 1px solid #ddd;
-
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
-
-    /* width is funky, wont line up right with title/container... */
-    /*max-width: 680px;*/
-    width: 100%;
+    width: 80%;
 }
-    
-/* Echo out a label for the example */
-/*.event-listing:after {*/
-.event-listing-title{ 
+
+.event-listing-title { 
     position: absolute;
     top: -1px;
     left: -1px;
-    padding: 3px 7px;
+    padding: 3px 0px;
 
     color: #9da0a4;
     font-size: 12px;
@@ -66,17 +64,16 @@ addEvent { }
     background-color: #f5f5f5;
     border: 1px solid #ddd;
     
-
-    -webkit-border-radius: 4px 4px 0 0; /*4px 0 4px 0;*/
-    -moz-border-radius: 4px 4px 0 0; /*4px 0 4px 0;*/
-    border-radius: 4px 4px 0 0; /*4px 0 4px 0;*/
+    -webkit-border-radius: 4px 4px 0 0; 
+    -moz-border-radius: 4px 4px 0 0; 
+    border-radius: 4px 4px 0 0; 
     
-    /* width is funky, wont line up right with title/container... */
    /* max-width: 685px;*/
-    width: 98%
+    width: 100%
 }
    
 .eventTitle { 
+    padding-left: 7px;
     color: mediumvioletred; 
     font-weight: bold;
 }
@@ -95,8 +92,7 @@ addEvent { }
     color: teal;
     font-size: 9.5pt;
     padding: 0px;
-    margin: 0px;
-    
+    margin: 0px; 
 }
 
               
@@ -118,92 +114,12 @@ input[type=text]#input-text {
 }
 
 
-
-
-
 input[type=url]#input-asset {
     height: 20px;
     width: 300px;
 }
 
- /*
-input[type=text]#input-headline {
-    height: 30px;
-    /*width: 300px;*
-    
-    margin: auto;
-    text-align: center;
-    color: black;
-    font-size: 28px;
-    line-height: 30px;
-    font-weight: normal;
-    font-family: 'Georgia', Times New Roman, Times, serif;
-    margin-bottom: 15px;
-    text-transform: none;
-    clear: none;
-}        
-    
-input[type=date]#input-start, input[type=date]#input-end {
-    /*height: 30px;*
-    width: 150px;
-    margin: auto;
-    text-align: center;
-    color: #999;
-    font-size: 15px;
-    line-height: 15px;
-    font-weight: normal;
-    margin-bottom: 3.75px;
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;
-}*/
-     
 
-
-        /*
-        creditDemo {
-            color: #999;
-            text-align: right;
-            display: block;
-            margin: 0 auto;
-            margin-top: 6px; /*removed for vco-storyjs .credit 
-            font-size: 10px;
-            line-height: 13px; /* 10px 
-            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
-            /*clear:both; 
-        
-        }
-        /*
-        input[type=text]#input-credit {
-            color: #666;
-            text-align: left;
-            text-rendering: optimizeLegibility;
-            margin-top: 10px; /*5px for .vco-storyjs 
-            word-wrap: break-word;
-            font-size: 11px;
-            line-height: 14px;
-            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;    
-        }
-        
-        
-        input[type=text]#input-caption {
-            text-align: left;
-            margin-top: 10px; /*5px for .vco-storyjs 
-            color: #666;
-            font-size: 11px;
-            line-height: 14px;
-            text-rendering: optimizeLegibility;
-            word-wrap: break-word;
-            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
-            /*display: block;*/
-            /*clear:both; for .vco-storyjs .caption 
-        } */
-        
-        
-
-        
-
-        
-
-    
 
 
 /*-------------------------- Hall listing css -------------------------------*/
@@ -214,8 +130,6 @@ input[type=date]#input-start, input[type=date]#input-end {
 
 
 /*
-    <link href="/static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-    
 
     <!-- Le fav and touch icons
     <link rel="shortcut icon" href="../assets/ico/favicon.ico">
