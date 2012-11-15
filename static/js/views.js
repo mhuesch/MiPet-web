@@ -116,3 +116,34 @@ var EventListView = Backbone.View.extend({
 
 
 
+// ---------- Media View ----------//
+var MediaView = Backbone.View.extend({
+
+    initialize:function () {
+        _.bindAll(this, 'render');
+    },
+
+    render:function () {
+        var outputString = "<img src=\"" + this.media_url + "\">";
+
+        $(this.el).html(outputString);
+        return this;
+    }
+});
+
+
+
+// ---------- Media List View ----------//
+var MediaListView = Backbone.View.extend({
+
+    
+
+
+});
+
+
+
+
+
+
+
