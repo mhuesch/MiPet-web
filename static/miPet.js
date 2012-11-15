@@ -1,3 +1,79 @@
+
+    function addEvent()
+    {
+        //if(!document.getElementById("input-isInterval").checked){
+       //     document.getElementById("input-end").value = document.getElementById("input-start").value;
+       // }
+        
+        var inputs = "";
+        
+        inputs += "input-title: " + document.getElementById("input-title").value + "\n";
+        inputs += "input-text: " + document.getElementById("input-text").value + "\n";
+        inputs += "input-media: " + document.getElementById("input-media").value + "\n";
+        
+        alert(inputs);
+
+        //var now = new Date();
+        //var hourNow = now.getHours();
+        //var minNow = now.getMinutes();
+
+        var JSONObject = {
+            "pets": "",
+            "title": "",
+            "description": "",
+            "media": "",
+            "moment": "" //,
+           // "location": "",
+        };
+
+        JSONObject.pets = "pets";
+        JSONObject.title = document.getElementById("input-title").value; 
+        JSONObject.text = document.getElementById("input-text").value;
+        JSONObject.media = document.getElementById("input-media").value;
+        JSONObject.dateTime = new Date();
+        //JSONObject.location
+    }
+    
+    
+
+    // from which URL ...... ,,,,,,,,,,,,,,,??????????? //
+    
+    $('#modal-form-submit').on('click', function(e){
+       // We don't want this to act as a link so cancel the link action
+       e.preventDefault();
+    
+       // Find form and submit it
+       $('#modal-form').submit();
+       });
+
+    // Since we want both pressing 'Enter' and clicking the button to work
+    // We'll subscribe to the submit event, which is triggered by both
+
+    $('#modal-form').on('submit', function(){
+                        
+        //Serialize the form and post it to the server
+        $.post("/yourReceivingPage", $(this).serialize(), function(){
+               
+               // When this executes, we know the form was submitted
+               
+               // To give some time for the animation,
+               // let's add a delay of 200 ms before the redirect
+               var delay = 200;
+               setTimeout(function(){
+                          window.location.href = 'successUrl.html';
+                          }, delay);
+               
+               // Hide the modal
+               $("#my-modal").modal('hide');
+               
+               });
+        
+        // Stop the normal form submission
+        return false;
+        });
+
+
+
 /* 
  * Name:    ...
  * Purpose: ...
@@ -62,9 +138,6 @@ function displayTime(hour, min) {
     return hour + ":" + min + "am";
 }
 
-
-
-    
     // Hide end date field
     //$("#endDateInput").hide();
 
@@ -91,78 +164,7 @@ function displayTime(hour, min) {
         else {
             $('#endDateInput').hide();
         }
-        
     }*/
-
-    function addEvent()
-    {
-        //if(!document.getElementById("input-isInterval").checked){
-       //     document.getElementById("input-end").value = document.getElementById("input-start").value;
-       // }
-        
-        
-        var inputs = "";
-        // if checked, type = title (only 1 slide), otherwise type = ""
-        //inputs += "input-type: " + document.getElementById("input-type").checked + "\n";
-        //inputs += "select-type: " + document.getElementById("select-type").value + "\n";
-        
-        //inputs += "input-date: " + document.getElementById("input-date").value + "\n";
-       // inputs += "input-start: " + document.getElementById("input-start").value + "\n";
-       // inputs += "input-isInterval: " + document.getElementById("input-isInterval").checked + "\n";
-       // inputs += "input-end: " + document.getElementById("input-end").value + "\n";
-        
-        inputs += "input-title: " + document.getElementById("input-title").value + "\n";
-        //inputs += "input-headline: " + document.getElementById("input-headline").value + "\n";
-        inputs += "input-text: " + document.getElementById("input-text").value + "\n";
-        inputs += "input-media: " + document.getElementById("input-media").value + "\n";
-        //inputs += "input-asset: " + document.getElementById("input-asset").value + "\n";
-        //inputs += "input-credit: " + document.getElementById("input-credit").value + "\n";
-        //inputs += "input-caption: " + document.getElementById("input-caption").value + "\n";
-        //inputs += ": " + document.getElementById("").value + "\n";
-        
-        alert(inputs);
-    }
-    
-    
-
-    // from which URL ...... ,,,,,,,,,,,,,,,??????????? //
-    
-    $('#modal-form-submit').on('click', function(e){
-       // We don't want this to act as a link so cancel the link action
-       e.preventDefault();
-    
-       // Find form and submit it
-       $('#modal-form').submit();
-       });
-
-    // Since we want both pressing 'Enter' and clicking the button to work
-    // We'll subscribe to the submit event, which is triggered by both
-
-    $('#modal-form').on('submit', function(){
-                        
-        //Serialize the form and post it to the server
-        $.post("/yourReceivingPage", $(this).serialize(), function(){
-               
-               // When this executes, we know the form was submitted
-               
-               // To give some time for the animation,
-               // let's add a delay of 200 ms before the redirect
-               var delay = 200;
-               setTimeout(function(){
-                          window.location.href = 'successUrl.html';
-                          }, delay);
-               
-               // Hide the modal
-               $("#my-modal").modal('hide');
-               
-               });
-        
-        // Stop the normal form submission
-        return false;
-        });
-
-
-
 
 
   /*     // can we import this here or anything…?

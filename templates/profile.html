@@ -69,7 +69,6 @@
     
     <div class="container">
         
-       <!--  <br/><br/> brs necessary for if you widen the screen... needta fix this somehwere...-->
 
         
         <!-- ----- START Add Event modal dialog box ----- -->
@@ -100,20 +99,20 @@
                     </div>
                     
                     
-                    <!-- --- MEDIA (asset) / URL --- -->
+                    <!-- --- MEDIA / URL --- -->
                     <div id="mediaInput" class="inputField">
                         Media URL:
                         <input type="url" id="input-media" name="asset" placeholder="http://yourimagelink.png" />
                     </div>
                     
-                <!-- More inputs accordion -- isn't quite working....
+                    
+                    
+                <!-- ----- More inputs accordion -- isn't quite working....
                     <a class="btn accordion-toggle" data-toggle="collapse"
                         href="#moreInputs"> More inputs... </a>
 
                     <div id="moreInputs" class="collapse"> <!-- class="accordion-body collapse in"-->
-                    
-                            
-                            
+
                     <!-- --- DATE (default to current) --- --
                     <div id="dateInput" class="inputField">
                         Date:
@@ -125,9 +124,8 @@
                         Location:
                         <input type="text" id="input-location" name="location" placeholder="Where did this event happen? (optional) e.g. Neighborhood Park" />
                     </div> -->
-                        
                        
-                 <!--    </div> end moreInputs div -->
+                 <!--    </div> end moreInputs div ---------- -->
 
                     
                 </div> <!-- end modal-body -->
@@ -138,11 +136,6 @@
                     <a class="btn" data-dismiss="modal">Cancel</a> <!-- Close --> <!-- href="#"  -->
                     <a id="modal-form-submit" class='btn btn-primary' onclick="addEvent()" data-dismiss="modal">Submit</a> <!-- href="#"  -->
                     <!-- added data-dismiss to hide after click submit, doesn't clear the fields though-->
-                    
-                    <!--
-                     <button type="submit" class="btn" data-dismiss="modal">Cancel</button>
-                     <button type="submit" class="btn btn-primary">Save</button>
-                     -->
                 </div> <!-- end modal-footer -->
             </form>
         </div> <!-- end add-event -->

@@ -20,8 +20,9 @@ var PetView = Backbone.View.extend({
         PetBio = this.model.get('bio');
         PetProfPicURL = this.model.get('prof_pic');
         var outputHTML = "";
-        outputHTML += "<img src='"+ PetProfPicURL +"' style='display:inline-block; float: right;' >";
+        outputHTML += "<img class='profilePic' src='"+ PetProfPicURL +"' >";
         outputHTML += "<h1 class='timelineTitle'>"+ PetName +"</h1>";
+        
         outputHTML += "<span class='petBio'>" + PetBio + "... bio text here... </span>";
         outputHTML += "<span class='joinDate'> Joined miPet: " + PetJoinDate;
         $(this.el).html(outputHTML);
@@ -84,7 +85,7 @@ var EventListView = Backbone.View.extend({
     render:function () {
         var self = this;
         $(this.el).append("<p>List of events in "+ PetName +"'s timeline.</p>");
-        $(this.el).append("<ul id='eventlist'></ul>");
+        $(this.el).append("<div id='eventlist'></div>");
         /*//for this, forget the collection for now, make a new event for each part of the list
         _.each(this.options.events, function(num){
         	console.error(num);
