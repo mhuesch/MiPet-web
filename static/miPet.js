@@ -106,7 +106,7 @@ function displayTime(hour, min) {
         //inputs += "input-type: " + document.getElementById("input-type").checked + "\n";
         //inputs += "select-type: " + document.getElementById("select-type").value + "\n";
         
-        inputs += "input-date: " + document.getElementById("input-date").value + "\n";
+        //inputs += "input-date: " + document.getElementById("input-date").value + "\n";
        // inputs += "input-start: " + document.getElementById("input-start").value + "\n";
        // inputs += "input-isInterval: " + document.getElementById("input-isInterval").checked + "\n";
        // inputs += "input-end: " + document.getElementById("input-end").value + "\n";
@@ -114,7 +114,7 @@ function displayTime(hour, min) {
         inputs += "input-title: " + document.getElementById("input-title").value + "\n";
         //inputs += "input-headline: " + document.getElementById("input-headline").value + "\n";
         inputs += "input-text: " + document.getElementById("input-text").value + "\n";
-        
+        inputs += "input-media: " + document.getElementById("input-media").value + "\n";
         //inputs += "input-asset: " + document.getElementById("input-asset").value + "\n";
         //inputs += "input-credit: " + document.getElementById("input-credit").value + "\n";
         //inputs += "input-caption: " + document.getElementById("input-caption").value + "\n";

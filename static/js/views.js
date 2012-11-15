@@ -20,10 +20,10 @@ var PetView = Backbone.View.extend({
         PetBio = this.model.get('bio');
         PetProfPicURL = this.model.get('prof_pic');
         var outputHTML = "";
+        outputHTML += "<img src='"+ PetProfPicURL +"' style='display:inline-block; float: right;' >";
         outputHTML += "<h1 class='timelineTitle'>"+ PetName +"</h1>";
         outputHTML += "<span class='petBio'>" + PetBio + "... bio text here... </span>";
         outputHTML += "<span class='joinDate'> Joined miPet: " + PetJoinDate;
-        outputHTML += "<img src='"+ PetProfPicURL +"' >";
         $(this.el).html(outputHTML);
         var myEvents = this.model.get('events');
         this.model.myEvents.fetch({

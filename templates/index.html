@@ -54,14 +54,14 @@
     
     {% for pet in pets %}
     
-    <!--profile pet.name -->
+    
     <!--profile pet.joined_date Joined 1/1/11.... but not really join, more like started timeline? From 1/1/11? -->
     <div class="petProfile" style="display: inline-block; float: left; padding: 30px; ">
     <a href='{% url profile pet.id %}'>
         
-    <img src="/static/img/miPetL1v1.png" style="width: 140px; height: 140px;"> <!--class="img-circle"-->
+    <img src="{{ pet.prof_pic }}" style="height: 140px;"> <!--class="img-circle"-->
     <br/>
-        pet profile link: {% url profile pet.id %}
+        {{ pet.name }} profile link: {% url profile pet.id %}
     </a>
 
         </div>
