@@ -23,18 +23,18 @@ img {
 /*display: block;*/
 }
 
+#pet-info {
+    height: 150px;
+}
+
+h1.timelineTitle { font-size: 16pt;}
+
 .profilePic {
     height: 140px;
     display:inline-block;
     float: left;
     padding: 10px;
 }
-
-#pet-info {
-    height: 150px;
-}
-
-h1.timelineTitle { font-size: 16pt;}
 
 .petBio { }
 
@@ -94,6 +94,11 @@ addEvent { }
     
    /* max-width: 685px;*/
     width: 100%
+}
+
+.timestamp {
+    float: right;
+    font-weight: normal;
 }
    
 .eventTitle { 

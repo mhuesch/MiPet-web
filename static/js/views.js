@@ -20,10 +20,13 @@ var PetView = Backbone.View.extend({
         PetBio = this.model.get('bio');
         PetProfPicURL = this.model.get('prof_pic');
         var outputHTML = "";
-        outputHTML += "<img class='profilePic' src='"+ PetProfPicURL +"' >";
-        outputHTML += "<h1 class='timelineTitle'>"+ PetName +"</h1>";
+        if (PetProfPicURL == "")
+            outputHTML += "<img class='profilePic' src='/static/img/miPetL1v"+ this.model.get('id')+".png' >";
+        else
+            outputHTML += "<img class='profilePic' src='"+ PetProfPicURL +"' >";
+        outputHTML += "<h1 class='timelineTitle'> "+ PetName +" </h1>";
         
-        outputHTML += "<span class='petBio'>" + PetBio + "... bio text here... </span>";
+        outputHTML += "<span class='petBio'> " + PetBio + " </span>";
         outputHTML += "<span class='joinDate'> Joined miPet: " + PetJoinDate;
         $(this.el).html(outputHTML);
         var myEvents = this.model.get('events');
@@ -61,7 +64,7 @@ var EventView = Backbone.View.extend({
         outputString += "<div class='event-listing'>";
         outputString += "<div class='event-listing-title'>";
         outputString += "<span class='eventTitle'>"+this.model.get('title')+"</span>";
-        outputString += "<span class='timestamp' style='float: right; font-weight: normal;'>"+this.model.get('moment')+"</span>";        
+        outputString += "<span class='timestamp'>"+this.model.get('moment')+"</span>";        
         outputString += "</div>";
         outputString += "<span class='eventDesc'>"+this.model.get('description')+"</span>";
         //outputString += ""+this.model.media_url+"";
