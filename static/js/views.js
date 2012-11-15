@@ -57,12 +57,6 @@ var EventView = Backbone.View.extend({
     render:function () {
                                      
         var outputString = "";
-        /*outputString += "<a class='btn event-btn'";
-        outputString += "<span class='eventTitle'>Title: "+this.model.get('title')+"</span>"
-        outputString += "<br/>"
-        outputString += "<span class='eventDesc'>Description: "+this.model.get('description')+"</span>"
-        outputString += "</a>";*/
-
         outputString += "<div class='event-listing'>";
         outputString += "<div class='event-listing-title'>";
         outputString += "<span class='eventTitle'>"+this.model.get('title')+"</span>";
