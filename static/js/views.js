@@ -3,6 +3,8 @@
 // But don't know how to have accessor functions...
 var PetName = ""; // This pet's name
 var PetJoinDate = ""; // Pet's joined date
+var PetBio = "";
+var PetProfPicURL = "";
 
 // ---------- Pet View ----------//
 var PetView = Backbone.View.extend({
@@ -27,7 +29,7 @@ var PetView = Backbone.View.extend({
         outputHTML += "<h1 class='timelineTitle'> "+ PetName +" </h1>";
         
         outputHTML += "<span class='petBio'> " + PetBio + " </span>";
-        outputHTML += "<span class='joinDate'> Joined miPet: " + PetJoinDate;
+        //outputHTML += "<span class='joinDate'> Joined miPet: " + PetJoinDate + " </span>"
         $(this.el).html(outputHTML);
         var myEvents = this.model.get('events');
         this.model.myEvents.fetch({
@@ -87,7 +89,10 @@ var EventListView = Backbone.View.extend({
 
     render:function () {
         var self = this;
-        $(this.el).append("<p>List of events in "+ PetName +"'s timeline.</p>");
+
+        $(this.el).append("<br/> List of events in "+ PetName +"'s timeline.");
+
+        $(this.el).append("<span class='joinDate'> Joined miPet: " + PetJoinDate+ "</span> ");
         $(this.el).append("<div id='eventlist'></div>");
         /*//for this, forget the collection for now, make a new event for each part of the list
         _.each(this.options.events, function(num){

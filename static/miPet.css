@@ -25,6 +25,7 @@ img {
 
 #pet-info {
     height: 150px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;    
 }
 
 h1.timelineTitle { font-size: 16pt;}
@@ -36,12 +37,20 @@ h1.timelineTitle { font-size: 16pt;}
     padding: 10px;
 }
 
-.petBio { }
+.petBio { 
+    color: #999;
+    font-size: 15px;
+    line-height: 15px;
+    font-weight: normal;
+}
 
 
 .joinDate { 
     display: inline-block;
     float: right;
+        color: #666;
+    text-align: right;
+    font-size: 11px;
 }
 
 
@@ -130,7 +139,7 @@ addEvent { }
     float: right;
     display: inline;
 }
-
+ /* description */
 input[type=text]#input-text {
     height: 30px;
     width: 300px;
@@ -143,7 +152,7 @@ input[type=text]#input-text {
     font-family: "Georgia",Times New Roman,Times,serif !important;
 }
 
-
+/*media*/
 input[type=url]#input-asset {
     height: 20px;
     width: 300px;
