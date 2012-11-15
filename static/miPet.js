@@ -66,10 +66,10 @@ function displayTime(hour, min) {
 
     
     // Hide end date field
-    $("#endDateInput").hide();
+    //$("#endDateInput").hide();
 
 
-    function selectChange(value) {
+    /*function selectChange(value) {
         if(value == 'plaintext')
         {
             $('#mediaInputs').hide();
@@ -81,10 +81,10 @@ function displayTime(hour, min) {
         {
             $('#mediaInputs').show();
         }
-    }
+    }*/
     
     
-    function timeRange(checked) {
+    /*function timeRange(checked) {
         if (checked) {
             $('#endDateInput').show();
         }
@@ -92,7 +92,7 @@ function displayTime(hour, min) {
             $('#endDateInput').hide();
         }
         
-    }
+    }*/
 
     function addEvent()
     {
