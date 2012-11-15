@@ -33,8 +33,6 @@ class Media(models.Model):
     # can we name media --> medias for clarity that it is plural?
     event = models.ManyToManyField(Event, related_name='media')
     media_url = models.URLField()
-    credit = models.CharField(max_length=100) # don't need anymore
-    caption = models.CharField(max_length=280) # don't need anymore
     media_type = models.CharField(max_length=5,choices=MEDIA_TYPE_CHOICES)
 
     def __unicode__(self):
