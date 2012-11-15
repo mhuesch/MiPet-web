@@ -33,11 +33,20 @@ class MediaDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = MediaSerializer
 
 
+# API view for the events of a pet.
 @api_view(['GET'])
 def pet_event_list(request, pk):
     if request.method == 'GET':
         events = Event.objects.filter(pets__in=[pk]).order_by('-moment')
         serializer = EventSerializer(events)
+        return Response(serializer.data)
+
+# API view for the media of an event.
+@api_view(['GET'])
+def event_media_list(request, pk):
+    if request.method == 'GET':
+        media = Media.objects.filter(event__in=[pk])
+        serializer = MediaSerializer(media)
         return Response(serializer.data)
 
 

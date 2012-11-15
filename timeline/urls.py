@@ -9,7 +9,8 @@ urlpatterns = patterns('',
     url(r'^event/(?P<pk>[0-9]+)/?$', views.EventDetail.as_view()),
     url(r'^media/$', views.MediaList.as_view()),
     url(r'^media/(?P<pk>[0-9]+)/?$', views.MediaDetail.as_view()),
-    url(r'^pet/(?P<pk>[0-9]+)/events/$', views.pet_event_list)
+    url(r'^pet/(?P<pk>[0-9]+)/events/$', views.pet_event_list),
+    url(r'^event/(?P<pk>[0-9]+)/media/$', views.event_media_list)
 )
 
 urlpatterns = format_suffix_patterns(urlpatterns)
