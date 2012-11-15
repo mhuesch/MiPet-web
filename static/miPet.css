@@ -99,6 +99,7 @@ addEvent { }
 .timestamp {
     float: right;
     font-weight: normal;
+    padding-right: 10px;
 }
    
 .eventTitle { 
