@@ -52,6 +52,7 @@ var EventView = Backbone.View.extend({
 
     initialize:function () {
         _.bindAll(this, 'render');
+        this.myID = this.model.get('id');
     },
 
     render:function () {
@@ -63,9 +64,27 @@ var EventView = Backbone.View.extend({
         outputString += "<span class='timestamp'>"+this.model.get('moment')+"</span>";        
         outputString += "</div>";
         outputString += "<span class='eventDesc'>"+this.model.get('description')+"</span>";
+        //outputString += "<span id="+myMediaId+"></span>";
+        //outputString += "<p>"+this.model.get('id')+"</p>";
+        /*
+        right now we need the ID for the event to get the media associated with the event.
+        When the event is created from a collection, I don't think it has an ID associated with it.
+        We need this ID to get the media.
+        */
         //outputString += ""+this.model.media_url+"";
         outputString += "</div>";
         $(this.el).html(outputString);
+        
+        var myMedia = this.model.get('media');
+        this.model.myMedia.fetch({
+            success:function (data) {
+                if (data.length == 0)
+                	;
+                    //no data $('.no-reports').show();
+                //var mediaListView = new MediaListView({model: data, model_id:this.myMediaId});
+            }
+        });
+        
 
         return this;
     }
@@ -120,15 +139,15 @@ var EventListView = Backbone.View.extend({
 
 
 // ---------- Media View ----------//
+//given a media object this should work fine. 
 var MediaView = Backbone.View.extend({
-
+	tagname: 'p',
     initialize:function () {
         _.bindAll(this, 'render');
     },
 
     render:function () {
-        var outputString = "<img src=\"" + this.media_url + "\">";
-
+        var outputString = this.media_url;
         $(this.el).html(outputString);
         return this;
     }
@@ -138,7 +157,28 @@ var MediaView = Backbone.View.extend({
 
 // ---------- Media List View ----------//
 var MediaListView = Backbone.View.extend({
+	el:$('#media'),
 
+    initialize:function () {
+        _.bindAll(this, 'render', 'appendMedia');
+        this.render();
+        this.mydivname = $(''+this.options.get('model_id')+'');
+    },
+
+    render:function () {
+        var self = this;
+        //need this div name to change depending on the event, so was going to use the event's
+        //id to change it (as eventlist###)
+        //$(this.mydivname).append("<p>List of media</p>");
+        _.each(this.model.models, function(item){
+        	self.appendMedia(item);
+        }, this);
+    },
+
+    appendMedia: function(item){
+        var mediaView = new MediaView({model: item});
+        $(this.mydivname).append(mediaView.render().el);
+    }
     
 
 
