@@ -6,7 +6,7 @@ class PetSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Pet
-        fields = ('name', 'joined_date', 'events')
+        fields = ('name', 'joined_date', 'bio', 'prof_pic', 'events')
 
 class EventSerializer(serializers.HyperlinkedModelSerializer):
     pets = serializers.ManyPrimaryKeyRelatedField(source='pets')
