@@ -61,10 +61,20 @@ var EventView = Backbone.View.extend({
         outputString += "<div class='event-listing'>";
         outputString += "<div class='event-listing-title'>";
         outputString += "<span class='eventTitle'>"+this.model.get('title')+"</span>";
-        outputString += "<span class='timestamp'>"+this.model.get('moment')+"</span>";        
+        //var moment = this.model.get('moment');
+        //outputString += "<span class='timestamp'>"+moment.date+"</span>"; 
         outputString += "</div>";
+
+            
+
         outputString += "<span class='eventDesc'>"+this.model.get('description')+"</span>";
+       
+         
+        
         outputString += '<span id="media'+this.model.get('event_id')+'"></span>';
+
+        outputString += "<div class='timestamp'>"+this.model.get('moment')+"</div>";   
+
         //outputString += "<p>"+this.model.get('event_id')+"</p>";
         /*
         right now we need the ID for the event to get the media associated with the event.
