@@ -10,6 +10,14 @@ class PetSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('name', 'joined_date', 'bio', 'prof_pic', 'events')
 
 class EventSerializer(serializers.HyperlinkedModelSerializer):
+    pets = serializers.ManyPrimaryKeyRelatedField(source='pets')
+    media = serializers.ManyPrimaryKeyRelatedField(source='media')
+    
+    class Meta:
+        model = Event
+        fields = ('pets', 'moment', 'title', 'description', 'media')
+
+class PetEventSerializer(serializers.HyperlinkedModelSerializer):
     event_id = serializers.IntegerField(source='id')
     pets = serializers.ManyPrimaryKeyRelatedField(source='pets')
     media = serializers.ManyPrimaryKeyRelatedField(source='media')
