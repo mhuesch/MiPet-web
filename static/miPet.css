@@ -24,7 +24,7 @@ img {
 }
 
 #pet-info {
-    height: 150px;
+    height: 200px;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;    
 }
 
@@ -57,8 +57,8 @@ h1.timelineTitle { font-size: 16pt;}
 /*modal { width: 400px;}*/
 addEvent { }
 
-
-
+/*#events, #eventlist { display: block;}
+event-list { }*/
 
 /*.event-btn { max-width: 680px; }*/
 

@@ -103,10 +103,9 @@ var EventListView = Backbone.View.extend({
 
     render:function () {
         var self = this;
-
-        $(this.el).append("<br/> List of events in "+ PetName +"'s timeline.");
-
         $(this.el).append("<span class='joinDate'> Joined miPet: " + PetJoinDate+ "</span> ");
+        $(this.el).append("<br/> Events in "+ PetName +"'s timeline:");
+
         $(this.el).append("<div id='eventlist'></div>");
         /*//for this, forget the collection for now, make a new event for each part of the list
         _.each(this.options.events, function(num){
