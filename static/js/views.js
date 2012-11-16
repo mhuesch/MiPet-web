@@ -22,7 +22,7 @@ var PetView = Backbone.View.extend({
         PetBio = this.model.get('bio');
         PetProfPicURL = this.model.get('prof_pic');
         var outputHTML = "";
-        if (PetProfPicURL == "")
+        if (PetProfPicURL == "") // mod by 3 + 1 to not let id # be anything other than v1 v2 v3 (only existing images)
             outputHTML += "<img class='profilePic' src='/static/img/miPetL1v"+ this.model.get('id')%3+1 +".png' >";
         else
             outputHTML += "<img class='profilePic' src='"+ PetProfPicURL +"' >";
@@ -137,6 +137,13 @@ var EventListView = Backbone.View.extend({
     }
 });
 
+/* reference:
+http://stackoverflow.com/questions/7168987/how-to-convert-a-youtube-video-url-to-the-iframe-embed-code-using-jquery-on-pag */
+function youtubeToEmbed(mediaURL)
+{
+    return mediaURL.replace(/(?:http:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g,
+                '<iframe width="420" height="345" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen></iframe>');
+}
 
 
 // ---------- Media View ----------//
@@ -157,7 +164,25 @@ var MediaView = Backbone.View.extend({
         if(mediaURL.indexOf('.png') >=0 || mediaURL.indexOf('.jpg') >= 0 || mediaURL.indexOf('.jpeg') >= 0 )
         {
             outputString += "<img class='eventMedia' src='" + mediaURL + "' >";
+        }
+        else if(mediaURL.indexOf('youtube.com') >=0 || mediaURL.indexOf('youtu.be') >=0 )
+        {
             
+            outputString += "<div class='video-wrapper'>";
+            outputString += "<div class='video-container'>";
+
+            //outputString += "<iframe width='640' height='480' src='" + mediaURL + '" ';
+            //outputString += "frameborder='0' allowfullscreen> </iframe>";
+
+            outputString += youtubeToEmbed(mediaURL);
+            
+            outputString += "</div> <!-- end video-container -->";
+            outputString += "</div> <!-- end video-wrapper -->";
+        }
+        else
+        {
+            outputString += "<a target='_blank' href='" + mediaURL + "' >"+ mediaURL +" </a>";
+            //outputString += mediaURL;
         }
         $(this.el).html(outputString);  
         return this;
@@ -190,7 +215,6 @@ var MediaListView = Backbone.View.extend({
         var mediaView = new MediaView({model: item});
         $('#media'+this.options.model_id).append(mediaView.render().el);
     }
-    
 
 
 });
