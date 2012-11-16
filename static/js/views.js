@@ -162,7 +162,6 @@ var MediaView = Backbone.View.extend({
     },
 
     render:function () {
-<<<<<<< HEAD
         var outputString = "";
         var mediaURL = this.model.get('media_url');
 
