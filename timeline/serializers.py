@@ -23,7 +23,7 @@ class MediaSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Media
-        fields = ('event', 'media_url')
+        fields = ('event', 'media_url', 'media_type')
 
 
 
