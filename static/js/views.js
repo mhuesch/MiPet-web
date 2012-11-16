@@ -168,7 +168,7 @@ var MediaView = Backbone.View.extend({
         // later reference....
         // http://stackoverflow.com/questions/169625/regex-to-check-if-valid-url-that-ends-in-jpg-png-or-gif
         
-        if(mediaURL.indexOf('.png') >=0 || mediaURL.indexOf('.jpg') >= 0 || mediaURL.indexOf('.jpeg') >= 0 )
+        if(mediaURL.indexOf('.png') >=0 || mediaURL.indexOf('.jpg') >= 0 || mediaURL.indexOf('.jpeg') >= 0 || mediaURL.indexOf('.gif') >= 0 )
         {
             outputString += "<img class='eventMedia' src='" + mediaURL + "' >";
         }
