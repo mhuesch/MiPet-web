@@ -15,7 +15,7 @@ var Pet = Backbone.Model.extend({
 
 var Event = Backbone.Model.extend({
 
-    urlRoot:"/api/v1/event",
+    urlRoot:"/api/v1/event/",
 
     // grabbing media associated with event
     initialize:function () {
@@ -34,13 +34,13 @@ var EventCollection = Backbone.Collection.extend({
 
 var Media = Backbone.Model.extend({
 
-    urlRoot:"/api/v1/media",
+    urlRoot:"/api/v1/media/",
 });
 
 
 var MediaCollection = Backbone.Collection.extend({
     model: Media,
 
-    url:"/api/v1/media",
+    url:"/api/v1/media/",
 })
 

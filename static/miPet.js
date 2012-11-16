@@ -9,33 +9,66 @@
         
         inputs += "input-title: " + document.getElementById("input-title").value + "\n";
         inputs += "input-text: " + document.getElementById("input-text").value + "\n";
-        inputs += "input-media: " + document.getElementById("input-media").value + "\n";
+        //inputs += "input-media: " + document.getElementById("input-media").value + "\n";
         
-        alert(inputs);
-
+        //alert(inputs);
+		var url = document.URL;
+		var urlpart = url.match(/e\/[0-9]+/gi)[0];
+		var petID = urlpart.match(/[0-9]+/gi)[0];
         //var now = new Date();
         //var hourNow = now.getHours();
         //var minNow = now.getMinutes();
 
-        var JSONObject = {
+        var eventObject = {
+        	"id": null,
             "pets": "",
             "title": "",
             "description": "",
-            "media": "",
-            "moment": "" //,
-           // "location": "",
+            "media": []
         };
 
-        JSONObject.pets = "pets";
-        JSONObject.title = document.getElementById("input-title").value; 
-        JSONObject.text = document.getElementById("input-text").value;
-        JSONObject.media = document.getElementById("input-media").value;
-        JSONObject.dateTime = new Date();
-        //JSONObject.location
+        eventObject.pets = [parseInt(petID)];
+        eventObject.title = document.getElementById("input-title").value; 
+        eventObject.description = document.getElementById("input-text").value;
+        eventObject.media = [];
+        
+        var event = new Event();
+        var eventID;
+        event.save(eventObject, {
+        	success: function (event, response){
+        		//alert(JSON.stringify(response));
+        	},
+        	error: function (event){
+        		alert('add event failed');
+        	}
+        });
+        
+        var media = new Media();
+        var mediaObject = {
+            "event": "",
+            "media_url": "",
+            "media_type": "PIC"
+        };
+		if(false)
+			{
+			mediaObject.event = [eventID];
+			mediaObject.media_type = document.getElementById("input-media").value;
+			//JSONObject.location
+			
+			var media = new Media();
+			media.save(mediaObject, {
+				success: function (media){
+					alert('media created');
+				},
+				error: function (media){
+					alert('nope');
+				}
+			});
+        }
     }
     
     
-
+	/*
     // from which URL ...... ,,,,,,,,,,,,,,,??????????? //
     
     $('#modal-form-submit').on('click', function(e){
@@ -71,7 +104,7 @@
         // Stop the normal form submission
         return false;
         });
-
+*/
 
 
 /* 

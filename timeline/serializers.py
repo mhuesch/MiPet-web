@@ -10,6 +10,7 @@ class PetSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('name', 'joined_date', 'bio', 'prof_pic', 'events')
 
 class EventSerializer(serializers.HyperlinkedModelSerializer):
+    event_id = serializers.IntegerField(source='id')
     pets = serializers.ManyPrimaryKeyRelatedField(source='pets')
     media = serializers.ManyPrimaryKeyRelatedField(source='media')
     
@@ -31,7 +32,7 @@ class MediaSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Media
-        fields = ('event', 'media_url', 'media_type')
+        fields = ('event', 'media_url')
 
 
 
