@@ -23,7 +23,7 @@ var PetView = Backbone.View.extend({
         PetProfPicURL = this.model.get('prof_pic');
         var outputHTML = "";
         if (PetProfPicURL == "")
-            outputHTML += "<img class='profilePic' src='/static/img/miPetL1v"+ this.model.get('id')+".png' >";
+            outputHTML += "<img class='profilePic' src='/static/img/miPetL1v"+ this.model.get('id')%3+1 +".png' >";
         else
             outputHTML += "<img class='profilePic' src='"+ PetProfPicURL +"' >";
         outputHTML += "<h1 class='timelineTitle'> "+ PetName +" </h1>";
@@ -148,8 +148,18 @@ var MediaView = Backbone.View.extend({
     },
 
     render:function () {
-        var outputString = this.model.get('media_url');
-        $(this.el).html(outputString);
+        var outputString = "";
+        var mediaURL = this.model.get('media_url');
+
+        // later reference....
+        // http://stackoverflow.com/questions/169625/regex-to-check-if-valid-url-that-ends-in-jpg-png-or-gif
+        
+        if(mediaURL.indexOf('.png') >=0 || mediaURL.indexOf('.jpg') >= 0 || mediaURL.indexOf('.jpeg') >= 0 )
+        {
+            outputString += "<img class='eventMedia' src='" + mediaURL + "' >";
+            
+        }
+        $(this.el).html(outputString);  
         return this;
     }
 });
