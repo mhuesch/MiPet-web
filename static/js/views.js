@@ -64,8 +64,8 @@ var EventView = Backbone.View.extend({
         outputString += "<span class='timestamp'>"+this.model.get('moment')+"</span>";        
         outputString += "</div>";
         outputString += "<span class='eventDesc'>"+this.model.get('description')+"</span>";
-        //outputString += "<span id="+myMediaId+"></span>";
-        //outputString += "<p>"+this.model.get('id')+"</p>";
+        outputString += '<span id="media'+this.model.get('event_id')+'"></span>';
+        //outputString += "<p>"+this.model.get('event_id')+"</p>";
         /*
         right now we need the ID for the event to get the media associated with the event.
         When the event is created from a collection, I don't think it has an ID associated with it.
@@ -74,14 +74,15 @@ var EventView = Backbone.View.extend({
         //outputString += ""+this.model.media_url+"";
         outputString += "</div>";
         $(this.el).html(outputString);
-        
+        var eventID = this.model.get('event_id')
         var myMedia = this.model.get('media');
+        this.model.myMedia.url = '/api/v1/event/' + this.model.get('event_id') + '/media/';
         this.model.myMedia.fetch({
             success:function (data) {
                 if (data.length == 0)
                 	;
                     //no data $('.no-reports').show();
-                //var mediaListView = new MediaListView({model: data, model_id:this.myMediaId});
+                var mediaListView = new MediaListView({model: data, model_id:eventID});
             }
         });
         
@@ -147,7 +148,7 @@ var MediaView = Backbone.View.extend({
     },
 
     render:function () {
-        var outputString = this.media_url;
+        var outputString = this.model.get('media_url');
         $(this.el).html(outputString);
         return this;
     }
@@ -162,7 +163,7 @@ var MediaListView = Backbone.View.extend({
     initialize:function () {
         _.bindAll(this, 'render', 'appendMedia');
         this.render();
-        this.mydivname = $(''+this.options.get('model_id')+'');
+        this.mydivname = $('#media'+this.options.model_id);
     },
 
     render:function () {
@@ -177,7 +178,7 @@ var MediaListView = Backbone.View.extend({
 
     appendMedia: function(item){
         var mediaView = new MediaView({model: item});
-        $(this.mydivname).append(mediaView.render().el);
+        $('#media'+this.options.model_id).append(mediaView.render().el);
     }
     
 

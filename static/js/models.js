@@ -20,7 +20,7 @@ var Event = Backbone.Model.extend({
     // grabbing media associated with event
     initialize:function () {
         this.myMedia = new MediaCollection();
-        this.myMedia.url = '/api/v1/event/' + this.id + '/media';
+        this.myMedia.url = '/api/v1/event/' + this.model_id + '/media';
     }
 });
 
