@@ -20,7 +20,6 @@
         //var minNow = now.getMinutes();
 
         var eventObject = {
-        	"id": null,
             "pets": "",
             "title": "",
             "description": "",
