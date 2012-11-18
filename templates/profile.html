@@ -74,6 +74,8 @@
 
         
         <!-- ----- START Add Event modal dialog box ----- -->
+        <form id="modal-form" accept-charset="UTF-8" action="/tagging"
+            data-remote="true" method="post">
         <div id="add-event" class="modal hide fade in" style="display:none;">
             
             <div class="modal-header">
@@ -81,10 +83,10 @@
                 <h3>Add an Event</h3>
             </div> <!-- end modal-header -->
             
-            <form id="modal-form" accept-charset="UTF-8" action="/tagging"
-                data-remote="true" method="post">
-                
+            
+            
                 <div class="modal-body">
+                    
                     
                     
                     <!-- --- TITLE --- -->
@@ -101,11 +103,11 @@
                     </div>
                     
                     
-                    <!-- --- MEDIA / URL --- 
+                    <!-- --- MEDIA / URL -->
                     <div id="mediaInput" class="inputField">
                         Media URL:
-                        <input type="hidden" id="input-media" name="asset" placeholder="http://yourimagelink.png" />
-                    </div>-->
+                        <input type="hidden" id="input-media" name="media" placeholder="http://yourimagelink.png" />
+                    </div>
                     
                     
                     
@@ -138,11 +140,14 @@
                 
                 <div class="modal-footer">
                     <a class="btn" data-dismiss="modal">Cancel</a> <!-- Close --> <!-- href="#"  -->
-                    <a id="modal-form-submit" class='btn btn-primary' onclick="addEvent()" data-dismiss="modal">Submit</a> <!-- href="#"  -->
+                    <a id="modal-form-submit" class='btn btn-primary' onclick="addEvent(); document.location.reload(true);" data-dismiss="modal">Submit</a> <!-- href="#"  -->
                     <!-- added data-dismiss to hide after click submit, doesn't clear the fields though-->
+                    
                 </div> <!-- end modal-footer -->
-            </form>
-        </div> <!-- end add-event -->
+            
+                
+        </div> <!-- end add-event modal --> 
+        </form>
         
         <p>
         <a id="btn-add-event" data-toggle="modal" href="#add-event" class="btn btn-primary" style="float: right;">
@@ -152,17 +157,6 @@
         <!-- ----- END Add Event modal dialog box ----- -->
         
 
-        <!--<div class="video-container">
-       
-        
-        <div class="video-wrapper">
-            <div class="video-container">
-                 <iframe width="640" height="480" src="http://www.youtube.com/embed/2Esdq9S2Uxk?rel=0" frameborder="0" allowfullscreen>
-                 </iframe>
-            </div>
-            <!-- /video --
-        </div>
-        <!-- /video-wrapper -->
         
     	<div id="pet-info"></div>
         
