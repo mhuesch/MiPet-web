@@ -17,6 +17,7 @@
 
     <!-- Styles -->
     <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/bootstrap/css/jasny-bootstrap-fileupload.css" rel="stylesheet">
 
     
     <!--<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
@@ -106,24 +107,45 @@
                     <!-- --- MEDIA / URL -->
                     <div id="mediaInput" class="inputField">
                         Media URL:
-                        <input type="hidden" id="input-media" name="media" placeholder="http://yourimagelink.png" />
+                        <input type="url" id="input-media" name="media" placeholder="http://yourimagelink.png" />
                     </div>
                     
-                    
-                    
-                    
-                    
-                <!-- ----- More inputs accordion -- isn't quite working....
-                    <a class="btn accordion-toggle" data-toggle="collapse"
-                        href="#moreInputs"> More inputs... </a>
-
-                    <div id="moreInputs" class="collapse"> <!-- class="accordion-body collapse in"-->
-
-                    <!-- --- DATE (default to current) --- --
-                    <div id="dateInput" class="inputField">
-                        Date:
-                        <input type="date" id="input-date" />
+              
+                     <!-- prettiness from http://jasny.github.com/bootstrap/javascript.html#fileupload -->
+                    <!--
+                    <div class="fileupload fileupload-new" data-provides="fileupload">
+                        <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;"><img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" /></div>
+                        <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                        <div>
+                            <span class="btn btn-file"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span><input type="file" /></span>
+                            <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+                        </div>
                     </div>
+                    
+                    <div class="fileupload fileupload-new" data-provides="fileupload">
+                        <span class="btn btn-file"><span class="fileupload-new">Select file</span><span class="fileupload-exists">Change</span><input type="file" /></span>
+                        <span class="fileupload-preview"></span>
+                        <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
+                    </div>
+                     -->
+
+                    
+                    <!-- ----- More inputs accordion -- isn't quite working....
+                     <a class="btn accordion-toggle" data-toggle="collapse"
+                     href="#moreInputs"> More inputs... </a>
+                     
+                     <div id="moreInputs" class="collapse"> <!-- class="accordion-body collapse in"-->
+                    
+                    
+                <input type="checkbox" id="input-seeMore" name="" value="" onclick="seeMore(this.checked)"> See more options [optional] </input>
+
+                    <div id="moreInputs">
+                        
+                        <!-- --- DATE (defaults to current) --- -->
+                         <div id="dateInput" class="inputField">
+                             Date:
+                             <input type="date" id="input-date"/>
+                         </div>
                     
                     <!-- --- Location (opt) --- --
                     <div id="locationInput" class="inputField">
@@ -131,7 +153,7 @@
                         <input type="text" id="input-location" name="location" placeholder="Where did this event happen? (optional) e.g. Neighborhood Park" />
                     </div> -->
                        
-                 <!--    </div> end moreInputs div ---------- -->
+                   </div> <!--  end moreInputs div ---------- -->
 
                     
                 </div> <!-- end modal-body -->
@@ -184,6 +206,9 @@
     <script src="http://underscorejs.org/underscore-min.js"> </script>
     <script src="http://backbonejs.org/backbone-min.js"> </script>
     
+    <script src="/static/bootstrap/js/bootstrap=fileupload.js"> </script>
+    
+    
     <script type="text/javascript" src="/static/js/models.js"> </script>
     <script type="text/javascript" src="/static/js/views.js"> </script>
 
@@ -200,6 +225,19 @@
         });
     </script>
 
+    <script>
+        $('#moreInputs').hide();
+        
+        function seeMore(checked) {
+            if (checked) {
+                $('#moreInputs').show();
+            }
+            else {
+                $('#moreInputs').hide();
+            }
+            
+        }
+        </script>
 
     
     
