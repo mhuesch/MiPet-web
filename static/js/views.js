@@ -71,7 +71,8 @@ var EventView = Backbone.View.extend({
         
         outputString += '<span id="media'+this.model.get('event_id')+'"></span>';
 
-        outputString += "<div class='timestamp'>"+this.model.get('moment')+"</div>";   
+        var date_time = moment(this.model.get('moment'));
+        outputString += "<div class='timestamp'>"+date_time.format("MMM Do YYYY, h:mm a")+"</div>";   
         outputString += '<div id="media'+this.model.get('event_id')+'"+class="event-media"></div>';
         //outputString += "<p>"+this.model.get('event_id')+"</p>";
         /*
