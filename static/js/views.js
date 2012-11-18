@@ -69,14 +69,14 @@ var EventView = Backbone.View.extend({
 
         outputString += "<span class='eventDesc'>"+this.model.get('description')+"</span>";     
         
-        outputString += '<span id="media'+this.model.get('event_id')+'"></span>';
+        //outputString += '<span id="media'+this.model.get('pk')+'"></span>';
 
-        // Use Moment.js to display time nicely.
+		// Use Moment.js to display time nicely.
         // Docs about formatting here: http://momentjs.com/docs/#/displaying/format/
         var date_time = moment(this.model.get('moment'));
         outputString += "<div class='timestamp'>"+date_time.format("MMM Do YYYY, h:mm a")+"</div>";   
-        outputString += '<div id="media'+this.model.get('event_id')+'"+class="event-media"></div>';
-        //outputString += "<p>"+this.model.get('event_id')+"</p>";
+        outputString += '<div id="media'+this.model.get('pk')+'"class="event-media"></div>';
+        //outputString += "<p>"+this.model.get('pk')+"</p>"; <-- this is how you get the event ID now
         /*
         right now we need the ID for the event to get the media associated with the event.
         When the event is created from a collection, I don't think it has an ID associated with it.
@@ -85,9 +85,9 @@ var EventView = Backbone.View.extend({
         //outputString += ""+this.model.media_url+"";
         outputString += "</div>";
         $(this.el).html(outputString);
-        var eventID = this.model.get('event_id')
+        var eventID = this.model.get('pk')
         var myMedia = this.model.get('media');
-        this.model.myMedia.url = '/api/v1/event/' + this.model.get('event_id') + '/media/';
+        this.model.myMedia.url = '/api/v1/event/' + this.model.get('pk') + '/media/';
         this.model.myMedia.fetch({
             success:function (data) {
                 if (data.length == 0)
@@ -162,6 +162,7 @@ var MediaView = Backbone.View.extend({
 	tagname: 'p',
     initialize:function () {
         _.bindAll(this, 'render');
+        //console.log(this.model);
     },
 
     render:function () {
