@@ -18,19 +18,10 @@
     <!-- Styles -->
     <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
 
-
-    <!-- Scripts written by us for this app, not from/for boostrap -->
-    <script src="/static/miPet.js"></script>
     
     <!-- Style written by us for this app, some needed to override bootstrap -->
     <link href="/static/miPet.css" rel="stylesheet">
         
-    <link href="/static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-
-
-<script>
-    
-</script>
     
 <!-- ----- Style ----- -->
 <style>
@@ -48,7 +39,68 @@
 <div class="container">
     
     
+    
+    
+    <form id="modal-form" accept-charset="UTF-8" action="/tagging" data-remote="true" method="post">
+        <div id="add-profile" class="modal hide fade in" style="display:none;" aria-hidden="false">
+            
+            <div class="modal-header">
+                <a class="close" data-dismiss="modal">×</a>
+                <h3>Create a miPet Profile</h3>
+            </div> <!-- end modal-header -->
+            
+            <div class="modal-body">
+                
+                
+                <!-- ----- Pet NAME ----- -->
+                <div id="nameInput" class="inputField">
+                    Pet Name:
+                    <input type="text" id="input-petName" placeholder="Title of Event">
+                        </div>
+                
+                
+                <!-- ----- Pet BIO ----- -->
+                <div id="bioInput" class="inputField">
+                    Description:
+                    <input type="text" id="input-petBio" placeholder="Provide a brief bio of your awesome pet :)">
+                        </div>
+                
+                
+                <!-- ----- Pet PROFILE PICTURE ----- -->
+                <div id="profPicInput" class="inputField">
+                    Profile Picture URL:
+                    <input type="url" id="input-petProfPic" placeholder="http://...petprofilepicture.png">
+                        </div>
+                
+                
+                <!-- ----- JOIN DATE will default to current date/time ----- -->
+                
+                
+            </div> <!-- end modal-body -->
+            
+            
+            <div class="modal-footer">
+                <a class="btn" data-dismiss="modal">Cancel</a> <!-- Close --> <!-- href="#"  -->
+                <a id="modal-form-submit" class="btn btn-primary" onclick="addProfile(); document.location.reload(true);" data-dismiss="modal">Submit</a> <!-- href="#"  -->
+                <!-- added data-dismiss to hide after click submit, doesn't clear the fields though-->
+                
+            </div> <!-- end modal-footer -->
+            
+            
+        </div> <!-- end add-event modal -->
+    </form>
+    
+    <p>
+    <a id="btn-add-profile" data-toggle="modal" href="#add-profile" class="btn btn-primary"> <!--style="margin: auto auto;"-->
+        <big>+</big> Add a miPet profile
+    </a>
+    </p>
+    <!-- ----- END Add Event modal dialog box ----- -->
+
+    
+    
     <!-- list the pet profiles here -->
+    
     
     <!-- ----- Pet profiles list ----- -->
     
@@ -90,9 +142,16 @@
     
     <script type="text/javascript" src="/static/js/models.js"> </script>
     <script type="text/javascript" src="/static/js/views.js"> </script>
-     
+    
+    <!-- put this style sheet AFTER personalized ones - otherwise weird header formatting padding -->
+    <link href="/static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    
+    <!-- Scripts written by us for this app, not from/for boostrap -->
+    <script src="/static/miPet.js"></script>
+
 
     <script src="/static/bootstrap/js/jquery.js"></script>
+
     <script src="/static/bootstrap/js/bootstrap-transition.js"></script>
     <script src="/static/bootstrap/js/bootstrap-alert.js"></script>
     <script src="/static/bootstrap/js/bootstrap-modal.js"></script>

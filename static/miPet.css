@@ -81,11 +81,47 @@ container {
 
 
 
+ 
 
 
-img {
-/*display: block;*/
+/*-------------------------- Create profile css -------------------------------*/
+add-profile { }
+
+
+input[type=text]#input-petName { }
+
+input[type=text]#input-petBio { }
+
+input[type=url]#input-petProfPic { }
+
+#btn-add-profile
+{
+  margin: auto auto;
+  width: 100px;
+  height: 45px;
 }
+/*
+a id="btn-add-profile"
+
+onclick="addProfile(); 
+
+div id="add-profile"
+
+ <!-- added data-dismiss to hide after click submit, doesn't clear the fields though-->…..
+
+<div id="nameInput" class="inputField">
+<input type="text" id="input-petName"
+
+<div id="bioInput" class="inputField">
+<input type="text" id="input-petBio" 
+
+<div id="profPicInput" class="inputField">
+<input type="url" id="input-petProfPic"
+*/
+
+
+
+/*-------------------------- Profile info/heading -------------------------------*/
 
 #pet-info {
     height: 200px;
@@ -118,9 +154,46 @@ h1.timelineTitle { font-size: 16pt;}
 }
 
 
+
+/*-------------------------- Create event css -------------------------------*/
+
 /*modal { width: 400px;}*/
 addEvent { }
 
+.inputField {
+    color: teal;
+    font-size: 9.5pt;
+    padding: 0px;
+    margin: 0px; 
+}
+
+#input-type-title {
+    float: right;
+    display: inline;
+}
+
+ /* description */
+input[type=text]#input-text {
+    height: 30px;
+    width: 300px;
+
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 20px;
+    margin-bottom: 20px;
+    color: #666;
+    font-family: "Georgia",Times New Roman,Times,serif !important;
+}
+
+/*media*/
+input[type=url]#input-asset {
+    height: 20px;
+    width: 300px;
+}
+
+
+/*-------------------------- Event display css -------------------------------*/        
+    
 /*#events, #eventlist { display: block;}
 event-list { }*/
 
@@ -170,6 +243,7 @@ event-list { }*/
 }
 
 
+
    
 .eventTitle { 
     padding-left: 7px;
@@ -179,12 +253,9 @@ event-list { }*/
 
 .eventDesc { 
     color: steelblue; 
-
     padding-top: 39px;
     padding-bottom: 14px;
-
     padding: 0px 14px;
-    
 }
 
 
@@ -204,7 +275,7 @@ img.eventMedia {
 }
 
 
-  /* http://webdesignerwall.com/tutorials/css-elastic-videos */
+/* http://webdesignerwall.com/tutorials/css-elastic-videos */
             
 /* will force embed element to expand fullwidth automatically */
 .video-container {
@@ -230,48 +301,6 @@ img.eventMedia {
     width: 600px;
     max-width: 100%;
 }
-
-
-.inputField {
-    color: teal;
-    font-size: 9.5pt;
-    padding: 0px;
-    margin: 0px; 
-}
-
-              
-#input-type-title {
-    float: right;
-    display: inline;
-}
- /* description */
-input[type=text]#input-text {
-    height: 30px;
-    width: 300px;
-
-    font-size: 15px;
-    font-weight: normal;
-    line-height: 20px;
-    margin-bottom: 20px;
-    color: #666;
-    font-family: "Georgia",Times New Roman,Times,serif !important;
-}
-
-/*media*/
-input[type=url]#input-asset {
-    height: 20px;
-    width: 300px;
-}
-
-
-
-
-/*-------------------------- Hall listing css -------------------------------*/
-
-/*-------------------------- Menu display css -------------------------------*/        
-    
-
-
 
 /*
     <link href="/static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">

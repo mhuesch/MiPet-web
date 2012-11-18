@@ -14,8 +14,8 @@ class Pet(models.Model):
 class Event(models.Model):
     pets = models.ManyToManyField(Pet, related_name='events')
     moment = models.DateTimeField(default=datetime.now, blank=True)
-    title = models.CharField(max_length=50)
-    description = models.CharField(max_length=700)
+    title = models.CharField(max_length=50)         # required
+    description = models.CharField(max_length=700)  # --> can be null!
 
     def __unicode__(self):
         return self.title
