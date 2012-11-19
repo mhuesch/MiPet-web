@@ -6,7 +6,7 @@ var PetJoinDate = ""; // Pet's joined date
 var PetBio = "";
 var PetProfPicURL = "";
 
-// ---------- Pet View ----------//
+// -------------------- Pet View --------------------//
 var PetView = Backbone.View.extend({
 
     el:$('#pet-info'),
@@ -45,7 +45,7 @@ var PetView = Backbone.View.extend({
     }
 });
 
-// ---------- Event View ----------//
+// -------------------- Event View --------------------//
 var EventView = Backbone.View.extend({
 
     //tagName:'li',
@@ -102,7 +102,7 @@ var EventView = Backbone.View.extend({
     }
 });
 
-// ---------- Event List View ----------//
+// -------------------- Event List View --------------------//
 var EventListView = Backbone.View.extend({
 
     el:$('#events'),
@@ -156,7 +156,7 @@ function youtubeToEmbed(mediaURL)
 }
 
 
-// ---------- Media View ----------//
+// -------------------- Media View --------------------//
 //given a media object this should work fine. 
 var MediaView = Backbone.View.extend({
 	tagname: 'p',
@@ -202,7 +202,7 @@ var MediaView = Backbone.View.extend({
 
 
 
-// ---------- Media List View ----------//
+// -------------------- Media List View --------------------//
 var MediaListView = Backbone.View.extend({
 	el:$('#media'),
 
