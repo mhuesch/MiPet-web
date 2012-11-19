@@ -31,42 +31,43 @@
         eventObject.description = document.getElementById("input-text").value;
         eventObject.media = [];
         
+        var mediaURL = document.getElementById("input-media").value;
+		
         var event = new Event();
         var eventID;
         event.save(eventObject, {
         	success: function (event, response){
         		//alert(JSON.stringify(response));
+        		eventID = response.pk;
+        		addMedia(mediaURL, eventID);
         	},
         	error: function (event){
-        		alert('add event failed');
+        		alert('adding event failed');
         	}
         });
         
-        var media = new Media();
+        
+    }
+    
+    function addMedia(url, eventID)
+    {
+    	var media = new Media();
         var mediaObject = {
             "event": "",
             "media_url": "",
             "media_type": "PIC"
         };
-		if(false)
-			{
-			mediaObject.event = [eventID];
-			mediaObject.media_type = document.getElementById("input-media").value;
-			//JSONObject.location
-			
-			var media = new Media();
-			media.save(mediaObject, {
-				success: function (media){
-					alert('media created');
-				},
-				error: function (media){
-					alert('nope');
-				}
-			});
-        }
+        mediaObject.event = [eventID];
+        mediaObject.media_url = url;
+        media.save(mediaObject, {
+			success: function (media){
+				//alert('media created');
+			},
+			error: function (media){
+				alert('media creation failed');
+			}
+		});
     }
-    
-    
 	/*
     // from which URL ...... ,,,,,,,,,,,,,,,??????????? //
     
