@@ -80,28 +80,35 @@ function addPetProfile()
     //var hourNow = now.getHours();
     //var minNow = now.getMinutes();
 
-    var petProfileObject = {
-        "name": "",
-        "joined_date": "",
-        "bio": "",
-        "prof_pic": "",
-    };
+	var url = document.getElementById("input-petProfPic").value;
+	console.log(url);
+	if(url== "" ||url==null){
+		var petProfileObject = {
+			"name": "",
+			"bio": "",
+			"prof_pic": "",
+			"events": []
+		};
+    }else{
+    	var petProfileObject = {
+			"name": "",
+			"bio": "",
+			"prof_pic": "",
+			"events": []
+		};
+		petProfileObject.prof_pic = url;
+    }
 
-    //petProfileObject.pets = [parseInt(petID)];
     petProfileObject.name = document.getElementById("input-petName").value; 
-    petProfileObject.joined_date = new Date();
     petProfileObject.bio = document.getElementById("input-petBio").value;
-    petProfileObject.prof_pic = [];
-    
-    var mediaURL = document.getElementById("input-petProfPic").value;
+    var url = document.getElementById("input-petProfPic").value;
+	
     
     // ----------------------------------
     var pet = new Pet();
-    var petID;
-    pet.save(eventObject, {
-        success: function (pet, response){
-            petID = response.pk;
-            addProfPic(mediaURL, petID);
+    pet.save(petProfileObject, {
+        success: function (pet){
+        	alert('creation worked');
         },
         error: function (pet){
             alert('creating pet profile failed');
@@ -109,33 +116,6 @@ function addPetProfile()
     });
     // ----------------------------------
 
-}
- 
- /* 
- * Name:    addProfPic
- * Purpose: ...
- * Params:  url
-            petID
- * Returns: ...
- */
-function addProfPic(url, petID)
-{
-    var media = new Media();
-    var mediaObject = {
-        "event": "",
-        "media_url": "",
-        "media_type": "PIC"
-    };
-    mediaObject.event = [petID];
-    mediaObject.media_url = url;
-    media.save(mediaObject, {
-        success: function (media){
-            //alert('media created');
-        },
-        error: function (media){
-            alert('media creation failed');
-        }
-    });
 }
 
 

@@ -1,6 +1,6 @@
 var Pet = Backbone.Model.extend({
 
-    urlRoot:"/api/v1/pet",
+    urlRoot:"/api/v1/pet/",
 
 
     // Called when generating a new instance of a model
