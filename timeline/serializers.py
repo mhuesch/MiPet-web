@@ -4,10 +4,11 @@ from rest_framework import serializers
 
 class PetSerializer(serializers.HyperlinkedModelSerializer):
     events = serializers.ManyPrimaryKeyRelatedField(source='events')
-
+    pk = serializers.IntegerField(source='pk', read_only=True)
+    
     class Meta:
         model = Pet
-        fields = ('name', 'joined_date', 'bio', 'prof_pic', 'events')
+        fields = ('pk', 'name', 'joined_date', 'bio', 'prof_pic', 'events')
 
 class EventSerializer(serializers.HyperlinkedModelSerializer):
     pk = serializers.IntegerField(source='pk', read_only=True)

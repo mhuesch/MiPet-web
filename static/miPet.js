@@ -45,7 +45,9 @@
         	success: function (event, response){
         		//alert(JSON.stringify(response));
         		eventID = response.pk;
-        		addMedia(mediaURL, eventID);
+        		if(mediaURL){
+	        		addMedia(mediaURL, eventID);
+	        		}
         	},
         	error: function (event){
         		alert('adding event failed');
