@@ -47,7 +47,9 @@
         		eventID = response.pk;
         		if(mediaURL){
 	        		addMedia(mediaURL, eventID);
-	        		}
+	        	}else{
+	        		window.location.reload();
+	        	}
         	},
         	error: function (event){
         		alert('adding event failed');
@@ -141,6 +143,7 @@ function addMedia(url, eventID)
     media.save(mediaObject, {
 		success: function (media){
 			//alert('media created');
+			window.location.reload();
 		},
 		error: function (media){
 			alert('media creation failed');
