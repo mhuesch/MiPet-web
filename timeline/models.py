@@ -14,6 +14,7 @@ class UserProfile(models.Model):
 User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])
 
 class Pet(models.Model):
+    owner = models.ForeignKey(UserProfile, related_name='pets')
     name = models.CharField(max_length=50)
     birthdate = models.DateField(default=date.today, blank=True)
     bio = models.CharField(max_length=140)
