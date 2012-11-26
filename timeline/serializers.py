@@ -8,7 +8,7 @@ class PetSerializer(serializers.HyperlinkedModelSerializer):
     
     class Meta:
         model = Pet
-        fields = ('pk', 'name', 'joined_date', 'bio', 'prof_pic', 'events')
+        fields = ('pk', 'name', 'birthdate', 'bio', 'prof_pic', 'events')
 
 class EventSerializer(serializers.HyperlinkedModelSerializer):
     pk = serializers.IntegerField(source='pk', read_only=True)
