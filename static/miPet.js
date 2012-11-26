@@ -101,7 +101,7 @@ function addPetProfile()
 
 	var url = document.getElementById("input-petProfPic").value;
 	//console.log(url);
-
+	url = url.replace("https://","http://");
     var petProfileObject = {
             "name": "",
             "birthdate": "",
@@ -118,7 +118,7 @@ function addPetProfile()
     petProfileObject.birthdate = document.getElementById("input-petBirthdate").value;
     petProfileObject.bio = document.getElementById("input-petBio").value;
     //url = document.getElementById("input-petProfPic").value;
-    petProfileObject.prof_pic = document.getElementById("input-petProfPic").value;
+    petProfileObject.prof_pic = url;
 	
     
     // ----------------------------------
@@ -154,6 +154,7 @@ function addMedia(url, eventID)
         "media_url": "",
         "media_type": "PIC"
     };
+    url = url.replace("https://","http://");
     mediaObject.event = [eventID];
     mediaObject.media_url = url;
     media.save(mediaObject, {
