@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class UserProfile(models.Model):
     user = models.ForeignKey(User, unique=True)
     bio = models.CharField(max_length=140)
-    prof_pic = models.URLField(blank=True, null=True)
+    prof_pic = models.URLField(blank=True)
 
 User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])
 
@@ -14,7 +14,7 @@ class Pet(models.Model):
     name = models.CharField(max_length=50)
     joined_date = models.DateField(default=date.today, blank=True)
     bio = models.CharField(max_length=140)
-    prof_pic = models.URLField(blank=True, null=True)
+    prof_pic = models.URLField(blank=True)
 
     def __unicode__(self):
         return u'%s' % self.name
