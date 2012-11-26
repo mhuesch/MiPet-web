@@ -161,7 +161,7 @@ h1.timelineTitle { font-size: 16pt;}
 addEvent { }
 
 .inputLabel { 
-  width: 80px; 
+  width: 85px; 
   text-align: right; 
   display: inline-block;
 }
@@ -180,15 +180,15 @@ addEvent { }
 
  /* description */
 input[type=text]#input-text {
-    height: 30px;
     width: 300px;
-
+    /*
+    height: 30px;
     font-size: 15px;
     font-weight: normal;
-    line-height: 20px;
-    margin-bottom: 20px;
+    line-height: 20px; */
+    /*margin-bottom: 20px;*/
     color: #666;
-    font-family: "Georgia",Times New Roman,Times,serif !important;
+    /*font-family: "Georgia",Times New Roman,Times,serif !important; */
 }
 
 /*media*/
@@ -197,6 +197,12 @@ input[type=url]#input-asset {
     width: 300px;
 }
 
+input[type=url]#input-media {
+    
+}
+
+#input-media-url {}
+#input-media-upload {}
 
 /*-------------------------- Event display css -------------------------------*/        
     
