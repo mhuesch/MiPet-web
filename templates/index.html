@@ -34,7 +34,7 @@
 </head>
 
 <body>
-    
+    {% load timeline_tags %}
     
 <div class="container">
     
@@ -119,7 +119,11 @@
         {% if pet.prof_pic %}
             src="{{ pet.prof_pic }}">
         {% else %}
-        src='/static/img/miPetL1v{{pet.id}}.png' >
+			{% if pet.id > 3 %}
+				src='/static/img/miPetL1v{{pet.id|modulo:3|add:"1"}}.png' >
+			{% else %}
+				src='/static/img/miPetL1v{{pet.id}}.png' >
+			{% endif %}
         <!--class="img-circle"-->
         {% endif %}
         

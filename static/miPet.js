@@ -12,12 +12,12 @@
        // }
         
         var inputs = "";
-        
+        /*
         inputs += "input-title: " + document.getElementById("input-title").value + "\n";
         inputs += "input-text: " + document.getElementById("input-text").value + "\n";
         inputs += "input-date: " + document.getElementById("input-date").value + "\n";
         //inputs += "input-media: " + document.getElementById("input-media").value + "\n";
-        
+        */
         //alert(inputs);
 
         //var now = new Date();
@@ -30,20 +30,17 @@
 		var petID = urlpart.match(/[0-9]+/gi)[0];
         
 
-        var eventObject = {
-            "pets": "",
-            "title": "",
-            "description": "",
-            "media": [],
-            "moment": ""
-        };
+        var eventObject = new Object();
 
         eventObject.pets = [parseInt(petID)]; //parseInt is a built-in javascript function
         eventObject.title = document.getElementById("input-title").value; 
         eventObject.description = document.getElementById("input-text").value;
-        // Media is an array because there can be multiple media with an event
+        // Media is an array because there can be multiple media objects with an event
         eventObject.media = [];
-        eventObject.moment = document.getElementById("input-date").value;
+        var moment = document.getElementById("input-date").value;
+        if(moment != null && moment != ""){
+        	eventObject.moment = moment;
+        }
         
         var mediaURL = document.getElementById("input-media").value;
 		
@@ -100,25 +97,24 @@ function addPetProfile()
     //var minNow = now.getMinutes();
 
 	var url = document.getElementById("input-petProfPic").value;
-	//console.log(url);
+	//gets rid of https
 	url = url.replace("https://","http://");
-    var petProfileObject = {
-            "name": "",
-            "birthdate": "",
-            "bio": "",
-            "prof_pic": "",
-            "events": []
-        };
-
-	/*if(url != "" ||url !=null){
-		petProfileObject.prof_pic = url;
-    }*/
-
+	
+	//changed creating object with default fields to just creating an object. 
+	//makes validation easier
+	var petProfileObject = new Object();
+	
+	//adds fields to the object, with validation for null values
     petProfileObject.name = document.getElementById("input-petName").value; 
-    petProfileObject.birthdate = document.getElementById("input-petBirthdate").value;
+    var bday = document.getElementById("input-petBirthdate").value;
+    if(bday != null && bday != ""){
+    	petProfileObject.birthdate = bday;
+    }
     petProfileObject.bio = document.getElementById("input-petBio").value;
-    //url = document.getElementById("input-petProfPic").value;
-    petProfileObject.prof_pic = url;
+    if(url != null && url != ""){
+    	petProfileObject.prof_pic = url;
+    }
+    petProfileObject.events = [];
 	
     
     // ----------------------------------
