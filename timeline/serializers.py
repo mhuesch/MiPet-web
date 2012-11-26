@@ -12,12 +12,13 @@ class UserProfileSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class PetSerializer(serializers.HyperlinkedModelSerializer):
-    events = serializers.ManyPrimaryKeyRelatedField(source='events')
     pk = serializers.IntegerField(source='pk', read_only=True)
+    events = serializers.ManyPrimaryKeyRelatedField(source='events')
+    owner = serializers.PrimaryKeyRelatedField(source='owner')
     
     class Meta:
         model = Pet
-        fields = ('pk', 'name', 'birthdate', 'bio', 'prof_pic', 'events')
+        fields = ('pk', 'owner', 'name', 'birthdate', 'bio', 'prof_pic', 'events')
 
 class EventSerializer(serializers.HyperlinkedModelSerializer):
     pk = serializers.IntegerField(source='pk', read_only=True)
