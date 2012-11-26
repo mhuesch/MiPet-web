@@ -45,8 +45,8 @@
         // Get the values of both,
         // even though there should only be one input visible/chosen
         // ...hopefully this doesn't break it if null...??....
-        var mediaURL = document.getElementByID("input-media-url");
-        
+        var mediaURL = document.getElementById("input-media-url").value;
+        //console.log(mediaURL);
         //for uploading: sets media to the first file that's been uploaded
         // (i.e. if multiple entered, will only use first)
         var mediaUpload = document.getElementById("input-media-upload").files[0];
@@ -57,16 +57,18 @@
         // and could be done in a better way
         
         //if using existing image at given url...
-        if ($('#imageURL').checked)
+        if (document.getElementById('imageURL').checked)
         {
             
             media = mediaURL;
+            
         }
         else // if uploading...
         {
 
             media = mediaUpload;
         }
+        //console.log($('#imageURL').checked);
         
         		
         // Create a new model for backbone
@@ -84,13 +86,13 @@
                 // even if only one is meant to be used,
                 // as indicated by radio button
 
-                if(media == mediaUpload)
+                if(media && media == mediaUpload)
                 {
                 	//if it's an uploaded file, call upload with the file
 	        		upload(media, eventID);
 	        		
 	        	}
-                else if(media == mediaURL)
+                else if (media && media == mediaURL)
                 {
                     //else call addMedia with the url that they're using and the eventID
                     addMedia(media, eventID);
