@@ -8,6 +8,9 @@ class UserProfile(models.Model):
     bio = models.CharField(max_length=140)
     prof_pic = models.URLField(blank=True)
 
+    def __unicode__(self):
+        return u'%s' % self.user.username
+
 User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])
 
 class Pet(models.Model):
