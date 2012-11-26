@@ -11,14 +11,14 @@
        //     document.getElementById("input-end").value = document.getElementById("input-start").value;
        // }
         
-        var inputs = "";
         /*
+        var inputs = "";
         inputs += "input-title: " + document.getElementById("input-title").value + "\n";
         inputs += "input-text: " + document.getElementById("input-text").value + "\n";
         inputs += "input-date: " + document.getElementById("input-date").value + "\n";
         //inputs += "input-media: " + document.getElementById("input-media").value + "\n";
+        alert(inputs);
         */
-        //alert(inputs);
 
         //var now = new Date();
         //var hourNow = now.getHours();
@@ -41,11 +41,32 @@
         if(moment != null && moment != ""){
         	eventObject.moment = moment;
         }
+        
+        // Get the values of both,
+        // even though there should only be one input visible/chosen
+        // ...hopefully this doesn't break it if null...??....
+        var mediaURL = document.getElementByID("input-media-url");
+        
         //for uploading: sets media to the first file that's been uploaded
-        //if uploading
-        var media = document.getElementById("input-media").files[0];
-        //else
-        //var mediaURL = document.getElementByID("input-media-url);
+        // (i.e. if multiple entered, will only use first)
+        var mediaUpload = document.getElementById("input-media-upload").files[0];
+        
+        var media;
+
+        // pretty sure this is redundant/bad code
+        // and could be done in a better way
+        
+        //if using existing image at given url...
+        if ($('#imageURL').checked)
+        {
+            
+            media = mediaURL;
+        }
+        else // if uploading...
+        {
+
+            media = mediaUpload;
+        }
         
         		
         // Create a new model for backbone
@@ -56,14 +77,24 @@
         event.save(eventObject, {
         	success: function (event, response){
         		eventID = response.pk;
-        		//change this to if there is media, somehow
-        		if(media)
+
+        		//change this to if there is media, somehow......
+        		
+                // checking for equal because both could have values
+                // even if only one is meant to be used,
+                // as indicated by radio button
+
+                if(media == mediaUpload)
                 {
                 	//if it's an uploaded file, call upload with the file
 	        		upload(media, eventID);
-	        		//else call addMedia with the url that they're using and the eventID
-	        		//addMedia(mediaURL, eventID);
+	        		
 	        	}
+                else if(media == mediaURL)
+                {
+                    //else call addMedia with the url that they're using and the eventID
+                    addMedia(media, eventID);
+                }
                 // Force page to reload (to show added event)
                 // if there is no media
                 else
@@ -94,8 +125,9 @@ function addPetProfile()
     inputs += "input-petBio: " + document.getElementById("input-petBio").value + "\n";
     inputs += "input-petProfPic: " + document.getElementById("input-petProfPic").value + "\n";
     inputs += "input-petBirthdate: " + document.getElementById("input-petBirthdate").value + "\n";
-	*/
-    //alert(inputs);
+	
+    alert(inputs);
+    */
 
     //var url = document.URL;
     //var urlpart = url.match(/e\/[0-9]+/gi)[0];
@@ -138,7 +170,7 @@ function addPetProfile()
             window.location.reload();
         },
         error: function (pet){
-            alert('Creating pet profile failed');
+            alert('Creating pet profile failed :( Sorry about that.');
         }
     });
     // ----------------------------------
@@ -160,10 +192,10 @@ function addMedia(url, eventID)
     var mediaObject = {
         "event": "",
         "media_url": "",
-        "media_type": "PIC"
+        "media_type": "PIC" // necessary....??
     };
     
-    url = url.replace("https://","http://");
+    url = url.replace("https://","http://"); // we're still not sure if this matters
     mediaObject.event = [eventID];
     mediaObject.media_url = url;
     media.save(mediaObject, {
