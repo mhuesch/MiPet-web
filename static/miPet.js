@@ -88,7 +88,6 @@ function addPetProfile()
     inputs += "input-petBio: " + document.getElementById("input-petBio").value + "\n";
     inputs += "input-petProfPic: " + document.getElementById("input-petProfPic").value + "\n";
     inputs += "input-petBirthdate: " + document.getElementById("input-petBirthdate").value + "\n";
-    // join date defaults to current date/time
 
     //alert(inputs);
 
