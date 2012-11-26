@@ -41,8 +41,13 @@
         if(moment != null && moment != ""){
         	eventObject.moment = moment;
         }
+        //for uploading: sets media to the first file that's been uploaded
+        //if uploading
         var media = document.getElementById("input-media").files[0];
-		
+        //else
+        //var mediaURL = document.getElementByID("input-media-url);
+        
+        		
         // Create a new model for backbone
         var event = new Event();
         var eventID;
@@ -51,9 +56,13 @@
         event.save(eventObject, {
         	success: function (event, response){
         		eventID = response.pk;
+        		//change this to if there is media, somehow
         		if(media)
                 {
+                	//if it's an uploaded file, call upload with the file
 	        		upload(media, eventID);
+	        		//else call addMedia with the url that they're using and the eventID
+	        		//addMedia(mediaURL, eventID);
 	        	}
                 // Force page to reload (to show added event)
                 // if there is no media
@@ -139,10 +148,11 @@ function addPetProfile()
 
 /* 
  * Name:    addMedia
- * Purpose: ...
- * Params:  url
+ * Purpose: create a media object and push it to the server
+ * Params:  url - the url that the media is displayed at: either returned from imgur or 
+ 					added by the user
             eventID
- * Returns: ...
+ * Returns: nothing
  */
 function addMedia(url, eventID)
 {
@@ -192,9 +202,6 @@ function upload(file, eventID) {
       addMedia(url, eventID);
    }
    
-	
-   // Ok, I don't handle the errors. An exercice for the reader.
-   // And now, we send the formdata
    
    
 }	
