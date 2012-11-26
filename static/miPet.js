@@ -157,10 +157,12 @@ function addPetProfile()
     if(url != null && url != ""){
     	petProfileObject.prof_pic = url;
     }else{
-    	petProfileObject.prof_pic = " ";
+    	//petProfileObject.prof_pic = " ";
     }
     petProfileObject.events = [];
-	
+    
+    //set owner to default for now
+	petProfileObject.owner = 8;
     
     // ----------------------------------
     var pet = new Pet();

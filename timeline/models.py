@@ -18,7 +18,7 @@ class Pet(models.Model):
     name = models.CharField(max_length=50)
     birthdate = models.DateField(default=date.today, blank=True)
     bio = models.CharField(max_length=140)
-    prof_pic = models.URLField(blank=True)
+    prof_pic = models.URLField(blank=True, default="")
 
     def __unicode__(self):
         return u'%s' % self.name
