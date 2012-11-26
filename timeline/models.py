@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class UserProfile(models.Model):
     user = models.ForeignKey(User, unique=True)
     bio = models.CharField(max_length=140)
-    prof_pic = models.URLField(blank=True)
+    prof_pic = models.URLField(blank=True, null=True, default="")
 
     def __unicode__(self):
         return u'%s' % self.user.username

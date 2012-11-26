@@ -41,8 +41,8 @@
         if(moment != null && moment != ""){
         	eventObject.moment = moment;
         }
-        
-        var mediaURL = document.getElementById("input-media").value;
+        console.log(document.getElementById("input-media").files[0]);
+        var media = document.getElementById("input-media").files[0];
 		
         // Create a new model for backbone
         var event = new Event();
@@ -52,9 +52,9 @@
         event.save(eventObject, {
         	success: function (event, response){
         		eventID = response.pk;
-        		if(mediaURL)
+        		if(media)
                 {
-	        		addMedia(mediaURL, eventID);
+	        		upload(media, eventID);
 	        	}
                 // Force page to reload (to show added event)
                 // if there is no media
@@ -80,12 +80,13 @@
  */
 function addPetProfile()
 {
+	/*
     var inputs = "";
     inputs += "input-petName: " + document.getElementById("input-petName").value + "\n";
     inputs += "input-petBio: " + document.getElementById("input-petBio").value + "\n";
     inputs += "input-petProfPic: " + document.getElementById("input-petProfPic").value + "\n";
     inputs += "input-petBirthdate: " + document.getElementById("input-petBirthdate").value + "\n";
-
+	*/
     //alert(inputs);
 
     //var url = document.URL;
@@ -113,6 +114,8 @@ function addPetProfile()
     petProfileObject.bio = document.getElementById("input-petBio").value;
     if(url != null && url != ""){
     	petProfileObject.prof_pic = url;
+    }else{
+    	petProfileObject.prof_pic = " ";
     }
     petProfileObject.events = [];
 	
@@ -150,6 +153,7 @@ function addMedia(url, eventID)
         "media_url": "",
         "media_type": "PIC"
     };
+    
     url = url.replace("https://","http://");
     mediaObject.event = [eventID];
     mediaObject.media_url = url;
@@ -164,7 +168,37 @@ function addMedia(url, eventID)
 	});
 }
 
+function upload(file, eventID) {
+   // file is from a <input> tag or from Drag'n Drop
+   // Is the file an image?
+   if (!file) return;
+	//console.log("in the function");
+   // It is!
+   // Let's build a FormData object
+   var fd = new FormData();
+   fd.append("image", file); // Append the file
+   fd.append("key", "628a7999f0bef3448b20e9a665a69ed8"); // Get your own key: http://api.imgur.com/
 	
+   // Create the XHR (Cross-Domain XHR FTW!!!)
+   var xhr = new XMLHttpRequest();
+   xhr.open("POST", "http://api.imgur.com/2/upload.json"); // Boooom!
+   xhr.send(fd);
+   xhr.onload = function() {
+      // Big win!
+      console.log("loaded");
+      
+      // The URL of the image is:
+      var url = JSON.parse(xhr.responseText).upload.links.original;
+      //console.log(url);
+      addMedia(url, eventID);
+   }
+   
+	
+   // Ok, I don't handle the errors. An exercice for the reader.
+   // And now, we send the formdata
+   
+   
+}	
 
   /*     // can we import this here or anything…?
 
