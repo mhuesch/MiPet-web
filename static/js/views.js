@@ -2,7 +2,7 @@
 // Global variables - naughty!
 // But don't know how to have accessor functions...
 var PetName = ""; // This pet's name
-var PetJoinDate = ""; // Pet's joined date
+var PetBirthdate = ""; // Pet's joined date
 var PetBio = "";
 var PetProfPicURL = "";
 
@@ -18,7 +18,7 @@ var PetView = Backbone.View.extend({
 
     render:function () {
         PetName = this.model.get('name');
-        PetJoinDate = this.model.get('joined_date');
+        PetBirthdate = this.model.get('birthdate');// change from joined_date
         PetBio = this.model.get('bio');
         PetProfPicURL = this.model.get('prof_pic');
         var outputHTML = "";
@@ -114,7 +114,7 @@ var EventListView = Backbone.View.extend({
 
     render:function () {
         var self = this;
-        $(this.el).append("<span class='joinDate'> Joined miPet: " + PetJoinDate+ "</span> ");
+        $(this.el).append("<span class='birthdate joinDate'> Pet's Birthday: " + PetBirthdate + "</span> ");
         $(this.el).append("<br/> Events in "+ PetName +"'s timeline:");
 
         $(this.el).append("<div id='eventlist'></div>");
