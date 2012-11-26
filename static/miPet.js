@@ -41,7 +41,6 @@
         if(moment != null && moment != ""){
         	eventObject.moment = moment;
         }
-        console.log(document.getElementById("input-media").files[0]);
         var media = document.getElementById("input-media").files[0];
 		
         // Create a new model for backbone
