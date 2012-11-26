@@ -15,44 +15,59 @@
         
         inputs += "input-title: " + document.getElementById("input-title").value + "\n";
         inputs += "input-text: " + document.getElementById("input-text").value + "\n";
+        inputs += "input-date: " + document.getElementById("input-date").value + "\n";
         //inputs += "input-media: " + document.getElementById("input-media").value + "\n";
         
         //alert(inputs);
-		var url = document.URL;
-		var urlpart = url.match(/e\/[0-9]+/gi)[0];
-		var petID = urlpart.match(/[0-9]+/gi)[0];
+
         //var now = new Date();
         //var hourNow = now.getHours();
         //var minNow = now.getMinutes();
+
+        // Getting the Pet ID from the url
+		var url = document.URL;
+		var urlpart = url.match(/e\/[0-9]+/gi)[0];
+		var petID = urlpart.match(/[0-9]+/gi)[0];
+        
 
         var eventObject = {
             "pets": "",
             "title": "",
             "description": "",
-            "media": []
+            "media": [],
+            "moment": ""
         };
 
-        eventObject.pets = [parseInt(petID)];
+        eventObject.pets = [parseInt(petID)]; //parseInt is a built-in javascript function
         eventObject.title = document.getElementById("input-title").value; 
         eventObject.description = document.getElementById("input-text").value;
+        // Media is an array because there can be multiple media with an event
         eventObject.media = [];
+        eventObject.moment = document.getElementById("input-date").value;
         
         var mediaURL = document.getElementById("input-media").value;
 		
+        // Create a new model for backbone
         var event = new Event();
         var eventID;
+
+        // Sends a POST request to the server to create it on the server
         event.save(eventObject, {
         	success: function (event, response){
-        		//alert(JSON.stringify(response));
         		eventID = response.pk;
-        		if(mediaURL){
+        		if(mediaURL)
+                {
 	        		addMedia(mediaURL, eventID);
-	        	}else{
+	        	}
+                // Force page to reload (to show added event)
+                // if there is no media
+                else
+                {
 	        		window.location.reload();
 	        	}
         	},
         	error: function (event){
-        		alert('adding event failed');
+        		alert('Adding event failed :( Sorry about that.');
         	}
         });
         
@@ -72,6 +87,7 @@ function addPetProfile()
     inputs += "input-petName: " + document.getElementById("input-petName").value + "\n";
     inputs += "input-petBio: " + document.getElementById("input-petBio").value + "\n";
     inputs += "input-petProfPic: " + document.getElementById("input-petProfPic").value + "\n";
+    inputs += "input-petBirthdate: " + document.getElementById("input-petBirthdate").value + "\n";
     // join date defaults to current date/time
 
     //alert(inputs);
@@ -85,37 +101,38 @@ function addPetProfile()
     //var minNow = now.getMinutes();
 
 	var url = document.getElementById("input-petProfPic").value;
-	console.log(url);
-	if(url== "" ||url==null){
-		var petProfileObject = {
-			"name": "",
-			"bio": "",
-			"prof_pic": "",
-			"events": []
-		};
-    }else{
-    	var petProfileObject = {
-			"name": "",
-			"bio": "",
-			"prof_pic": "",
-			"events": []
-		};
+	//console.log(url);
+
+    var petProfileObject = {
+            "name": "",
+            "birthdate": "",
+            "bio": "",
+            "prof_pic": "",
+            "events": []
+        };
+
+	/*if(url != "" ||url !=null){
 		petProfileObject.prof_pic = url;
-    }
+    }*/
 
     petProfileObject.name = document.getElementById("input-petName").value; 
+    petProfileObject.birthdate = document.getElementById("input-petBirthdate").value;
     petProfileObject.bio = document.getElementById("input-petBio").value;
-    var url = document.getElementById("input-petProfPic").value;
+    //url = document.getElementById("input-petProfPic").value;
+    petProfileObject.prof_pic = document.getElementById("input-petProfPic").value;
 	
     
     // ----------------------------------
     var pet = new Pet();
     pet.save(petProfileObject, {
         success: function (pet){
-        	alert('creation worked');
+        	//alert('creation of profile worked');
+            
+            // Refresh the page to show the newly created profile
+            window.location.reload();
         },
         error: function (pet){
-            alert('creating pet profile failed');
+            alert('Creating pet profile failed');
         }
     });
     // ----------------------------------
@@ -146,7 +163,7 @@ function addMedia(url, eventID)
 			window.location.reload();
 		},
 		error: function (media){
-			alert('media creation failed');
+			alert('Media creation failed');
 		}
 	});
 }
