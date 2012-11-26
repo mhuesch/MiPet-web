@@ -23,7 +23,7 @@ var PetView = Backbone.View.extend({
         PetProfPicURL = this.model.get('prof_pic');
         var outputHTML = "";
         if (PetProfPicURL == "") // mod by 3 + 1 to not let id # be anything other than v1 v2 v3 (only existing images)
-            outputHTML += "<img class='profilePic' src='/static/img/miPetL1v"+ this.model.get('id')%3+1 +".png' >";
+            outputHTML += "<img class='profilePic' src='/static/img/miPetL1v"+ (this.model.get('id')%3+1) +".png' >";
         else
             outputHTML += "<img class='profilePic' src='"+ PetProfPicURL +"' >";
         outputHTML += "<h1 class='timelineTitle'> "+ PetName +" </h1>";
