@@ -160,6 +160,8 @@ h1.timelineTitle { font-size: 16pt;}
 /*modal { width: 400px;}*/
 addEvent { }
 
+.inputLabel { width: 80px; text-align: right; display: inline-block;}
+
 .inputField {
     color: teal;
     font-size: 9.5pt;
