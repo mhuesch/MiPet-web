@@ -100,6 +100,12 @@ input[type=url]#input-petProfPic { }
   width: 100px;
   height: 45px;
 }
+
+edit-button
+{
+padding: 0;
+margin: 0;
+}
 /*
 a id="btn-add-profile"
 
@@ -148,12 +154,12 @@ h1.timelineTitle { font-size: 16pt;}
 .joinDate { 
     display: inline-block;
     float: right;
-        color: #666;
+    color: #666;
     text-align: right;
     font-size: 11px;
 }
 
-
+.editEvent { float: right; }
 
 /*-------------------------- Create event css -------------------------------*/
 
@@ -180,7 +186,7 @@ addEvent { }
 
  /* description */
 input[type=text]#input-text {
-    width: 300px;
+    width: 260px; /* 300 */
     /*
     height: 30px;
     font-size: 15px;
@@ -194,7 +200,7 @@ input[type=text]#input-text {
 /*media*/
 input[type=url]#input-asset {
     height: 20px;
-    width: 300px;
+    width: 300px; 
 }
 
 input[type=url]#input-media {
@@ -203,6 +209,8 @@ input[type=url]#input-media {
 
 #input-media-url {}
 #input-media-upload {}
+
+#mediaInputChoice {padding-bottom: 5px;}
 
 /*-------------------------- Event display css -------------------------------*/        
     
