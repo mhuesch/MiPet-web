@@ -1,5 +1,5 @@
-from timeline.models import Pet, Event, Media
-from timeline.serializers import PetSerializer, EventSerializer, PetEventSerializer, MediaSerializer
+from timeline.models import UserProfile, Pet, Event, Media
+from timeline.serializers import UserProfileSerializer, PetSerializer, EventSerializer, PetEventSerializer, MediaSerializer
 from django.template import Context, loader
 from django.http import HttpResponse
 from rest_framework import generics
@@ -32,6 +32,21 @@ class MediaDetail(generics.RetrieveUpdateDestroyAPIView):
     model = Media
     serializer_class = MediaSerializer
 
+class UserProfileList(generics.ListAPIView):
+    model = UserProfile
+    serializer_class = UserProfileSerializer
+
+class UserProfileDetail(generics.RetrieveAPIView):
+    model = UserProfile
+    serializer_class = UserProfileSerializer
+
+# API view for the pets of a user.
+@api_view(['GET'])
+def user_pet_list(request, pk):
+    if request.method == 'GET':
+        pets = Pet.objects.filter(owner=pk).order_by('id')
+        serializer = PetSerializer(pets)
+        return Response(serializer.data)
 
 # API view for the events of a pet.
 @api_view(['GET'])
