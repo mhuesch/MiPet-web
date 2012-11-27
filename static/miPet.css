@@ -101,11 +101,7 @@ input[type=url]#input-petProfPic { }
   height: 45px;
 }
 
-edit-button
-{
-padding: 0;
-margin: 0;
-}
+
 /*
 a id="btn-add-profile"
 
@@ -262,8 +258,15 @@ event-list { }*/
     width: 100%
 }
 
-
-
+.edit-button
+{
+  margin-right: 3px;
+ /* padding: 0;
+  margin: 0;*/
+}
+.edit-button .icon-pencil {
+    opacity: .7; /* display grey on grey button, not jarring black */
+}
    
 .eventTitle { 
     padding-left: 7px;
@@ -271,13 +274,16 @@ event-list { }*/
     font-weight: bold;
 }
 
-.eventDesc { 
-    color: steelblue; 
-    padding-top: 39px;
-    padding-bottom: 14px;
-    padding: 0px 14px;
+.event-body {
+    padding: 10px;
 }
 
+.eventDesc { 
+    color: steelblue; 
+    /*padding-top: 39px;
+    padding-bottom: 14px;*/
+    /*padding: 0px 14px;*/
+}
 
 img.eventMedia {
     width: 300px;
@@ -287,11 +293,12 @@ img.eventMedia {
 
 .timestamp {
     float: right;
-    font-weight: normal;
-    padding-right: 10px;
-    padding-bottom: 20px;
-    font-size: 12px;
+    font-size: 11px;
     color: #999;
+    font-weight: normal;
+    padding-top: 3px;
+    /*padding-right: 10px;
+    padding-bottom: 20px;*/
 }
 
 

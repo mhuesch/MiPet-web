@@ -64,13 +64,18 @@ var EventView = Backbone.View.extend({
         outputString += "<span class='eventTitle' id='eventTitle-"+eventID+"'>"+this.model.get('title')+"</span>";
        // var date_time = moment(this.model.get('moment'));
        // outputString += "<span class='timestamp'>"+date_time.format("MMM Do YYYY")+"</span>";   
-        outputString += "</div>";
         
         outputString += "<span class='editEvent' id='editEvent-"+eventID+"'>";
-        outputString += "<a class='btn btn-mini edit-button'> <i class='icon-pencil'></i> </a>";
+        outputString += "<a class='btn btn-mini edit-button' id='btn-edit-event'";
+        outputString += " data-toggle='modal' href='#edit-event'>";
+        outputString += "<i class='icon-pencil'></i> </a>";
         outputString += "</span>";
-            
 
+        outputString += "</div> <!-- end event-listing-title -->";
+        
+        
+
+        outputString += "<div class='event-body'>";
         outputString += "<span class='eventDesc' id='eventDesc-"+eventID+"'>"+this.model.get('description')+"</span>";     
         
         //outputString += '<span id="media'+this.model.get('pk')+'"></span>';
@@ -88,7 +93,7 @@ var EventView = Backbone.View.extend({
         We need this ID to get the media.
         */
         //outputString += ""+this.model.media_url+"";
-        outputString += "</div>";
+        outputString += "</div> <!-- end event-body --> </div> <!-- end event-listing -->";
         $(this.el).html(outputString);
         var eventID = this.model.get('pk')
         var myMedia = this.model.get('media');
@@ -123,8 +128,9 @@ var EventListView = Backbone.View.extend({
 
     render:function () {
         var self = this;
-        $(this.el).append("<span class='birthdate joinDate'> Pet's Birthday: " + PetBirthdate + "</span> ");
-        $(this.el).append("<br/> Events in "+ PetName +"'s timeline:");
+        // we had these displaying for awhile, so if you're looking for them... yeah
+        //$(this.el).append("<span class='birthdate joinDate'> Pet's Birthday: " + PetBirthdate + "</span> ");
+        //$(this.el).append("<br/> Events in "+ PetName +"'s timeline:");
 
         $(this.el).append("<div id='eventlist'></div>");
         /*//for this, forget the collection for now, make a new event for each part of the list

@@ -207,7 +207,7 @@
                     
                 </div> <!-- end modal-body -->
                 
-                
+        
                 
                 <div class="modal-footer">
                     <a class="btn" data-dismiss="modal">Cancel</a> <!-- Close --> <!-- href="#"  -->
@@ -222,17 +222,134 @@
         
         <p>
         <a id="btn-add-event" data-toggle="modal" href="#add-event" class="btn btn-primary" style="float: right;">
-            <big>+</big> Add an Event
+            <big>+</big> Add Event
         </a>
         </p>
         <!-- ----- END Add Event modal dialog box ----- -->
         
 
         
+        
+        
+        <!-- ---------- START EDIT Event modal dialog box ---------- -->
+        <form id="modal-form" accept-charset="UTF-8" data-remote="true"
+            method="post"> <!-- action="/tagging" -->
+            <div id="edit-event" class="modal hide fade in" style="display:none;">
+                
+                <div class="modal-header">
+                    <a class="close" data-dismiss="modal">×</a>
+                    <h3>Edit Event</h3>
+                    
+                </div> <!-- end modal-header -->
+                
+                <div class="modal-body">
+                    
+                    <!-- --- TITLE --- -->
+                    <div id="titleInput" class="inputField">
+                        <span class="inputLabel">
+                            Event Title:
+                        </span>
+                        <input type="text" id="input-title" placeholder="Title of Event" />
+                    </div>
+                    
+                    
+                    <!-- --- TEXT/description --- -->
+                    <div id="textInput" class="inputField">
+                        <span class="inputLabel">
+                            Description:
+                        </span>
+                        <input type="text" id="input-text" name="text" placeholder="Describe this epic event in your pet's life!" />
+                    </div>
+                    
+                    <!-- --- DATE (defaults to current) --- -->
+                    <div id="dateInput" class="inputField">
+                        <span class="inputLabel">
+                            Date:
+                        </span>
+                        <input type="date" id="input-date"/>
+                    </div>
+                    
+                    
+                    <!-- --- MEDIA - UPLOAD/URL -->
+                    <div id="mediaInput">
+                        
+                        <div id="mediaInputChoice" style="padding-bottom: 5px;">
+                            
+                            <form id="imageChoice">
+                                <span class="inputLabel"> </span>
+                                <span class="inputField">
+                                    <input type="radio" name="mediaChoose" id="imageUpload"value="upload" onclick="chooseMedia(this.value)" checked=true> Upload </input>
+                                </span>
+                                &nbsp;
+                                <span class="inputField">
+                                    <input type="radio" name="mediaChoose" id="imageURL" value="url" onclick="chooseMedia(this.value)"> From URL </input>
+                                </span>
+                            </form>
+                            
+                        </div> <!-- end mediaInputChoice -->
+                        
+                        
+                        <div id="edit-mediaURLInput" class="inputField">
+                            <span class="inputLabel">
+                                Image URL:
+                            </span>
+                            <input type="url" id="input-media-url" name="media" placeholder="http://...yourimagelink.png" />
+                        </div>
+                        
+                        <div id="edit-mediaUploadInput" class="inputField">
+                            <span class="inputLabel">
+                                Upload image:
+                            </span>
+                            <input type="file" id="input-media-upload" name="media"/>
+                        </div>
+                        
+                    </div> <!-- end mediaInput -->
+                
+                    <br/>
+                    <div class="deleteEvent">
+                    <a class='btn btn-danger btn-mini' onclick="deleteEvent({{pet_id}})"> <big> x </big> </a> Delete this event
+                    </div>
+                    
+                </div> <!-- end modal-body -->
+                
+                
+                <div class="modal-footer">
+                    <a class="btn" data-dismiss="modal">Cancel</a> <!-- Close --> <!-- href="#"  -->
+                    <a id="modal-form-submit" class='btn btn-primary' onclick="editEvent({{pet_id}})" data-dismiss="modal">Submit</a> <!-- href="#"  -->
+                    <!-- added data-dismiss to hide after click submit, doesn't clear the fields though-->
+                    
+                </div> <!-- end modal-footer -->
+                
+            </div> <!-- end edit-event modal --> 
+        </form>
+        <!-- ---------- END EDIT Event modal dialog box ---------- -->
+        
+        <!--
+        <p>
+        <a id="btn-edit-event" data-toggle="modal" href="#edit-event" class="btn" style="float: right;">
+            Edit Event 
+        </a>
+        </p>
+         -->
+        
+        
+        
+        
     	<div id="pet-info"></div>
         
         
-    	<div id="events"></div>
+    	<div id="events">
+        <!-- load ?? 
+         for event in eventList
+         create the html for hte listing 
+         create the html for the modal edit event box with values filled in
+         -->
+         
+        
+            
+        
+        
+        </div>
         
         
     </div> <!-- end container -->
@@ -278,24 +395,27 @@
     <script>
         //$('#input-media-upload').hide();
         $('#mediaURLInput').hide();
+        $('#edit-mediaURLInput').hide();
          
         function chooseMedia(choice)
         {
-            /*
-            if ($('#imageUpload').checked)
-            {
-                
-            }
-             */
+            /* if ($('#imageUpload').checked) { }*/
+            
             if (choice == "url")
             {
                 $('#mediaURLInput').show();
                 $('#mediaUploadInput').hide();
+                
+                $('#edit-mediaURLInput').show();
+                $('#edit-mediaUploadInput').hide();
             }
             else // choice == "upload"
             {
                 $('#mediaUploadInput').show();
                 $('#mediaURLInput').hide();
+                
+                $('#edit-mediaUploadInput').show();
+                $('#edit-mediaURLInput').hide();
             }
          } 
 	</script>

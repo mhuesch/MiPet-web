@@ -1,3 +1,13 @@
+function deleteEvent(petid)
+{
+	alert('delete event called with petid: '+petid);
+}
+
+function editEvent(petid)
+{
+	alert('edit event called with petid: '+petid);
+}
+
 //------------- methods for creating a new event (with and without media ---------------//
 
 /* 
