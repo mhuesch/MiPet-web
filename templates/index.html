@@ -67,16 +67,45 @@
                 
                 
                 <!-- ----- Pet PROFILE PICTURE ----- -->
-                <div id="profPicInput" class="inputField">
-                    Profile Picture URL:
-                    <input type="url" id="input-petProfPic" placeholder="http://...petprofilepicture.png">
-                        </div>
+				<div id="profPicInput">
+                   
+                        <div id="profPicInputChoice" style="padding-bottom: 5px;">
+                        
+                    <form id="profPicChoice">
+                        <span class="inputLabel"> </span>
+                        <span class="inputField">
+                        <input type="radio" name="profPicChoose" id="imageUpload"value="upload" onclick="chooseMedia(this.value)" checked=true> Upload </input>
+                        </span>
+                        &nbsp; 
+                        <span class="inputField">
+                        <input type="radio" name="profPicChoose" id="imageURL" value="url" onclick="chooseMedia(this.value)"> From URL </input>
+                        </span>
+                    </form>
+                        
+                        </div> <!-- end mediaInputChoice -->
+
+                        
+                    <div id="profPicURLInput" class="inputField">
+                        <span class="inputLabel">
+                            Profile Picture URL:
+                        </span>
+                        <input type="url" id="input-media-url" name="media" placeholder="http://...yourimagelink.png" />
+                    </div>
+					
+					<div id="profPicUploadInput" class="inputField">
+                        <span class="inputLabel">
+                            Upload Profile Picture:
+                        </span>
+                        <input type="file" id="input-media-upload" name="media"/>
+                    </div>
+                        
+				</div> <!-- end mediaInput -->
                 
                 
                 <!-- ----- JOIN DATE will default to current date/time ----- -->
                 <div id="birthdateInput" class="inputField">
                     Approx Pet Birthdate:
-                    <input type="date" id="input-petBirthdate">
+                    <input type="date" id="input-petBirthdate" placeholder="YYYY-MM-DD">
                 </div>
                 
                 
@@ -159,6 +188,32 @@
     <script type="text/javascript" src="/static/js/models.js"> </script>
     <script type="text/javascript" src="/static/js/views.js"> </script>
     
+	<script>
+        //$('#input-media-upload').hide();
+        $('#profPicURLInput').hide();
+         
+        function chooseMedia(choice)
+        {
+            /*
+            if ($('#imageUpload').checked)
+            {
+                
+            }
+             */
+            if (choice == "url")
+            {
+                $('#profPicURLInput').show();
+                $('#profPicUploadInput').hide();
+            }
+            else // choice == "upload"
+            {
+                $('#profPicUploadInput').show();
+                $('#profPicURLInput').hide();
+            }
+		} 
+	</script>
+	
+	
     <!-- put this style sheet AFTER personalized ones - otherwise weird header formatting padding -->
     <link href="/static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
     

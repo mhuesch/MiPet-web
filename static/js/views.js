@@ -87,6 +87,10 @@ var EventView = Backbone.View.extend({
         $(this.el).html(outputString);
         var eventID = this.model.get('pk')
         var myMedia = this.model.get('media');
+        
+        //note: this probably shouldn't happen if there is no media (i.e. myMedia is blank)
+        //		will fix later if there's time
+        
         this.model.myMedia.url = '/api/v1/event/' + this.model.get('pk') + '/media/';
         this.model.myMedia.fetch({
             success:function (data) {
