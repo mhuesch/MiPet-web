@@ -1,5 +1,5 @@
 from timeline.models import UserProfile, Pet, Event, Media
-from timeline.serializers import UserProfileSerializer, PetSerializer, EventSerializer, PetEventSerializer, MediaSerializer
+from timeline.serializers import UserProfileSerializer, PetSerializer, EventSerializer, MediaSerializer
 from django.template import Context, loader
 from django.http import HttpResponse
 from rest_framework import generics
@@ -53,7 +53,7 @@ def user_pet_list(request, pk):
 def pet_event_list(request, pk):
     if request.method == 'GET':
         events = Event.objects.filter(pets__in=[pk]).order_by('-moment')
-        serializer = PetEventSerializer(events)
+        serializer = EventSerializer(events)
         return Response(serializer.data)
 
 # API view for the media of an event.
