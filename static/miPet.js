@@ -61,8 +61,6 @@ function addEvent(id)
 	}
 	else // if uploading...
 	{
-
-<<<<<<< HEAD
 		media = mediaUpload;
 	}
 			
@@ -74,26 +72,7 @@ function addEvent(id)
 	event.save(eventObject, {
 		success: function (event, response){
 			eventID = response.pk;
-=======
-        // pretty sure this is redundant/bad code
-        // and could be done in a better way
-        
-        //if using existing image at given url...
-        if (document.getElementById('imageURL').checked)
-        {
-            media = mediaURL;   
-        }
-        else // if uploading...
-        {
-            media = mediaUpload;
-        }
-        //console.log($('#imageURL').checked);
-        
-        		
-        // Create a new model for backbone
-        var event = new Event();
-        var eventID;
->>>>>>> minor css and code spacing
+
 
 			//change this to if there is media, somehow......
 			
