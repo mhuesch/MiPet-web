@@ -29,7 +29,7 @@ var PetView = Backbone.View.extend({
         outputHTML += "<h1 class='timelineTitle'> "+ PetName +" </h1>";
         
         outputHTML += "<span class='petBio'> " + PetBio + " </span>";
-        //outputHTML += "<span class='joinDate'> Joined miPet: " + PetJoinDate + " </span>"
+        //outputHTML += "<span class='birthdate joinDate'> Approx Birthdate: " + PetBirthdate + " </span>"
         $(this.el).html(outputHTML);
         var myEvents = this.model.get('events');
         this.model.myEvents.fetch({
@@ -55,27 +55,32 @@ var EventView = Backbone.View.extend({
         this.myID = this.model.get('id');
     },
 
+    // Renders a single event's html
     render:function () {
-                                     
+        var eventID = this.model.get('pk');                             
         var outputString = "";
         outputString += "<div class='event-listing'>";
         outputString += "<div class='event-listing-title'>";
-        outputString += "<span class='eventTitle'>"+this.model.get('title')+"</span>";
-        //var moment = this.model.get('moment');
-        //outputString += "<span class='timestamp'>"+moment.date+"</span>"; 
+        outputString += "<span class='eventTitle' id='eventTitle-"+eventID+"'>"+this.model.get('title')+"</span>";
+       // var date_time = moment(this.model.get('moment'));
+       // outputString += "<span class='timestamp'>"+date_time.format("MMM Do YYYY")+"</span>";   
         outputString += "</div>";
-
+        
+        outputString += "<span class='editEvent' id='editEvent-"+eventID+"'>";
+        outputString += "<a class='btn btn-mini edit-button'> <i class='icon-pencil'></i> </a>";
+        outputString += "</span>";
             
 
-        outputString += "<span class='eventDesc'>"+this.model.get('description')+"</span>";     
+        outputString += "<span class='eventDesc' id='eventDesc-"+eventID+"'>"+this.model.get('description')+"</span>";     
         
         //outputString += '<span id="media'+this.model.get('pk')+'"></span>';
 
 		// Use Moment.js to display time nicely.
         // Docs about formatting here: http://momentjs.com/docs/#/displaying/format/
         var date_time = moment(this.model.get('moment'));
-        outputString += "<div class='timestamp'>"+date_time.format("MMM Do YYYY, h:mm a")+"</div>";   
+        
         outputString += '<div id="media'+this.model.get('pk')+'"class="event-media"></div>';
+        outputString += "<div class='timestamp'>"+date_time.format("MMM D YYYY, h:mm a")+"</div>";   
         //outputString += "<p>"+this.model.get('pk')+"</p>"; <-- this is how you get the event ID now
         /*
         right now we need the ID for the event to get the media associated with the event.
@@ -196,9 +201,10 @@ var MediaView = Backbone.View.extend({
         }
         else
         {
+            // Just turn the media link into a link w/ URL as its text
             outputString += "<a target='_blank' href='" + mediaURL + "' >"+ mediaURL +" </a>";
-            //outputString += mediaURL;
         }
+
         $(this.el).html(outputString);  
         return this;
     }
