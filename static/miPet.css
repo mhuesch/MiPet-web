@@ -102,6 +102,7 @@ input[type=url]#input-petProfPic { }
 }
 
 
+
 /*
 a id="btn-add-profile"
 
@@ -126,11 +127,13 @@ div id="add-profile"
 /*-------------------------- Profile info/heading -------------------------------*/
 
 #pet-info {
-    height: 200px;
+    height: 150px;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;    
 }
 
 h1.timelineTitle { font-size: 16pt;}
+
+#profile-info-button { display: inline-block; float: right;}
 
 .profilePic {
     height: 140px;

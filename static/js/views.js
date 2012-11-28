@@ -16,20 +16,31 @@ var PetView = Backbone.View.extend({
         this.model = this.options.model;
     },
 
+    //
+    // Renders the top of the page (profile picture, bio)
+    //
     render:function () {
         PetName = this.model.get('name');
         PetBirthdate = this.model.get('birthdate');// change from joined_date
         PetBio = this.model.get('bio');
         PetProfPicURL = this.model.get('prof_pic');
+        petID = this.model.get('id');
+
         var outputHTML = "";
         if (PetProfPicURL == "") // mod by 3 + 1 to not let id # be anything other than v1 v2 v3 (only existing images)
             outputHTML += "<img class='profilePic' src='/static/img/miPetL1v"+ (this.model.get('id')%3+1) +".png' >";
         else
-            outputHTML += "<img class='profilePic' src='"+ PetProfPicURL +"' >";
-        outputHTML += "<h1 class='timelineTitle'> "+ PetName +" </h1>";
+            outputHTML += "<img class='profilePic' id='petProfilePic' src='"+ PetProfPicURL +"' >";
         
-        outputHTML += "<span class='petBio'> " + PetBio + " </span>";
+        outputHTML += "<h1 class='timelineTitle' id='petName'> "+ PetName +" </h1>";
+        outputHTML += "<span class='petBio' id='petBio'> " + PetBio + " </span>";
+
+        outputHTML += "<a class='btn btn-mini btn-info profile-info-button' style='float: left;'";
+        outputHTML += " data-toggle='modal' href='#edit-profileInfo' onclick='openEditProfileInfo("+petID+")'>";
+        outputHTML += "<i class='icon-info-sign icon-white'></i> </a>";
+
         //outputHTML += "<span class='birthdate joinDate'> Approx Birthdate: " + PetBirthdate + " </span>"
+
         $(this.el).html(outputHTML);
         //var myEvents = this.model.get('events');
         this.model.myEvents.fetch({

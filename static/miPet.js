@@ -5,11 +5,15 @@ function deleteEvent(petid)
 	alert('delete event called with petid: '+petid);
 }
 
-function editEvent(petid)
+function editEvent(petid /*, eventid */)
+{
+	alert('edit event called with petid: '+petid/*+ '  and eventid: '+eventid*/);
+}
+
+function editProfileInformation(petid)
 {
 	alert('edit event called with petid: '+petid);
 }
-
 
 
 //------------- methods for creating a new event (with and without media ---------------//

@@ -278,11 +278,11 @@
                             <form id="imageChoice">
                                 <span class="inputLabel"> </span>
                                 <span class="inputField">
-                                    <input type="radio" name="mediaChoose" id="imageUpload"value="upload" onclick="chooseMedia(this.value)" checked=true> Upload </input>
+                                    <input type="radio" name="mediaChoose" id="imageUpload"value="upload" onclick="chooseMedia(this.value)"> Upload </input>
                                 </span>
                                 &nbsp;
                                 <span class="inputField">
-                                    <input type="radio" name="mediaChoose" id="imageURL" value="url" onclick="chooseMedia(this.value)"> From URL </input>
+                                    <input type="radio" name="mediaChoose" id="imageURL" value="url" onclick="chooseMedia(this.value)" checked=true> From URL </input>
                                 </span>
                             </form>
                             
@@ -333,9 +333,122 @@
          -->
         
         
+
+
+
+
+         <!-- ---------- START Profile info modal dialog box ---------- -->
+        <form id="modal-form" accept-charset="UTF-8" data-remote="true"
+            method="post"> <!-- action="/tagging" -->
+            <div id="edit-profileInfo" class="modal hide fade in" style="display:none;">
+                
+                <div class="modal-header">
+                    <a class="close" data-dismiss="modal">×</a>
+                    <h3>Profile Information</h3>
+                    
+                </div> <!-- end modal-header -->
+                
+                <div class="modal-body">
+                    
+                    <!-- --- NAME --- -->
+                    <div id="nameInput" class="inputField">
+                        <span class="inputLabel">
+                            Pet's Name:
+                        </span>
+                        <input type="text" id="prof-input-name" placeholder="Name of Pet" />
+                    </div>
+
+
+                    <!-- --- OWNER --- -->
+                    <div id="ownerInput" class="inputField">
+                        <span class="inputLabel">
+                            Owner:
+                        </span>
+                        <input type="text" id="prof-input-owner" placeholder="Name of Owner" />
+                    </div>
+
+
+                    <!-- --- BIO --- -->
+                    <div id="bioInput" class="inputField">
+                        <span class="inputLabel">
+                            Description:
+                        </span>
+                        <input type="text" id="prof-input-bio" placeholder="Provide a brief bio of your awesome pet!" />
+                    </div>
+
+
+                    <!-- --- BIRTHDATE --- --> <!-- --- DATE (defaults to current) --- -->
+                    <div id="birthdateInput" class="inputField">
+                        <span class="inputLabel">
+                            Approx. Pet Birthdate:
+                        </span>
+                        <input type="date" id="prof-input-birthdate" placeholder="YYYY-MM-DD"/>
+                    </div>
+
+
+                    <!-- --- PROFILE PICTURE --- -->
+
+                    
+                    <!-- --- MEDIA - UPLOAD/URL -->
+                    <div id="mediaInput">
+                        
+                        <div id="mediaInputChoice" style="padding-bottom: 5px;">
+                            
+                            <form id="imageChoice">
+                                <span class="inputLabel"> </span>
+                                <span class="inputField">
+                                    <input type="radio" name="mediaChoose" id="imageUpload"value="upload" onclick="chooseMedia(this.value)"> Upload </input>
+                                </span>
+                                &nbsp;
+                                <span class="inputField">
+                                    <input type="radio" name="mediaChoose" id="imageURL" value="url" onclick="chooseMedia(this.value)" checked=true> From URL </input>
+                                </span>
+                            </form>
+                            
+                        </div> <!-- end mediaInputChoice -->
+                        
+                        
+                        <div id="prof-mediaURLInput" class="inputField">
+                            <span class="inputLabel">
+                                Image URL:
+                            </span>
+                            <input type="url" id="prof-input-media-url" name="media" placeholder="http://...yourimagelink.png" />
+                        </div>
+                        
+                        <div id="prof-mediaUploadInput" class="inputField">
+                            <span class="inputLabel">
+                                Upload image:
+                            </span>
+                            <input type="file" id="prof-input-media-upload" name="media"/>
+                        </div>
+                        
+                    </div> <!-- end mediaInput -->
+                
+                    <br/>
+                    <div class="deletePetProfile">
+                    <a class='btn btn-danger btn-mini' onclick="deleteEvent({{pet_id}})"> <big> x </big> </a> Delete this pet's profile
+                    </div>
+                    
+                </div> <!-- end modal-body -->
+                
+                
+                <div class="modal-footer">
+                    <a class="btn" data-dismiss="modal">Cancel</a> <!-- Close --> <!-- href="#"  -->
+                    <a id="modal-form-submit" class='btn btn-primary' onclick="editProfile({{pet_id}})" data-dismiss="modal">Submit</a> <!-- href="#"  -->
+                    <!-- added data-dismiss to hide after click submit, doesn't clear the fields though-->
+                    
+                </div> <!-- end modal-footer -->
+                
+            </div> <!-- end edit-event modal --> 
+        </form>
+        <!-- ---------- END Profile Info modal dialog box ---------- -->
         
         
-    	<div id="pet-info"></div>
+        
+    	<div id="pet-info">
+
+
+        </div>
         
         
     	<div id="events">
@@ -421,12 +534,24 @@ function openEditEvent(eventID)
   //  edit-input-media-url
   //  edit-input-media-upload*/
 }
+
+
+function openEditProfileInfo(petID)
+{
+    alert('open edit prof info with petid: ' + petID);
+    document.getElementById("prof-input-name").value = document.getElementById('petName').innerHTML; 
+    document.getElementById("prof-input-bio").value = document.getElementById('petBio').innerHTML;
+    document.getElementById("prof-input-media-url").value =  document.getElementById('petProfilePic').src; 
+}
     </script>
     
     <script>
         //$('#input-media-upload').hide();
         $('#mediaURLInput').hide();
-        $('#edit-mediaURLInput').hide();
+
+        // show the urls by default when editing info
+        $('#edit-mediaUploadInput').hide();
+        $('#prof-mediaUploadInput').hide();
          
         function chooseMedia(choice)
         {
@@ -439,6 +564,9 @@ function openEditEvent(eventID)
                 
                 $('#edit-mediaURLInput').show();
                 $('#edit-mediaUploadInput').hide();
+
+                $('#prof-mediaURLInput').show();
+                $('#prof-mediaUploadInput').hide();
             }
             else // choice == "upload"
             {
@@ -447,6 +575,9 @@ function openEditEvent(eventID)
                 
                 $('#edit-mediaUploadInput').show();
                 $('#edit-mediaURLInput').hide();
+
+                $('#prof-mediaUploadInput').show();
+                $('#prof-mediaURLInput').hide();
             }
          } 
 	</script>
