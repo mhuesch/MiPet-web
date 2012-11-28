@@ -67,7 +67,7 @@ var EventView = Backbone.View.extend({
         
         outputString += "<span class='editEvent' id='editEvent-"+eventID+"'>";
         outputString += "<a class='btn btn-mini edit-button' id='btn-edit-event'";
-        outputString += " data-toggle='modal' href='#edit-event'>";
+        outputString += " data-toggle='modal' href='#edit-event' onclick='openEditEvent("+eventID+")'>";
         outputString += "<i class='icon-pencil'></i> </a>";
         outputString += "</span>";
 
@@ -80,12 +80,12 @@ var EventView = Backbone.View.extend({
         
         //outputString += '<span id="media'+this.model.get('pk')+'"></span>';
 
+        outputString += '<div id="media'+this.model.get('pk')+'"class="event-media"></div>';
+
 		// Use Moment.js to display time nicely.
         // Docs about formatting here: http://momentjs.com/docs/#/displaying/format/
         var date_time = moment(this.model.get('moment'));
-        
-        outputString += '<div id="media'+this.model.get('pk')+'"class="event-media"></div>';
-        outputString += "<div class='timestamp'>"+date_time.format("MMM D YYYY, h:mm a")+"</div>";   
+        outputString += "<div class='timestamp' id='eventDateTime-"+eventID+"'>"+date_time.format("MMM D YYYY, h:mm a")+"</div>";   
         //outputString += "<p>"+this.model.get('pk')+"</p>"; <-- this is how you get the event ID now
         /*
         right now we need the ID for the event to get the media associated with the event.

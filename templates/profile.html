@@ -112,7 +112,7 @@
                         <span class="inputLabel">
                             Date:
                         </span>
-                        <input type="date" id="input-date"/>
+                        <input type="date" id="input-date" placeholder="YYYY-MM-DD"/>
                     </div>
                     
 
@@ -249,7 +249,7 @@
                         <span class="inputLabel">
                             Event Title:
                         </span>
-                        <input type="text" id="input-title" placeholder="Title of Event" />
+                        <input type="text" id="edit-input-title" placeholder="Title of Event" />
                     </div>
                     
                     
@@ -258,7 +258,7 @@
                         <span class="inputLabel">
                             Description:
                         </span>
-                        <input type="text" id="input-text" name="text" placeholder="Describe this epic event in your pet's life!" />
+                        <input type="text" id="edit-input-text" name="text" placeholder="Describe this epic event in your pet's life!" />
                     </div>
                     
                     <!-- --- DATE (defaults to current) --- -->
@@ -266,7 +266,7 @@
                         <span class="inputLabel">
                             Date:
                         </span>
-                        <input type="date" id="input-date"/>
+                        <input type="date" id="edit-input-date" placeholder="YYYY-MM-DD"/>
                     </div>
                     
                     
@@ -293,14 +293,14 @@
                             <span class="inputLabel">
                                 Image URL:
                             </span>
-                            <input type="url" id="input-media-url" name="media" placeholder="http://...yourimagelink.png" />
+                            <input type="url" id="edit-input-media-url" name="media" placeholder="http://...yourimagelink.png" />
                         </div>
                         
                         <div id="edit-mediaUploadInput" class="inputField">
                             <span class="inputLabel">
                                 Upload image:
                             </span>
-                            <input type="file" id="input-media-upload" name="media"/>
+                            <input type="file" id="edit-input-media-upload" name="media"/>
                         </div>
                         
                     </div> <!-- end mediaInput -->
@@ -391,6 +391,37 @@
         });
     </script>
     
+    <script>
+function openEditEvent(eventID)
+{
+    //alert('open edit event');
+    //document.getElementById
+    var title = "eventTitle-"+eventID;
+    var desc = "eventDesc-"+eventID;
+    var date = "eventDateTime-"+eventID;
+
+    var outputString = ""; 
+//    outputString += "edit-input-title: " + document.getElementById("edit-input-title").value + "\n";
+//    outputString += "edit-input-text: " + document.getElementById("edit-input-text").value+ "\n";
+//    outputString += "edit-input-date: " + document.getElementById("edit-input-date").value + "\n";
+
+    outputString += "title: " + title + "\n";
+    outputString += "desc: " + desc + "\n";
+    outputString += "date: " + date + "\n";
+
+    //outputString += "eventTitle: " + document.getElementById(title).value + "\n";
+    //outputString += "eventDesc: " + document.getElementById(desc).value + "\n";
+    //outputString += "eventDateTime: " + document.getElementById(moment).value + "\n";
+
+   // alert(outputString);
+
+    document.getElementById("edit-input-title").value = document.getElementById(title).innerHTML; 
+    document.getElementById("edit-input-text").value = document.getElementById(desc).innerHTML;
+    document.getElementById("edit-input-date").value =  document.getElementById(date).value; 
+  //  edit-input-media-url
+  //  edit-input-media-upload*/
+}
+    </script>
     
     <script>
         //$('#input-media-upload').hide();

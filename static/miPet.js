@@ -1,5 +1,7 @@
 function deleteEvent(petid)
 {
+	// can we add an "are you sure?" box...?
+	// does it delete the media as well, hold a link to it, what?
 	alert('delete event called with petid: '+petid);
 }
 
@@ -7,6 +9,8 @@ function editEvent(petid)
 {
 	alert('edit event called with petid: '+petid);
 }
+
+
 
 //------------- methods for creating a new event (with and without media ---------------//
 
