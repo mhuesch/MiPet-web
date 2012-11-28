@@ -31,7 +31,7 @@ var PetView = Backbone.View.extend({
         outputHTML += "<span class='petBio'> " + PetBio + " </span>";
         //outputHTML += "<span class='birthdate joinDate'> Approx Birthdate: " + PetBirthdate + " </span>"
         $(this.el).html(outputHTML);
-        var myEvents = this.model.get('events');
+        //var myEvents = this.model.get('events');
         this.model.myEvents.fetch({
             success:function (data) {
                 if (data.length == 0)
@@ -100,16 +100,17 @@ var EventView = Backbone.View.extend({
         
         //note: this probably shouldn't happen if there is no media (i.e. myMedia is blank)
         //		will fix later if there's time
-        
-        this.model.myMedia.url = '/api/v1/event/' + this.model.get('pk') + '/media/';
-        this.model.myMedia.fetch({
-            success:function (data) {
-                if (data.length == 0)
-                	;
-                    //no data $('.no-reports').show();
-                var mediaListView = new MediaListView({model: data, model_id:eventID});
-            }
-        });
+        if(myMedia.length!=0){
+			this.model.myMedia.url = '/api/v1/event/' + this.model.get('pk') + '/media/';
+			this.model.myMedia.fetch({
+				success:function (data) {
+					if (data.length == 0)
+						;
+						//no data $('.no-reports').show();
+					var mediaListView = new MediaListView({model: data, model_id:eventID});
+				}
+			});
+        }
         
 
         return this;
