@@ -544,7 +544,10 @@
 
             document.getElementById("edit-input-title").value = document.getElementById(title).innerHTML; 
             document.getElementById("edit-input-text").value = document.getElementById(desc).innerHTML;
-            document.getElementById("edit-input-date").value =  document.getElementById(date).value; 
+
+            var date_field = document.getElementById(date).innerHTML;
+            document.getElementById("edit-input-date").value = moment(date_field).format("YYYY-MM-DD");
+
         	document.getElementById("edit-event-id").value =  eventID;
           //  edit-input-media-url
           //  edit-input-media-upload*/

@@ -25,8 +25,10 @@ function editEvent()
 function editEventSecond(event){
 	var newTitle = document.getElementById("edit-input-title").value;
 	var newDesc = document.getElementById("edit-input-text").value;
+    var userDate = document.getElementById("edit-input-date").value;
+    var newDate = moment(userDate).format("YYYY-MM-DDTHH:mm:ssZ");
 	
-	event.set({'title':newTitle, 'description':newDesc});
+	event.set({'title':newTitle, 'description':newDesc, 'moment':newDate});
 	
 	
 	event.save(event,{
