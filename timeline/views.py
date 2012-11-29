@@ -71,14 +71,20 @@ def index(request):
     
     t = loader.get_template('index.html')
     c = Context({
-                'pets': pet_profiles,
-                })
+            'pets': pet_profiles,
+        })
+    return HttpResponse(t.render(c))
+
+def user(request,id):
+    t = loader.get_template('user.html')
+    c = Context({
+            'user_id': id,
+        })
     return HttpResponse(t.render(c))
 
 def profile(request, id):
     t = loader.get_template('profile.html')
     c = Context({
-                #
-                'pet_id': id,
-                })
+            'pet_id': id,
+        })
     return HttpResponse(t.render(c))

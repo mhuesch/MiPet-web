@@ -1,4 +1,35 @@
 
+// -------------------- User View -------------------//
+var UserView = Backbone.View.extend({
+    //el:$('#user-container'),
+
+    initialize:function () {
+        this.render();
+        //this.model = this.options.model;
+        //_.bindAll(this, 'render');
+    },
+
+    render:function () {
+        //UserName = this.model.get('name');
+        //UserBio = this.model.get('bio');
+        //UserProfPicURL = this.model.get('prof_pic');
+
+        var variables = this.model.attributes;
+        console.log(variables);
+
+        // Compile the template using underscore
+        var template = _.template( $("#user_template").html(), variables );
+        // Load the compiled HTML into the Backbone "el"
+        //$(this.el).html( template );
+
+        var outputHTML = "<strong>hi</strong>";
+        $(this.el).html(outputHTML);
+    }
+});
+
+
+
+
 // Global variables - naughty!
 // But don't know how to have accessor functions...
 var PetName = ""; // This pet's name

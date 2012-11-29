@@ -5,11 +5,11 @@ from rest_framework import serializers
 class UserProfileSerializer(serializers.HyperlinkedModelSerializer):
     pk = serializers.IntegerField(source='pk', read_only=True)
     pets = serializers.ManyPrimaryKeyRelatedField(source='pets')
-    user = serializers.RelatedField(source='user')
+    name = serializers.RelatedField(source='user')
 
     class Meta:
         model = UserProfile
-        fields = ('pk', 'user', 'pets', 'bio', 'prof_pic')
+        fields = ('pk', 'name', 'pets', 'bio', 'prof_pic')
 
 
 class PetSerializer(serializers.HyperlinkedModelSerializer):

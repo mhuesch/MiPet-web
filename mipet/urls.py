@@ -9,6 +9,7 @@ urlpatterns = patterns('',
     
     url(r'^$', 'timeline.views.index', name='index'),
     url(r'^profile/(?P<id>\d+)/$', 'timeline.views.profile', name='profile'),
+    url(r'^user/(?P<id>\d+)/$', 'timeline.views.user', name='user'),
 
     # Django REST framework
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
