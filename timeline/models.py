@@ -28,9 +28,13 @@ class Event(models.Model):
     moment = models.DateTimeField(default=datetime.now, blank=True)
     title = models.CharField(max_length=50)         # required
     description = models.CharField(max_length=700, blank=True)  # --> can be null!
+    milestone = models.ForeignKey(Milestone, blank=True, null=True)
 
     def __unicode__(self):
         return self.title
+
+class Milestone(models.Model):
+    name = models.CharField(max_length=50)
 
 class Tag(models.Model):
     name = models.CharField(max_length=50)
