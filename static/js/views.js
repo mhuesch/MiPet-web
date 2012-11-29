@@ -1,7 +1,6 @@
 
 // -------------------- User View -------------------//
 var UserView = Backbone.View.extend({
-    //el:$('#user-container'),
 
     initialize:function () {
         this.render();
@@ -20,10 +19,7 @@ var UserView = Backbone.View.extend({
         // Compile the template using underscore
         var template = _.template( $("#user_template").html(), variables );
         // Load the compiled HTML into the Backbone "el"
-        //$(this.el).html( template );
-
-        var outputHTML = "<strong>hi</strong>";
-        $(this.el).html(outputHTML);
+        $(this.el).html( template );
     }
 });
 
