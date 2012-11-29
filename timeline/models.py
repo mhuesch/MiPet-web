@@ -36,6 +36,9 @@ class Event(models.Model):
 class Milestone(models.Model):
     name = models.CharField(max_length=50)
 
+    def __unicode__(self):
+        return self.name
+
 class Tag(models.Model):
     name = models.CharField(max_length=50)
     events = models.ManyToManyField(Event, related_name='tags')
