@@ -51,6 +51,7 @@ function addEvent(id)
 	eventObject.description = document.getElementById("input-text").value;
 	// Media is an array because there can be multiple media objects with an event
 	eventObject.media = [];
+	eventObject.milestone = 4;
 	var moment = document.getElementById("input-date").value;
 	if(moment != null && moment != ""){
 		eventObject.moment = moment;
