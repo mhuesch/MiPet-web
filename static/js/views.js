@@ -117,7 +117,8 @@ var EventView = Backbone.View.extend({
         
 
         outputString += "<div class='event-body'>";
-        outputString += "<span class='eventDesc' id='eventDesc-"+eventID+"'>"+this.model.get('description')+"</span>";     
+        outputString += "<span class='eventDesc' id='eventDesc-"+eventID+"'>"+this.model.get('description')+"</span>"; 
+        outputString += "milestone???: " + this.model.get('milestone') + " was right there";    
         
         //outputString += '<span id="media'+this.model.get('pk')+'"></span>';
 
