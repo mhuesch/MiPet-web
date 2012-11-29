@@ -1,4 +1,4 @@
-from timeline.models import UserProfile, Pet, Event, Media
+from timeline.models import UserProfile, Pet, Event, Media, Milestone
 from rest_framework import serializers
 
 
@@ -25,7 +25,7 @@ class EventSerializer(serializers.HyperlinkedModelSerializer):
     pk = serializers.IntegerField(source='pk', read_only=True)
     pets = serializers.ManyPrimaryKeyRelatedField(source='pets')
     media = serializers.ManyPrimaryKeyRelatedField(source='media')
-    milestone = serializers.RelatedField(source='milestone')
+    milestone = serializers.PrimaryKeyRelatedField(source='milestone')
     
     class Meta:
         model = Event
@@ -39,6 +39,12 @@ class MediaSerializer(serializers.HyperlinkedModelSerializer):
         model = Media
         fields = ('pk', 'event', 'media_url')
 
+class MilestoneSerializer(serializers.HyperlinkedModelSerializer):
+    pk = serializers.IntegerField(source='pk', read_only=True)
+
+    class Meta:
+        model = Milestone
+        fields = ('pk', 'name')
 
 
 

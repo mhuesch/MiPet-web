@@ -11,6 +11,9 @@ urlpatterns = patterns('',
     url(r'^media/(?P<pk>[0-9]+)/?$', views.MediaDetail.as_view()),
     url(r'^user/$', views.UserProfileList.as_view()),
     url(r'^user/(?P<pk>[0-9]+)/?$', views.UserProfileDetail.as_view()),
+    url(r'^milestone/$', views.MilestoneList.as_view()),
+    url(r'^milestone/(?P<pk>[0-9]+)/?$', views.MilestoneDetail.as_view()),
+
 
     # Filtered views.
     url(r'^pet/(?P<pk>[0-9]+)/events/$', views.pet_event_list),

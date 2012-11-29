@@ -1,5 +1,5 @@
-from timeline.models import UserProfile, Pet, Event, Media
-from timeline.serializers import UserProfileSerializer, PetSerializer, EventSerializer, MediaSerializer
+from timeline.models import UserProfile, Pet, Event, Media, Milestone
+from timeline.serializers import UserProfileSerializer, PetSerializer, EventSerializer, MediaSerializer, MilestoneSerializer
 from django.template import Context, loader
 from django.http import HttpResponse
 from rest_framework import generics
@@ -39,6 +39,14 @@ class UserProfileList(generics.ListAPIView):
 class UserProfileDetail(generics.RetrieveAPIView):
     model = UserProfile
     serializer_class = UserProfileSerializer
+
+class MilestoneList(generics.ListCreateAPIView):
+    model = Milestone
+    serializer_class = MilestoneSerializer
+
+class MilestoneDetail(generics.RetrieveUpdateDestroyAPIView):
+    model = Milestone
+    serializer_class = MilestoneSerializer
 
 # API view for the pets of a user.
 @api_view(['GET'])
