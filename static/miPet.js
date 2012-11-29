@@ -5,9 +5,35 @@
 	alert('delete event called with petid: '+petid);
 }*/
 
-function editEvent(petid /*, eventid */)
+function editEvent()
 {
-	alert('edit event called with petid: '+petid/*+ '  and eventid: '+eventid*/);
+	var eventID = document.getElementById("edit-event-id").value;
+	//alert('edit event called for event with ID: '+eventID/*+ '  and eventid: '+eventid*/);
+	
+	
+	
+	
+	var event = new Event({'pk':eventID}); /*({'title':newTitle, 'description':newDesc});*/
+	event = event.fetch({
+		success: function(model, response) {
+			var temp = new Event(response);
+			editEventSecond(temp);
+		}
+	});
+	
+}
+function editEventSecond(event){
+	var newTitle = document.getElementById("edit-input-title").value;
+	var newDesc = document.getElementById("edit-input-text").value;
+	
+	event.set({'title':newTitle, 'description':newDesc});
+	
+	
+	event.save(event,{
+		success: function(model) {
+			document.location.reload();
+		}
+	});
 }
 
 function editProfileInformation(petid)
