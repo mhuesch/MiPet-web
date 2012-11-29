@@ -73,6 +73,7 @@ var PetView = Backbone.View.extend({
 
         $(this.el).html(outputHTML);
         //var myEvents = this.model.get('events');
+        /*
         this.model.myEvents.fetch({
             success:function (data) {
                 if (data.length == 0)
@@ -80,7 +81,7 @@ var PetView = Backbone.View.extend({
                     //no data $('.no-reports').show();
                 var eventListView = new EventListView({model: data});
             }
-        });
+        });*/
         //var eventListView = new EventListView({events: myEvents});
         
     }
@@ -93,6 +94,7 @@ var EventView = Backbone.View.extend({
 
     initialize:function () {
         _.bindAll(this, 'render');
+        this.bind("reset", this.updateView);
         this.myID = this.model.get('id');
     },
 
@@ -153,7 +155,7 @@ var EventView = Backbone.View.extend({
 				}
 			});
         }
-        
+
 
         return this;
     }
@@ -165,7 +167,8 @@ var EventListView = Backbone.View.extend({
     el:$('#events'),
 
     initialize:function () {
-        _.bindAll(this, 'render', 'appendEvent');
+        _.bindAll(this, 'render', 'appendEvent', 'remove');
+        this.eventViews = new Array();
         this.render();
     },
 
@@ -201,8 +204,15 @@ var EventListView = Backbone.View.extend({
         });
         */
         var eventView = new EventView({model: item});
+        this.eventViews.push({ "ID":item.get('pk'), "View":eventView});
         $('#eventlist').append(eventView.render().el);
-    }
+    },
+    /*
+    remove:function()
+    {
+    	var view = $.grep(this.eventViews, function(e){ return e.ID == options.index; })[0].View;
+    	view.reset();
+    }*/
 });
 
 /* reference:
