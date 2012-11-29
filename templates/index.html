@@ -123,11 +123,13 @@
         </div> <!-- end add-event modal -->
     </form>
     
+    <!--
     <p>
-    <a id="btn-add-profile" data-toggle="modal" href="#add-profile" class="btn btn-primary"> <!--style="margin: auto auto;"-->
+    <a id="btn-add-profile" data-toggle="modal" href="#add-profile" class="btn btn-primary"> <!--style="margin: auto auto;"--
         <big>+</big> Add a miPet profile
     </a>
     </p>
+        -->
     <!-- ----- END Add Event modal dialog box ----- -->
 
     
@@ -137,28 +139,27 @@
     
     <!-- ----- Pet profiles list ----- -->
     
-    {% for pet in pets %}
+    {% for user in users %}
     
     
     <!--profile pet.joined_date Joined 1/1/11.... but not really join, more like started timeline? From 1/1/11? -->
     <div class="petProfile" style="display: inline-block; float: left; padding: 30px; ">
-    <a href='{% url profile pet.id %}'>
+    <a href='{% url user user.id %}'>
     
     <img class='profilePic'
-        {% if pet.prof_pic %}
-            src="{{ pet.prof_pic }}">
+        {% if user.prof_pic %}
+            src="{{ user.prof_pic }}">
         {% else %}
-			{% if pet.id > 3 %}
-				src='/static/img/miPetL1v{{pet.id|modulo:3|add:"1"}}.png' >
+			{% if user.id > 3 %}
+				src='/static/img/miPetL1v{{user.id|modulo:3|add:"1"}}.png' >
 			{% else %}
-				src='/static/img/miPetL1v{{pet.id}}.png' >
+				src='/static/img/miPetL1v{{user.id}}.png' >
 			{% endif %}
-        <!--class="img-circle"-->
         {% endif %}
         
     
     <br/>
-        Link to the profile of {{ pet.name }}
+        Link to the profile of {{ user.user }}
     </a>
 
         </div>

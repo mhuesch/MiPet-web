@@ -13,16 +13,19 @@ var UserView = Backbone.View.extend({
         //UserBio = this.model.get('bio');
         //UserProfPicURL = this.model.get('prof_pic');
 
+        // Get user's attributes
         var variables = this.model.attributes;
-        console.log(variables);
 
         // Compile the template using underscore
         var template = _.template( $("#user_template").html(), variables );
+
         // Load the compiled HTML into the Backbone "el"
         $(this.el).html( template );
     }
 });
 
+
+// 
 
 
 

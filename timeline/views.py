@@ -67,18 +67,21 @@ def event_media_list(request, pk):
 
 
 def index(request):
-    pet_profiles = Pet.objects.all()
+    user_profiles = UserProfile.objects.all()
     
     t = loader.get_template('index.html')
     c = Context({
-            'pets': pet_profiles,
+            'users': user_profiles,
         })
     return HttpResponse(t.render(c))
 
 def user(request,id):
+    user_pets = Pet.objects.filter(owner=id).order_by('id')
+
     t = loader.get_template('user.html')
     c = Context({
             'user_id': id,
+            'pets': user_pets,
         })
     return HttpResponse(t.render(c))
 

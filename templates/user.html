@@ -155,30 +155,45 @@
         </form>
 
         <p>
-        <a id="btn-add-profile" data-toggle="modal" href="#add-profile" class="btn btn-primary"> <!--style="margin: auto auto;"-->
+        <a id="btn-add-profile" data-toggle="modal" href="#add-profile" class="btn btn-primary" style="float: right;">
             <big>+</big> Add a miPet profile
         </a>
         </p>
         
         
+        <div id="user_container"></div>
+
+        <!-- ----- Pet profiles list ----- -->
+        {% load timeline_tags %}
+        {% for pet in pets %}
         
+        <!--profile pet.joined_date Joined 1/1/11.... but not really join, more like started timeline? From 1/1/11? -->
+        <div class="petProfile" style="display: inline-block; float: left; padding: 30px; ">
+        <a href='{% url profile pet.id %}'>
         
-    	<div id="pet-info"></div>
+            <img class='profilePic'
+                {% if pet.prof_pic %}
+                    src="{{ pet.prof_pic }}">
+                {% else %}
+                    {% if pet.id > 3 %}
+                        src='/static/img/miPetL1v{{pet.id|modulo:3|add:"1"}}.png' >
+                    {% else %}
+                        src='/static/img/miPetL1v{{pet.id}}.png' >
+                    {% endif %}
+                <!--class="img-circle"-->
+                {% endif %}
+            <br/>
+                Link to the profile of {{ pet.name }}
+        </a>
+        </div>
         
-        
-    	<div id="events">
-        <!-- load ?? 
-         for event in eventList
-         create the html for hte listing 
-         create the html for the modal edit event box with values filled in
-         -->
+        {% endfor %}
+
         
         </div>    
     </div> <!-- end container -->
 
 
-
-    <div id="user_container"></div>
     
     
     <!-- Javascript
@@ -204,7 +219,7 @@
             <span><%= name %><span>
             <span><%= bio %><span>
             <span><%= prof_pic %><span>
-            <strong>Hello</strong>
+            <span><%= pets %><span>
         </div>
     </script>
     
