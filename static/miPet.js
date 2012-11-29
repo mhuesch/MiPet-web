@@ -194,7 +194,7 @@ function addMedia(url, eventID)
  * Params:  none
  * Returns: ...
  */
-function addPetProfile()
+function addPetProfile(owner_id)
 {
 	/*
     var inputs = "";
@@ -208,7 +208,7 @@ function addPetProfile()
     
 	//changed creating object with default fields to just creating an object. 
 	//makes validation easier
-	var petProfileObject = new Object();
+	var petProfileObject = new Object(owner_id);
 	
 	//adds fields to the object, with validation for null values
     petProfileObject.name = document.getElementById("input-petName").value; 
@@ -218,6 +218,8 @@ function addPetProfile()
     }
     petProfileObject.bio = document.getElementById("input-petBio").value;
     petProfileObject.events = [];
+    //set owner to default for now
+    petProfileObject.owner = owner_id;
     
 	var profPicURL = document.getElementById("input-media-url").value;
 	var profPicUpload = document.getElementById("input-media-upload").files[0];
@@ -282,9 +284,6 @@ function createPet(url, petProfileObject)
 {
 	//set profile pic as the url that was just created
 	petProfileObject.prof_pic = url;
-
-	//set owner to default for now
-	petProfileObject.owner = 8;
     
     // ----------------------------------
     var pet = new Pet();

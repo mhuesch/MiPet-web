@@ -145,7 +145,7 @@
             
             <div class="modal-footer">
                 <a class="btn" data-dismiss="modal">Cancel</a> <!-- Close --> <!-- href="#"  -->
-                <a id="modal-form-submit" class="btn btn-primary" onclick="addPetProfile()" data-dismiss="modal">Submit</a> <!-- href="#"  -->
+                <a id="modal-form-submit" class="btn btn-primary" onclick="addPetProfile({{ user_id }})" data-dismiss="modal">Submit</a> <!-- href="#"  -->
                 <!-- added data-dismiss to hide after click submit, doesn't clear the fields though-->
                 
             </div> <!-- end modal-footer -->
@@ -156,7 +156,7 @@
 
         <p>
         <a id="btn-add-profile" data-toggle="modal" href="#add-profile" class="btn btn-primary" style="float: right;">
-            <big>+</big> Add a miPet profile
+            <big>+</big> Add a Pet
         </a>
         </p>
         
