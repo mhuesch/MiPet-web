@@ -1,9 +1,10 @@
 function openAddEvent()
 {
+	alert('open add event called');
 	var outputString = ""; 
 	outputString += "<div id='milestoneInput' class='inputField'>";
     outputString += "<span class='inputLabel'> Milestone: </span>";
-    outputString += "<select name='milestones' id='input-milestone'>"                       
+    outputString += "<select name='milestones' id='input-milestone'>";                       
    
 
 	/*<option selected="selected"> none </option>
@@ -11,10 +12,6 @@ function openAddEvent()
        <option>  </option>
     */
     outputString += "</select>";                    
-
-                            
-                        
-
 
 }
 

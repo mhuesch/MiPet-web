@@ -63,11 +63,14 @@ var PetView = Backbone.View.extend({
             outputHTML += "<img class='profilePic' id='petProfilePic' src='"+ PetProfPicURL +"' >";
         
         outputHTML += "<h1 class='timelineTitle' id='petName'> "+ PetName +" </h1>";
-        outputHTML += "<span class='petBio' id='petBio'> " + PetBio + " </span>";
 
-        outputHTML += "<a class='btn btn-mini btn-info profile-info-button' style='float: left;'";
+        outputHTML += "<a class='btn btn-mini btn-info profile-info-button' style='float: left; margin-right: 7px; display: inline;'";
         outputHTML += " data-toggle='modal' href='#edit-profileInfo' onclick='openEditProfileInfo("+petID+")'>";
         outputHTML += "<i class='icon-info-sign icon-white'></i> </a>";
+
+        outputHTML += "<span class='petBio' id='petBio'> " + PetBio + " </span>";
+
+        
 
         //outputHTML += "<span class='birthdate joinDate'> Approx Birthdate: " + PetBirthdate + " </span>"
 
