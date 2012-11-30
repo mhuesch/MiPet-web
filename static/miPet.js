@@ -21,6 +21,7 @@ function loadMilestoneOptions()
 
 function openEditEvent(eventID)
 {   
+	var tempEvent = petEvents.get(eventID);
 	var title = "eventTitle-"+eventID;
 	var desc = "eventDesc-"+eventID;
 	var date = "eventDateTime-"+eventID;
@@ -45,7 +46,7 @@ function openEditEvent(eventID)
 
 	var date_field = document.getElementById(date).innerHTML;
 	document.getElementById("edit-input-date").value = moment(date_field).format("YYYY-MM-DD");
-
+	$('#input-milestone-edit').val(tempEvent.get('milestone'));
 	document.getElementById("edit-event-id").value =  eventID;
   //  edit-input-media-url
   //  edit-input-media-upload*/
