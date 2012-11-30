@@ -79,17 +79,11 @@ function editEvent()
 {
 	var eventID = document.getElementById("edit-event-id").value;
 	//alert('edit event called for event with ID: '+eventID/*+ '  and eventid: '+eventid*/);
-	var event = new Event({'pk':eventID}); /*({'title':newTitle, 'description':newDesc});*/
-	event = event.fetch({
-		success: function(model, response) {
-			var temp = new Event(response);
-			editEventSecond(temp);
-		}
-	});
 	
-}
-//helper function for editing events so that ascynchronous events happen in order 
-function editEventSecond(event){
+	//collection of events is stored in the window, so get this event from there
+	var event = window.petEvents.get(eventID);
+	
+	
 	var newTitle = document.getElementById("edit-input-title").value;
 	var newDesc = document.getElementById("edit-input-text").value;
 
