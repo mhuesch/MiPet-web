@@ -9,10 +9,6 @@ function editEvent()
 {
 	var eventID = document.getElementById("edit-event-id").value;
 	//alert('edit event called for event with ID: '+eventID/*+ '  and eventid: '+eventid*/);
-	
-	
-	
-	
 	var event = new Event({'pk':eventID}); /*({'title':newTitle, 'description':newDesc});*/
 	event = event.fetch({
 		success: function(model, response) {
@@ -22,6 +18,7 @@ function editEvent()
 	});
 	
 }
+//helper function for editing events so that ascynchronous events happen in order 
 function editEventSecond(event){
 	var newTitle = document.getElementById("edit-input-title").value;
 	var newDesc = document.getElementById("edit-input-text").value;
@@ -38,11 +35,27 @@ function editEventSecond(event){
 	});
 }
 
-function editProfileInformation(petid)
+function editProfile(petid)
 {
-	alert('edit event called with petid: '+petid);
+	//pet is a global variable in this window, so we don't need to get it again.
+	pet = window.pet;
+	//get the new name/bio/etc 
+	var newName = document.getElementById("prof-input-name").value; 
+    var newBio = document.getElementById("prof-input-bio").value;
+    
+    //if URL button is checked, otherwise need to upload. 
+	var newPic = document.getElementById("prof-input-media-url").value;
+	
+	
+	pet.set({'name':newName, 'bio':newBio, 'prof_pic':newPic});
+	
+	
+	pet.save(pet,{
+		success: function(model) {
+			document.location.reload();
+		}
+	});
 }
-
 
 //------------- methods for creating a new event (with and without media ---------------//
 

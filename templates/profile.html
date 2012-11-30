@@ -381,7 +381,13 @@
                     </div>
 
 
+<<<<<<< HEAD
                     <!-- --- OWNER --- --
+=======
+                    <!-- --- OWNER --- --> 
+					<!-- do we need to update this? It seems like this one should be more 
+							of a private field than one that the user can edit				-->
+>>>>>>> Basic profile editing: Name, Bio, Picture (from URL only to start)
                     <div id="ownerInput" class="inputField">
                         <span class="inputLabel">
                             Owner:
@@ -448,10 +454,14 @@
                 
                 <!--
                     <br/>
-                    <div class="deletePetProfile">
+                    <!--<div class="deletePetProfile">
                     <a class='btn btn-danger btn-mini' onclick="deleteEvent({{pet_id}})"> <big> x </big> </a> Delete this pet's profile
+<<<<<<< HEAD
                     </div>
                 -->
+=======
+                    </div>-->
+>>>>>>> Basic profile editing: Name, Bio, Picture (from URL only to start)
                     
                 </div> <!-- end modal-body -->
                 
@@ -459,7 +469,7 @@
                 <div class="modal-footer">
                     <!--a class='btn btn-danger' onclick="deleteEvent()" style="float: left;"> Delete event </a-->
                     <a class="btn" data-dismiss="modal">Cancel</a> <!-- Close --> <!-- href="#"  -->
-                    <a id="modal-form-submit" class='btn btn-primary' onclick="editProfile()" data-dismiss="modal">Submit</a> <!-- href="#"  -->
+                    <a id="modal-form-submit" class='btn btn-primary' onclick="editProfile({{pet_id}})" data-dismiss="modal">Submit</a> <!-- href="#"  -->
                     <!-- added data-dismiss to hide after click submit, doesn't clear the fields though-->
                     
                 </div> <!-- end modal-footer -->
@@ -576,10 +586,15 @@
 
         function openEditProfileInfo(petID)
         {
+<<<<<<< HEAD
             // alert('open edit prof info with petid: ' + petID);
+=======
+            //alert('open edit prof info with petid: ' + petID);
+>>>>>>> Basic profile editing: Name, Bio, Picture (from URL only to start)
             document.getElementById("prof-input-name").value = document.getElementById('petName').innerHTML; 
             document.getElementById("prof-input-bio").value = document.getElementById('petBio').innerHTML;
-            document.getElementById("prof-input-media-url").value =  document.getElementById('petProfilePic').src; 
+			if(document.getElementById('petProfilePic'))
+				document.getElementById("prof-input-media-url").value =  document.getElementById('petProfilePic').src; 
         }
     </script>
     
