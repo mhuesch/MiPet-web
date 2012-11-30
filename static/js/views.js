@@ -101,7 +101,8 @@ var EventView = Backbone.View.extend({
     // Renders a single event's html
     render:function () {
         var eventID = this.model.get('pk');    
-        var milestone = this.model.get('milestone');                           
+        var milestone = this.model.get('milestone');
+        var milestone_name = this.model.get('milestone_name');
         var outputString = "";
         outputString += "<div class='event-listing'>";
         outputString += "<div class='event-listing-title'>";
@@ -128,17 +129,10 @@ var EventView = Backbone.View.extend({
 
         if(/*milestone != 4 &&*/ milestone != null && milestone != 'none')
         {
-            outputString += "<span class='milestone'> Milestone: " + milestone + "</span> <br/>";
+            outputString += "<span class='milestone'> Milestone: " + milestone_name + "</span> <br/>";
         } 
 
         outputString += "<span class='eventDesc' id='eventDesc-"+eventID+"'>"+this.model.get('description')+"</span>"; 
-       
-       // outputString += "<br/>";
-       // outputString += "milestone: " + this.model.get('milestone');   
-
-       
-        
-
 
         outputString += '<div id="media'+this.model.get('pk')+'"class="event-media"></div>';
 

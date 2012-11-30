@@ -26,10 +26,11 @@ class EventSerializer(serializers.HyperlinkedModelSerializer):
     pets = serializers.ManyPrimaryKeyRelatedField(source='pets')
     media = serializers.ManyPrimaryKeyRelatedField(source='media')
     milestone = serializers.PrimaryKeyRelatedField(source='milestone')
+    milestone_name = serializers.RelatedField(source='milestone', read_only=True)
     
     class Meta:
         model = Event
-        fields = ('pk', 'pets', 'moment', 'title', 'description', 'media', 'milestone')
+        fields = ('pk', 'pets', 'moment', 'title', 'description', 'media', 'milestone', 'milestone_name')
 
 class MediaSerializer(serializers.HyperlinkedModelSerializer):
     pk = serializers.IntegerField(source='pk', read_only=True)

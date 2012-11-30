@@ -49,12 +49,12 @@ var EventCollection = Backbone.Collection.extend({
 
 // Milestone model & collection
 var Milestone = Backbone.Model.extend({
-    urlRoot:"/api/v1/milestone"
+    urlRoot:"/api/v1/milestone/"
 });
 
 var MilestoneCollection = Backbone.Collection.extend({
     model:Milestone,
-    url:"/api/v1/milestone"
+    url:"/api/v1/milestone/"
 })
 
 
