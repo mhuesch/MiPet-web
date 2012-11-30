@@ -1,18 +1,22 @@
-function openAddEvent()
+function loadMilestoneOptions()
 {
-	alert('open add event called');
-	var outputString = ""; 
-	outputString += "<div id='milestoneInput' class='inputField'>";
-    outputString += "<span class='inputLabel'> Milestone: </span>";
-    outputString += "<select name='milestones' id='input-milestone'>";                       
-   
-
-	/*<option selected="selected"> none </option>
-      <option>  </option>
-       <option>  </option>
-    */
-    outputString += "</select>";                    
-
+    var all_milestones = new MilestoneCollection();
+    all_milestones.fetch({
+        success:function () {
+            all_milestones.models.forEach(function(element, index, array) {
+                var milestone_id = element.get('pk');
+                var milestone_name = element.get('name');
+                var selected_string;
+                if (milestone_id == 1) {
+                    selected_string = "selected";
+                } else {
+                    selected_string = "";
+                }
+                $('#input-milestone').append("<option " + selected_string + " value=" + milestone_id + ">" + milestone_name + " </option>");
+                $('#input-milestone-edit').append("<option " + selected_string + " value=" + milestone_id + ">" + milestone_name + " </option>");
+            });
+        }
+    });
 }
 
 function openEditEvent(eventID)
@@ -105,7 +109,8 @@ function editEvent()
 	params.description = document.getElementById("edit-input-text").value;
     var userDate = document.getElementById("edit-input-date").value;
     params.moment = moment(userDate).format("YYYY-MM-DDTHH:mm:ssZ");
-    var newMilestone = document.getElementById("edit-input-milestone").value; //.....new......
+    var newMilestone = document.getElementById("input-milestone-edit").value;
+    params.milestone = newMilestone;
     
 	
 	/*if new media is present/checked 
@@ -262,7 +267,7 @@ function addEvent(id)
 	eventObject.media = [];
 
 	//eventObject.milestone = 4;
-	eventObject.milestone_name = document.getElementById("input-milestone").value;
+	eventObject.milestone = document.getElementById("input-milestone").value;
 
 	var moment = document.getElementById("input-date").value;
 	if(moment != null && moment != ""){
