@@ -307,16 +307,18 @@
                     </div> <!-- end mediaInput -->
 					
 					<input type="hidden" name="event-id" id="edit-event-id"/>
-					
+					<!--
                     <br/>
                     <div class="deleteEvent">
                     <a class='btn btn-danger btn-mini' onclick="deleteEvent()"> <big> x </big> </a> Delete this event
                     </div>
+                -->
                     
                 </div> <!-- end modal-body -->
                 
                 
                 <div class="modal-footer">
+                    <a class='btn btn-danger' onclick="deleteEvent()" style="float: left;"> Delete event </a>
                     <a class="btn" data-dismiss="modal">Cancel</a> <!-- Close --> <!-- href="#"  -->
                     <a id="modal-form-submit" class='btn btn-primary' onclick="editEvent({{pet_id}})" data-dismiss="modal">Submit</a> <!-- href="#"  -->
                     <!-- added data-dismiss to hide after click submit, doesn't clear the fields though-->
@@ -362,19 +364,19 @@
                     </div>
 
 
-                    <!-- --- OWNER --- -->
+                    <!-- --- OWNER --- --
                     <div id="ownerInput" class="inputField">
                         <span class="inputLabel">
                             Owner:
                         </span>
                         <input type="text" id="prof-input-owner" placeholder="Name of Owner" />
-                    </div>
+                    </div> -->
 
 
                     <!-- --- BIO --- -->
                     <div id="bioInput" class="inputField">
                         <span class="inputLabel">
-                            Description:
+                            Pet's Bio:
                         </span>
                         <input type="text" id="prof-input-bio" placeholder="Provide a brief bio of your awesome pet!" />
                     </div>
@@ -427,15 +429,18 @@
                         
                     </div> <!-- end mediaInput -->
                 
+                <!--
                     <br/>
                     <div class="deletePetProfile">
                     <a class='btn btn-danger btn-mini' onclick="deleteEvent({{pet_id}})"> <big> x </big> </a> Delete this pet's profile
                     </div>
+                -->
                     
                 </div> <!-- end modal-body -->
                 
                 
                 <div class="modal-footer">
+                    <!--a class='btn btn-danger' onclick="deleteEvent()" style="float: left;"> Delete event </a-->
                     <a class="btn" data-dismiss="modal">Cancel</a> <!-- Close --> <!-- href="#"  -->
                     <a id="modal-form-submit" class='btn btn-primary' onclick="editProfile()" data-dismiss="modal">Submit</a> <!-- href="#"  -->
                     <!-- added data-dismiss to hide after click submit, doesn't clear the fields though-->
@@ -520,14 +525,12 @@
     
     <script>
         function openEditEvent(eventID)
-        {
-            //alert('open edit event');
-            //document.getElementById
+        {   
             var title = "eventTitle-"+eventID;
             var desc = "eventDesc-"+eventID;
             var date = "eventDateTime-"+eventID;
 
-            var outputString = ""; 
+           /* var outputString = ""; 
         //    outputString += "edit-input-title: " + document.getElementById("edit-input-title").value + "\n";
         //    outputString += "edit-input-text: " + document.getElementById("edit-input-text").value+ "\n";
         //    outputString += "edit-input-date: " + document.getElementById("edit-input-date").value + "\n";
@@ -541,7 +544,7 @@
             //outputString += "eventDateTime: " + document.getElementById(moment).value + "\n";
 
            // alert(outputString);
-
+            */
             document.getElementById("edit-input-title").value = document.getElementById(title).innerHTML; 
             document.getElementById("edit-input-text").value = document.getElementById(desc).innerHTML;
 
@@ -556,7 +559,7 @@
 
         function openEditProfileInfo(petID)
         {
-            alert('open edit prof info with petid: ' + petID);
+            // alert('open edit prof info with petid: ' + petID);
             document.getElementById("prof-input-name").value = document.getElementById('petName').innerHTML; 
             document.getElementById("prof-input-bio").value = document.getElementById('petBio').innerHTML;
             document.getElementById("prof-input-media-url").value =  document.getElementById('petProfilePic').src; 
