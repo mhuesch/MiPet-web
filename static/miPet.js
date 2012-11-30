@@ -1,3 +1,73 @@
+function openEditEvent(eventID)
+        {   
+            var title = "eventTitle-"+eventID;
+            var desc = "eventDesc-"+eventID;
+            var date = "eventDateTime-"+eventID;
+
+           /* var outputString = ""; 
+        //    outputString += "edit-input-title: " + document.getElementById("edit-input-title").value + "\n";
+        //    outputString += "edit-input-text: " + document.getElementById("edit-input-text").value+ "\n";
+        //    outputString += "edit-input-date: " + document.getElementById("edit-input-date").value + "\n";
+
+            outputString += "title: " + title + "\n";
+            outputString += "desc: " + desc + "\n";
+            outputString += "date: " + date + "\n";
+
+            //outputString += "eventTitle: " + document.getElementById(title).value + "\n";
+            //outputString += "eventDesc: " + document.getElementById(desc).value + "\n";
+            //outputString += "eventDateTime: " + document.getElementById(moment).value + "\n";
+
+           // alert(outputString);
+            */
+            document.getElementById("edit-input-title").value = document.getElementById(title).innerHTML; 
+            document.getElementById("edit-input-text").value = document.getElementById(desc).innerHTML;
+
+            var date_field = document.getElementById(date).innerHTML;
+            document.getElementById("edit-input-date").value = moment(date_field).format("YYYY-MM-DD");
+
+        	document.getElementById("edit-event-id").value =  eventID;
+          //  edit-input-media-url
+          //  edit-input-media-upload*/
+        }
+
+
+        function openEditProfileInfo(petID)
+        {
+            //alert('open edit prof info with petid: ' + petID);
+			//the model for the pet is stored as a global variable, so just use that instead of 
+			//using getElementById for this funtion
+            document.getElementById("prof-input-name").value = pet.get('name');
+            document.getElementById("prof-input-bio").value = pet.get('bio');
+			document.getElementById("prof-input-media-url").value = pet.get('prof_pic'); 
+			document.getElementById("prof-input-birthdate").value = pet.get('birthdate');
+        }
+
+
+
+		function deleteEvent(eventID){
+			var eventID = document.getElementById("edit-event-id").value;
+			/*
+			console.log(eventID);
+			var tempEvent = petEvents.get(eventID);
+			petEvents.remove(tempEvent);
+			*/
+			var tempEvent = new Event({pk:eventID});
+			console.log(tempEvent);
+			tempEvent.destroy({
+				success: function(model, response) {
+					window.location.reload();
+				},
+				error: function(model){
+					
+				}
+			});
+			//console.log(tempEvent);
+			//tempEvent.destroy();
+			//petEvents.remove(tempEvent);
+			
+		}
+
+
 /*function deleteEvent(petid)
 {
 	// can we add an "are you sure?" box...?
@@ -22,6 +92,9 @@ function editEvent()
 function editEventSecond(event){
 	var newTitle = document.getElementById("edit-input-title").value;
 	var newDesc = document.getElementById("edit-input-text").value;
+
+	var newMilestone = document.getElementById("edit-input-milestone").value; //.....new......
+    
     var userDate = document.getElementById("edit-input-date").value;
     var newDate = moment(userDate).format("YYYY-MM-DDTHH:mm:ssZ");
 	
@@ -34,8 +107,8 @@ function editEventSecond(event){
 	 *		call uploadEventMedia with file + eventID (will refresh page when done)
 	 */
 	
-	
-	event.set({'title':newTitle, 'description':newDesc, 'moment':newDate});
+	 
+	event.set({'title':newTitle, 'description':newDesc, 'moment':newDate });
 	
 	
 	event.save(event,{
@@ -142,7 +215,9 @@ function addEvent(id)
 	eventObject.description = document.getElementById("input-text").value;
 	// Media is an array because there can be multiple media objects with an event
 	eventObject.media = [];
+
 	eventObject.milestone = 4;
+
 	var moment = document.getElementById("input-date").value;
 	if(moment != null && moment != ""){
 		eventObject.moment = moment;

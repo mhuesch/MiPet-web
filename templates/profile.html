@@ -116,22 +116,26 @@
                     </div>
                     
                     <!-- --- MILESTONE --- -->
-                    <div id="milestoneInput" class="inputField">
+                   <!-- <div id="milestoneInput" class="inputField">
                         <span class="inputLabel">
                             Milestone:
                         </span>
                         <input type="text" id="input-milestone" name="text" placeholder="" />
+                    </div> -->
+
+                    <div id="milestoneInput" class="inputField">
+                        <span class="inputLabel">
+                            Milestone:
+                        </span>
+                        <select name="milestones" id="input-milestone">
+                            <option selected="selected"> none </option>
+                            <option>  </option>
+                            <option>  </option>
+                        </select>
                     </div>
 
                     
                     <!-- --- MEDIA - UPLOAD/URL -->
-                    
-                    <!--
-                     <div class="btn-group">
-                     <a class="btn">1</a>
-                     <a class="btn">2</a>
-                     </div>
-                     -->
                     
                     <div id="mediaInput">
                    
@@ -167,26 +171,6 @@
                         
                     </div> <!-- end mediaInput -->
 
-                    
-                    
-
-                     <!-- prettiness from http://jasny.github.com/bootstrap/javascript.html#fileupload -->
-                    <!--
-                    <div class="fileupload fileupload-new" data-provides="fileupload">
-                        <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;"><img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" /></div>
-                        <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
-                        <div>
-                            <span class="btn btn-file"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span><input type="file" /></span>
-                            <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
-                        </div>
-                    </div>
-                    
-                    <div class="fileupload fileupload-new" data-provides="fileupload">
-                        <span class="btn btn-file"><span class="fileupload-new">Select file</span><span class="fileupload-exists">Change</span><input type="file" /></span>
-                        <span class="fileupload-preview"></span>
-                        <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
-                    </div>
-                     -->
 
                     
                     <!-- ----- More inputs accordion -- isn't quite working....
@@ -200,13 +184,7 @@
 
                     <div id="moreInputs">
                         
-                        <!-- --- DATE (defaults to current) --- -->
-
-                    <!-- --- Location (opt) --- --
-                    <div id="locationInput" class="inputField">
-                        Location:
-                        <input type="text" id="input-location" name="location" placeholder="Where did this event happen? (optional) e.g. Neighborhood Park" />
-                    </div> -->
+                        
                        
                    <!-- </div> <!--  end moreInputs div ---------- -->
 
@@ -381,15 +359,7 @@
                     </div>
 
 
-                    <!-- --- OWNER --- 
-					<!-- do we need to update this? It seems like this one should be more 
-							of a private field than one that the user can edit			
-                    <div id="ownerInput" class="inputField">
-                        <span class="inputLabel">
-                            Owner:
-                        </span>
-                        <input type="text" id="prof-input-owner" placeholder="Name of Owner" />
-                    </div> --> 
+                    <!-- --- OWNER (removed, not necessary here) --- -->
 
 
                     <!-- --- BIO --- -->
@@ -473,8 +443,6 @@
         
         
     	<div id="pet-info">
-
-
         </div>
         
         
@@ -484,11 +452,6 @@
          create the html for hte listing 
          create the html for the modal edit event box with values filled in
          -->
-         
-        
-            
-        
-        
         </div>
         
         
@@ -540,53 +503,11 @@
                 eventListView = new EventListView({model: data});
             }
         });
+
+        // open modals were here
     </script>
     
-    <script>
-        function openEditEvent(eventID)
-        {   
-            var title = "eventTitle-"+eventID;
-            var desc = "eventDesc-"+eventID;
-            var date = "eventDateTime-"+eventID;
 
-           /* var outputString = ""; 
-        //    outputString += "edit-input-title: " + document.getElementById("edit-input-title").value + "\n";
-        //    outputString += "edit-input-text: " + document.getElementById("edit-input-text").value+ "\n";
-        //    outputString += "edit-input-date: " + document.getElementById("edit-input-date").value + "\n";
-
-            outputString += "title: " + title + "\n";
-            outputString += "desc: " + desc + "\n";
-            outputString += "date: " + date + "\n";
-
-            //outputString += "eventTitle: " + document.getElementById(title).value + "\n";
-            //outputString += "eventDesc: " + document.getElementById(desc).value + "\n";
-            //outputString += "eventDateTime: " + document.getElementById(moment).value + "\n";
-
-           // alert(outputString);
-            */
-            document.getElementById("edit-input-title").value = document.getElementById(title).innerHTML; 
-            document.getElementById("edit-input-text").value = document.getElementById(desc).innerHTML;
-
-            var date_field = document.getElementById(date).innerHTML;
-            document.getElementById("edit-input-date").value = moment(date_field).format("YYYY-MM-DD");
-
-        	document.getElementById("edit-event-id").value =  eventID;
-          //  edit-input-media-url
-          //  edit-input-media-upload*/
-        }
-
-
-        function openEditProfileInfo(petID)
-        {
-            //alert('open edit prof info with petid: ' + petID);
-			//the model for the pet is stored as a global variable, so just use that instead of 
-			//using getElementById for this funtion
-            document.getElementById("prof-input-name").value = pet.get('name');
-            document.getElementById("prof-input-bio").value = pet.get('bio');
-			document.getElementById("prof-input-media-url").value = pet.get('prof_pic'); 
-			document.getElementById("prof-input-birthdate").value = pet.get('birthdate');
-        }
-    </script>
     
     <script>
         //$('#input-media-upload').hide();
@@ -626,29 +547,8 @@
 	</script>
 
     <script>
-		function deleteEvent(eventID){
-			var eventID = document.getElementById("edit-event-id").value;
-			/*
-			console.log(eventID);
-			var tempEvent = petEvents.get(eventID);
-			petEvents.remove(tempEvent);
-			*/
-			var tempEvent = new Event({pk:eventID});
-			console.log(tempEvent);
-			tempEvent.destroy({
-				success: function(model, response) {
-					window.location.reload();
-				},
-				error: function(model){
-					
-				}
-			});
-			//console.log(tempEvent);
-			//tempEvent.destroy();
-			//petEvents.remove(tempEvent);
-			
-		}
-	
+
+	// delete was here
 	</script>
     
     <!-- put this style sheet AFTER personalized ones - otherwise weird header formatting padding -->
