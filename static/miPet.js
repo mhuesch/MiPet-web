@@ -40,16 +40,55 @@ function editProfile(petid)
 	//pet is a global variable in this window, so we don't need to get it again.
 	pet = window.pet;
 	//get the new name/bio/etc 
-	var newName = document.getElementById("prof-input-name").value; 
-    var newBio = document.getElementById("prof-input-bio").value;
-	var newBirthDate = document.getElementById("prof-input-birthdate").value;
+	var params = new Object();
+	params.name = document.getElementById("prof-input-name").value; 
+	params.bio = document.getElementById("prof-input-bio").value;
+	params.birthdate = document.getElementById("prof-input-birthdate").value;
     
-    //if URL button is checked, otherwise need to upload. 
-	var newPic = document.getElementById("prof-input-media-url").value;
+    if (document.getElementById('profile-imageURL').checked)//if URL button is checked, otherwise need to upload. 
+	{
+		params.prof_pic = document.getElementById("prof-input-media-url").value;
+		saveProfile(params);
+	}else{
+		var uploadPic = document.getElementById("prof-input-media-upload").files[0];
+		uploadNewProfilePicture(uploadPic, params);
+	}
 	
 	
-	pet.set({'name':newName, 'bio':newBio, 'prof_pic':newPic, 'birthdate':newBirthDate});
+}
+
+function uploadNewProfilePicture(file, params) {
+   // file is from a <input> tag 
+   if (!file) return;
+   
+   //Build a FormData object
+   var fd = new FormData();
+   fd.append("image", file); // Append the file
+   fd.append("key", "628a7999f0bef3448b20e9a665a69ed8"); // Get your own key: http://api.imgur.com/
 	
+   // Create the XHR (Cross-Domain XHR FTW!!!)
+   var xhr = new XMLHttpRequest();
+   xhr.open("POST", "http://api.imgur.com/2/upload.json"); // Boooom!
+   xhr.send(fd);
+   xhr.onload = function() {
+      // Big win!
+      //console.log("loaded");
+      
+      // The URL of the image is:
+      var url = JSON.parse(xhr.responseText).upload.links.original;
+      //create a pet object with this URL
+      params.prof_pic = url;
+      saveProfile(params);
+   }
+   
+}
+
+//one function to save the parameters of a pet's profile, given the new parameters.
+function saveProfile(params)
+{
+	pet = window.pet;
+	
+	pet.set(params);
 	
 	pet.save(pet,{
 		success: function(model) {
@@ -114,7 +153,7 @@ function addEvent(id)
 	// and could be done in a better way
 	
 	//if using existing image at given url...
-	if (document.getElementById('imageURL').checked)
+	if (document.getElementById('event-imageURL').checked)
 	{
 		
 		media = mediaURL;
