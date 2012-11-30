@@ -47,6 +47,11 @@ var EventCollection = Backbone.Collection.extend({
 	
 });
 
+// Milestone model
+var Milestone = Backbone.Model.extend({
+    urlRoot:"/api/v1/milestone"
+})
+
 
 // Media model & collection
 var Media = Backbone.Model.extend({
