@@ -135,6 +135,12 @@ h1.timelineTitle { font-size: 16pt;}
 
 #profile-info-button { display: inline-block; float: right;}
 
+.milestone {
+    color: black;
+    text-transform: lowercase;
+    font-variant: small-caps;
+}
+
 .profilePic {
     height: 140px;
     display:inline-block;

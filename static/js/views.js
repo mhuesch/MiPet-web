@@ -100,10 +100,18 @@ var EventView = Backbone.View.extend({
 
     // Renders a single event's html
     render:function () {
-        var eventID = this.model.get('pk');                             
+        var eventID = this.model.get('pk');    
+        var milestone = this.model.get('milestone');                           
         var outputString = "";
         outputString += "<div class='event-listing'>";
         outputString += "<div class='event-listing-title'>";
+
+        // 4 is the none milestone
+        if(milestone != 4 && milestone != null && milestone != 'none')
+        {
+            outputString += "<i class='icon-star'></i>";
+        }
+
         outputString += "<span class='eventTitle' id='eventTitle-"+eventID+"'>"+this.model.get('title')+"</span>";
        // var date_time = moment(this.model.get('moment'));
        // outputString += "<span class='timestamp'>"+date_time.format("MMM Do YYYY")+"</span>";   
@@ -113,16 +121,24 @@ var EventView = Backbone.View.extend({
         outputString += " data-toggle='modal' href='#edit-event' onclick='openEditEvent("+eventID+")'>";
         outputString += "<i class='icon-pencil'></i> </a>";
         outputString += "</span>";
-
         outputString += "</div> <!-- end event-listing-title -->";
-        
         
 
         outputString += "<div class='event-body'>";
+
+        if(/*milestone != 4 &&*/ milestone != null && milestone != 'none')
+        {
+            outputString += "<span class='milestone'> Milestone: " + milestone + "</span> <br/>";
+        } 
+
         outputString += "<span class='eventDesc' id='eventDesc-"+eventID+"'>"+this.model.get('description')+"</span>"; 
-        outputString += "<br>milestone: " + this.model.get('milestone');    
+       
+       // outputString += "<br/>";
+       // outputString += "milestone: " + this.model.get('milestone');   
+
+       
         
-        //outputString += '<span id="media'+this.model.get('pk')+'"></span>';
+
 
         outputString += '<div id="media'+this.model.get('pk')+'"class="event-media"></div>';
 
