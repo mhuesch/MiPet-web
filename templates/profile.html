@@ -406,7 +406,7 @@
                         <span class="inputLabel">
                             Approx. Pet Birthdate:
                         </span>
-                        <input type="date" id="prof-input-birthdate" placeholder="YYYY-MM-DD"/>
+                        <input type="date" id="prof-input-birthdate" title="YYYY-MM-DD" placeholder="YYYY-MM-DD"/>
                     </div>
 
 
@@ -579,11 +579,12 @@
         function openEditProfileInfo(petID)
         {
             //alert('open edit prof info with petid: ' + petID);
-
-            document.getElementById("prof-input-name").value = document.getElementById('petName').innerHTML; 
-            document.getElementById("prof-input-bio").value = document.getElementById('petBio').innerHTML;
-			if(document.getElementById('petProfilePic'))
-				document.getElementById("prof-input-media-url").value =  document.getElementById('petProfilePic').src; 
+			//the model for the pet is stored as a global variable, so just use that instead of 
+			//using getElementById for this funtion
+            document.getElementById("prof-input-name").value = pet.get('name');
+            document.getElementById("prof-input-bio").value = pet.get('bio');
+			document.getElementById("prof-input-media-url").value = pet.get('prof_pic'); 
+			document.getElementById("prof-input-birthdate").value = pet.get('birthdate');
         }
     </script>
     
