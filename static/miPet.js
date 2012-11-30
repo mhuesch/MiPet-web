@@ -1,71 +1,71 @@
 function openEditEvent(eventID)
-        {   
-            var title = "eventTitle-"+eventID;
-            var desc = "eventDesc-"+eventID;
-            var date = "eventDateTime-"+eventID;
+{   
+	var title = "eventTitle-"+eventID;
+	var desc = "eventDesc-"+eventID;
+	var date = "eventDateTime-"+eventID;
 
-           /* var outputString = ""; 
-        //    outputString += "edit-input-title: " + document.getElementById("edit-input-title").value + "\n";
-        //    outputString += "edit-input-text: " + document.getElementById("edit-input-text").value+ "\n";
-        //    outputString += "edit-input-date: " + document.getElementById("edit-input-date").value + "\n";
+   /* var outputString = ""; 
+//    outputString += "edit-input-title: " + document.getElementById("edit-input-title").value + "\n";
+//    outputString += "edit-input-text: " + document.getElementById("edit-input-text").value+ "\n";
+//    outputString += "edit-input-date: " + document.getElementById("edit-input-date").value + "\n";
 
-            outputString += "title: " + title + "\n";
-            outputString += "desc: " + desc + "\n";
-            outputString += "date: " + date + "\n";
+	outputString += "title: " + title + "\n";
+	outputString += "desc: " + desc + "\n";
+	outputString += "date: " + date + "\n";
 
-            //outputString += "eventTitle: " + document.getElementById(title).value + "\n";
-            //outputString += "eventDesc: " + document.getElementById(desc).value + "\n";
-            //outputString += "eventDateTime: " + document.getElementById(moment).value + "\n";
+	//outputString += "eventTitle: " + document.getElementById(title).value + "\n";
+	//outputString += "eventDesc: " + document.getElementById(desc).value + "\n";
+	//outputString += "eventDateTime: " + document.getElementById(moment).value + "\n";
 
-           // alert(outputString);
-            */
-            document.getElementById("edit-input-title").value = document.getElementById(title).innerHTML; 
-            document.getElementById("edit-input-text").value = document.getElementById(desc).innerHTML;
+   // alert(outputString);
+	*/
+	document.getElementById("edit-input-title").value = document.getElementById(title).innerHTML; 
+	document.getElementById("edit-input-text").value = document.getElementById(desc).innerHTML;
 
-            var date_field = document.getElementById(date).innerHTML;
-            document.getElementById("edit-input-date").value = moment(date_field).format("YYYY-MM-DD");
+	var date_field = document.getElementById(date).innerHTML;
+	document.getElementById("edit-input-date").value = moment(date_field).format("YYYY-MM-DD");
 
-        	document.getElementById("edit-event-id").value =  eventID;
-          //  edit-input-media-url
-          //  edit-input-media-upload*/
-        }
-
-
-        function openEditProfileInfo(petID)
-        {
-            //alert('open edit prof info with petid: ' + petID);
-			//the model for the pet is stored as a global variable, so just use that instead of 
-			//using getElementById for this funtion
-            document.getElementById("prof-input-name").value = pet.get('name');
-            document.getElementById("prof-input-bio").value = pet.get('bio');
-			document.getElementById("prof-input-media-url").value = pet.get('prof_pic'); 
-			document.getElementById("prof-input-birthdate").value = pet.get('birthdate');
-        }
+	document.getElementById("edit-event-id").value =  eventID;
+  //  edit-input-media-url
+  //  edit-input-media-upload*/
+}
 
 
+function openEditProfileInfo(petID)
+{
+	//alert('open edit prof info with petid: ' + petID);
+	//the model for the pet is stored as a global variable, so just use that instead of 
+	//using getElementById for this funtion
+	document.getElementById("prof-input-name").value = pet.get('name');
+	document.getElementById("prof-input-bio").value = pet.get('bio');
+	document.getElementById("prof-input-media-url").value = pet.get('prof_pic'); 
+	document.getElementById("prof-input-birthdate").value = pet.get('birthdate');
+}
 
-		function deleteEvent(eventID){
-			var eventID = document.getElementById("edit-event-id").value;
-			/*
-			console.log(eventID);
-			var tempEvent = petEvents.get(eventID);
-			petEvents.remove(tempEvent);
-			*/
-			var tempEvent = new Event({pk:eventID});
-			console.log(tempEvent);
-			tempEvent.destroy({
-				success: function(model, response) {
-					window.location.reload();
-				},
-				error: function(model){
-					
-				}
-			});
-			//console.log(tempEvent);
-			//tempEvent.destroy();
-			//petEvents.remove(tempEvent);
+
+
+function deleteEvent(eventID){
+	var eventID = document.getElementById("edit-event-id").value;
+	/*
+	console.log(eventID);
+	var tempEvent = petEvents.get(eventID);
+	petEvents.remove(tempEvent);
+	*/
+	var tempEvent = new Event({pk:eventID});
+	console.log(tempEvent);
+	tempEvent.destroy({
+		success: function(model, response) {
+			window.location.reload();
+		},
+		error: function(model){
 			
 		}
+	});
+	//console.log(tempEvent);
+	//tempEvent.destroy();
+	//petEvents.remove(tempEvent);
+	
+}
 
 
 /*function deleteEvent(petid)
@@ -83,14 +83,13 @@ function editEvent()
 	//collection of events is stored in the window, so get this event from there
 	var event = window.petEvents.get(eventID);
 	
-	
-	var newTitle = document.getElementById("edit-input-title").value;
-	var newDesc = document.getElementById("edit-input-text").value;
-
-	var newMilestone = document.getElementById("edit-input-milestone").value; //.....new......
-    
+	var params = new Object();
+	params.title = document.getElementById("edit-input-title").value;
+	params.description = document.getElementById("edit-input-text").value;
     var userDate = document.getElementById("edit-input-date").value;
-    var newDate = moment(userDate).format("YYYY-MM-DDTHH:mm:ssZ");
+    params.moment = moment(userDate).format("YYYY-MM-DDTHH:mm:ssZ");
+    var newMilestone = document.getElementById("edit-input-milestone").value; //.....new......
+    
 	
 	/*if new media is present/checked 
 	 *	if it's URL
@@ -100,14 +99,49 @@ function editEvent()
 	 *	if it's upload: set media to empty array
 	 *		call uploadEventMedia with file + eventID (will refresh page when done)
 	 */
-	
 	 
-	event.set({'title':newTitle, 'description':newDesc, 'moment':newDate });
+	 var addmedia;
+	if(document.getElementById('edit-event-imageURL').checked)
+	{	
+		var mediaURL = document.getElementById('edit-input-media-url').value;
+		if(mediaURL)
+		{
+			var addmedia = 1;
+			params.media = [];
+		}
+	}
+	else
+	{
+		//uploading image
+		
+		var mediaUpload = document.getElementById("edit-input-media-upload").files[0];
+		if(mediaUpload)
+		{
+			var addmedia = 2;
+			params.media = [];
+		}
+		else
+		{
+			//do nothing
+		}
+	}
+	 
+	event.set(params);
 	
 	
 	event.save(event,{
 		success: function(model) {
-			document.location.reload();
+			if(addmedia){
+				if(addmedia==1)
+				{
+					addMedia(mediaURL, eventID);
+				}else{
+					uploadEventMedia(mediaUpload, eventID);	
+				}
+			}
+			else{
+				document.location.reload();
+			}
 		}
 	});
 }
