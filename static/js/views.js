@@ -58,7 +58,7 @@ var PetView = Backbone.View.extend({
 
         var outputHTML = "";
         if (PetProfPicURL == "") // mod by 3 + 1 to not let id # be anything other than v1 v2 v3 (only existing images)
-            outputHTML += "<img class='profilePic' src='/static/img/miPetL1v"+ (this.model.get('id')%3+1) +".png' >";
+            outputHTML += "<img class='profilePic' src='/static/img/miPetL1v"+ (this.model.get('id')%4+1) +".png' >";
         else
             outputHTML += "<img class='profilePic' id='petProfilePic' src='"+ PetProfPicURL +"' >";
         
@@ -256,6 +256,7 @@ var MediaView = Backbone.View.extend({
         // later reference....
         // http://stackoverflow.com/questions/169625/regex-to-check-if-valid-url-that-ends-in-jpg-png-or-gif
         
+        // check if these extensions exist in the url string(index >= 0)
         if(mediaURL.indexOf('.png') >=0 || mediaURL.indexOf('.jpg') >= 0 || mediaURL.indexOf('.jpeg') >= 0 || mediaURL.indexOf('.gif') >= 0 )
         {
             outputString += "<img class='eventMedia' src='" + mediaURL + "' >";
