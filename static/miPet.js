@@ -25,6 +25,16 @@ function editEventSecond(event){
     var userDate = document.getElementById("edit-input-date").value;
     var newDate = moment(userDate).format("YYYY-MM-DDTHH:mm:ssZ");
 	
+	/*if new media is present/checked 
+	 *	if it's URL
+		 *	(include current as hidden field + check for equivalence)
+		 *	set current media to empty array and delete that media.
+		 *	call addMedia with current event id (should refresh page when done)
+	 *	if it's upload: set media to empty array
+	 *		call uploadEventMedia with file + eventID (will refresh page when done)
+	 */
+	
+	
 	event.set({'title':newTitle, 'description':newDesc, 'moment':newDate});
 	
 	
