@@ -42,12 +42,13 @@ function editProfile(petid)
 	//get the new name/bio/etc 
 	var newName = document.getElementById("prof-input-name").value; 
     var newBio = document.getElementById("prof-input-bio").value;
+	var newBirthDate = document.getElementById("prof-input-birthdate").value;
     
     //if URL button is checked, otherwise need to upload. 
 	var newPic = document.getElementById("prof-input-media-url").value;
 	
 	
-	pet.set({'name':newName, 'bio':newBio, 'prof_pic':newPic});
+	pet.set({'name':newName, 'bio':newBio, 'prof_pic':newPic, 'birthdate':newBirthDate});
 	
 	
 	pet.save(pet,{
