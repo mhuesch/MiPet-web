@@ -1,3 +1,23 @@
+function openAddEvent()
+{
+	var outputString = ""; 
+	outputString += "<div id='milestoneInput' class='inputField'>";
+    outputString += "<span class='inputLabel'> Milestone: </span>";
+    outputString += "<select name='milestones' id='input-milestone'>"                       
+   
+
+	/*<option selected="selected"> none </option>
+      <option>  </option>
+       <option>  </option>
+    */
+    outputString += "</select>";                    
+
+                            
+                        
+
+
+}
+
 function openEditEvent(eventID)
 {   
 	var title = "eventTitle-"+eventID;
@@ -244,7 +264,8 @@ function addEvent(id)
 	// Media is an array because there can be multiple media objects with an event
 	eventObject.media = [];
 
-	eventObject.milestone = 4;
+	//eventObject.milestone = 4;
+	eventObject.milestone_name = document.getElementById("input-milestone").value;
 
 	var moment = document.getElementById("input-date").value;
 	if(moment != null && moment != ""){

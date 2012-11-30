@@ -23,12 +23,10 @@
     <!--<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
      <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">-->
      
-
     
     <!-- Style written by us for this app, some needed to override bootstrap -->
     <link href="/static/miPet.css" rel="stylesheet">
   
-
 
 
 <!-- ----- Style ----- -->
@@ -74,7 +72,7 @@
         
 
         
-        <!-- ----- START Add Event modal dialog box ----- -->
+        <!-- ----- start ADD EVENT modal dialog box ----- -->
         <form id="modal-form" accept-charset="UTF-8"
             data-remote="true" method="post"> <!-- action="/tagging" -->
         <div id="add-event" class="modal hide fade in" style="display:none;">
@@ -85,9 +83,7 @@
             </div> <!-- end modal-header -->
             
             
-            
                 <div class="modal-body">
-                    
                     
                     
                     <!-- --- TITLE --- -->
@@ -114,28 +110,38 @@
                         </span>
                         <input type="date" id="input-date" placeholder="YYYY-MM-DD"/>
                     </div>
+
+
                     
                     <!-- --- MILESTONE --- -->
-                   <!-- <div id="milestoneInput" class="inputField">
-                        <span class="inputLabel">
-                            Milestone:
-                        </span>
-                        <input type="text" id="input-milestone" name="text" placeholder="" />
-                    </div> -->
-
                     <div id="milestoneInput" class="inputField">
                         <span class="inputLabel">
                             Milestone:
                         </span>
+                        <input type="text" id="input-milestone" name="text" placeholder="" />
+                    </div>
+                    
+                   <!-- <div id="milestoneInput" class="inputField">
+                        <span class="inputLabel">
+                            Milestone: 
+                        </span>
+                            
+                        <input type="checkbox" id="input-milestone" name="milestone"> This event is a milestone
+                        </input>
+                        
+                        <!--
                         <select name="milestones" id="input-milestone">
                             <option selected="selected"> none </option>
                             <option>  </option>
                             <option>  </option>
                         </select>
-                    </div>
+                        
+                        
+                    </div> -->
+
 
                     
-                    <!-- --- MEDIA - UPLOAD/URL -->
+                    <!-- --- MEDIA - UPLOAD/URL --- -->
                     
                     <div id="mediaInput">
                    
@@ -209,13 +215,13 @@
             <big>+</big> Add Event
         </a>
         </p>
-        <!-- ----- END Add Event modal dialog box ----- -->
+        <!-- ----- end ADD EVENT modal dialog box ----- -->
         
 
         
         
         
-        <!-- ---------- START EDIT Event modal dialog box ---------- -->
+        <!-- ---------- start EDIT EVENT modal dialog box ---------- -->
         <form id="modal-form" accept-charset="UTF-8" data-remote="true"
             method="post"> <!-- action="/tagging" -->
             <div id="edit-event" class="modal hide fade in" style="display:none;">
@@ -297,18 +303,12 @@
                             </span>
                             <input type="file" id="edit-input-media-upload" name="media"/>
                         </div>
-                        
 						
                     </div> <!-- end mediaInput -->
 					
 					<input type="hidden" name="event-id" id="edit-event-id"/>
-					<!--
-                    <br/>
-                    <div class="deleteEvent">
-                    <a class='btn btn-danger btn-mini' onclick="deleteEvent()"> <big> x </big> </a> Delete this event
-                    </div>
-                -->
                     
+
                 </div> <!-- end modal-body -->
                 
                 
@@ -317,27 +317,19 @@
                     <a class="btn" data-dismiss="modal">Cancel</a> <!-- Close --> <!-- href="#"  -->
                     <a id="modal-form-submit" class='btn btn-primary' onclick="editEvent({{pet_id}})" data-dismiss="modal">Submit</a> <!-- href="#"  -->
                     <!-- added data-dismiss to hide after click submit, doesn't clear the fields though-->
-                    
                 </div> <!-- end modal-footer -->
                 
             </div> <!-- end edit-event modal --> 
         </form>
-        <!-- ---------- END EDIT Event modal dialog box ---------- -->
+        <!-- ---------- end EDIT EVENT modal dialog box ---------- -->
         
-        <!--
-        <p>
-        <a id="btn-edit-event" data-toggle="modal" href="#edit-event" class="btn" style="float: right;">
-            Edit Event 
-        </a>
-        </p>
-         -->
         
         
 
 
 
 
-         <!-- ---------- START Profile info modal dialog box ---------- -->
+         <!-- ---------- start PROFILE INFO modal dialog box ---------- -->
         <form id="modal-form" accept-charset="UTF-8" data-remote="true"
             method="post"> <!-- action="/tagging" -->
             <div id="edit-profileInfo" class="modal hide fade in" style="display:none;">
@@ -345,9 +337,9 @@
                 <div class="modal-header">
                     <a class="close" data-dismiss="modal">×</a>
                     <h3>Profile Information</h3>
-                    
                 </div> <!-- end modal-header -->
                 
+
                 <div class="modal-body">
                     
                     <!-- --- NAME --- -->
@@ -383,7 +375,7 @@
                     <!-- --- PROFILE PICTURE --- -->
 
                     
-                    <!-- --- MEDIA - UPLOAD/URL -->
+                    <!-- --- MEDIA - UPLOAD/URL --- -->
                     <div id="mediaInput">
                         
                         <div id="mediaInputChoice" style="padding-bottom: 5px;">
@@ -417,28 +409,19 @@
                         </div>
                         
                     </div> <!-- end mediaInput -->
-                
-                <!--
-                    <br/>
-                    <!--<div class="deletePetProfile">
-                    <a class='btn btn-danger btn-mini' onclick="deleteEvent({{pet_id}})"> <big> x </big> </a> Delete this pet's profile
-                    </div>
-                -->
+
                     
                 </div> <!-- end modal-body -->
                 
                 
                 <div class="modal-footer">
-                    <!--a class='btn btn-danger' onclick="deleteEvent()" style="float: left;"> Delete event </a-->
                     <a class="btn" data-dismiss="modal">Cancel</a> <!-- Close --> <!-- href="#"  -->
                     <a id="modal-form-submit" class='btn btn-primary' onclick="editProfile({{pet_id}})" data-dismiss="modal">Submit</a> <!-- href="#"  -->
-                    <!-- added data-dismiss to hide after click submit, doesn't clear the fields though-->
-                    
                 </div> <!-- end modal-footer -->
                 
             </div> <!-- end edit-event modal --> 
         </form>
-        <!-- ---------- END Profile Info modal dialog box ---------- -->
+        <!-- ---------- end PROFILE INFO modal dialog box ---------- -->
         
         
         
@@ -521,6 +504,9 @@
             
             if (choice == "url")
             {
+                // only 1 of these 3 pairs of fields have the option to be showing at a time
+                // each are from a separate modal dialog box
+
                 $('#mediaURLInput').show();
                 $('#mediaUploadInput').hide();
                 

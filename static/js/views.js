@@ -127,7 +127,7 @@ var EventView = Backbone.View.extend({
 
         outputString += "<div class='event-body'>";
 
-        if(/*milestone != 4 &&*/ milestone != null && milestone != 'none')
+        if(milestone != 4 && milestone != null && milestone != 'none')
         {
             outputString += "<span class='milestone'> Milestone: " + milestone_name + "</span> <br/>";
         } 
