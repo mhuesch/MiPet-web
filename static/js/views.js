@@ -57,18 +57,19 @@ var PetView = Backbone.View.extend({
         petID = this.model.get('id');
 
         var outputHTML = "";
+        outputHTML += "<a class='btn btn-mini btn-info profile-info-button' style='float: left; margin-right: 7px; margin-top: 7px; display: inline;'";
+        outputHTML += " data-toggle='modal' href='#edit-profileInfo' onclick='openEditProfileInfo("+petID+")'>";
+        outputHTML += "<i class='icon-info-sign icon-white'></i> </a>";
+        
+        /*
         if (PetProfPicURL == "") // mod by 3 + 1 to not let id # be anything other than v1 v2 v3 (only existing images)
             outputHTML += "<img class='profilePic' src='/static/img/miPetL1v"+ (this.model.get('id')%4+1) +".png' >";
         else
             outputHTML += "<img class='profilePic' id='petProfilePic' src='"+ PetProfPicURL +"' >";
-        
-        outputHTML += "<h1 class='timelineTitle' id='petName'> "+ PetName +" </h1>";
+        */
+        outputHTML+="<h1 class='timelineTitle' id='petName'> "+PetName+" </h1>";
 
-        outputHTML += "<a class='btn btn-mini btn-info profile-info-button' style='float: left; margin-right: 7px; display: inline;'";
-        outputHTML += " data-toggle='modal' href='#edit-profileInfo' onclick='openEditProfileInfo("+petID+")'>";
-        outputHTML += "<i class='icon-info-sign icon-white'></i> </a>";
-
-        outputHTML += "<span class='petBio' id='petBio'> " + PetBio + " </span>";
+        //outputHTML+="<span class='petBio' id='petBio'> "+PetBio+" </span>";
 
         
 
@@ -130,19 +131,22 @@ var EventView = Backbone.View.extend({
 
         outputString += "<div class='event-body'>";
 
-        if(milestone != 1 && milestone != null && milestone != 'none')
+       /* if(milestone != 1 && milestone != null && milestone != 'none')
         {
             outputString += "<span class='milestone'> Milestone: " + milestone_name + "</span> <br/>";
         } 
-
+        */
+                                     
         outputString += "<span class='eventDesc' id='eventDesc-"+eventID+"'>"+this.model.get('description')+"</span>"; 
 
         outputString += '<div id="media'+this.model.get('pk')+'"class="event-media"></div>';
 
-		// Use Moment.js to display time nicely.
-        // Docs about formatting here: http://momentjs.com/docs/#/displaying/format/
+    // Use Moment.js to display time nicely.
+    // Docs about formatting here: http://momentjs.com/docs/#/displaying/format/
         var date_time = moment(this.model.get('moment'));
-        outputString += "<div class='timestamp' id='eventDateTime-"+eventID+"'>"+date_time.format("MMM D YYYY, h:mm a")+"</div>";   
+        //outputString += "<div class='timestamp' id='eventDateTime-"+eventID+"'>"+date_time.format("MMM D YYYY, h:mm a")+"</div>";
+        outputString += "<div class='timestamp' id='eventDateTime-"+eventID+"'>"+date_time.format("MMM D YYYY")+"</div>";
+        
         //outputString += "<p>"+this.model.get('pk')+"</p>"; <-- this is how you get the event ID now
         /*
         right now we need the ID for the event to get the media associated with the event.

@@ -127,13 +127,20 @@ div id="add-profile"
 /*-------------------------- Profile info/heading -------------------------------*/
 
 #pet-info {
-    height: 150px;
+    /*height: 150px;*/
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;    
 }
 
 h1.timelineTitle { font-size: 16pt;}
 
-#profile-info-button { display: inline-block; float: right;}
+#profile-info-button { 
+    display: inline-block;
+    float: right;
+    float: left; 
+    margin-right: 7px; 
+    margin-top: 7px; 
+    display: inline;
+  }
 
 .milestone {
     color: black;
