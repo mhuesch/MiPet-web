@@ -58,110 +58,16 @@
         </div> <!-- END navbar navbar-inverse navbar-fixed-top -->
         
         <div class="container">
-
-            <form id="modal-form" accept-charset="UTF-8" action="/tagging" data-remote="true" method="post">
-                <div id="add-profile" class="modal hide fade in" style="display:none;" aria-hidden="false">
-                    
-                    <div class="modal-header">
-                        <a class="close" data-dismiss="modal">×</a>
-                        <h3>Create a miPet Profile</h3>
-                    </div> <!-- end modal-header -->
-                    
-                    <div class="modal-body">
-                        
-                        
-                        <!-- ----- Pet NAME ----- -->
-                        <div id="nameInput" class="inputField">
-                            Pet Name:
-                            <input type="text" id="input-petName" placeholder="Pet's name">
-                                </div>
-                        
-                        
-                        <!-- ----- Pet BIO ----- -->
-                        <div id="bioInput" class="inputField">
-                            Description:
-                            <input type="text" id="input-petBio" placeholder="Provide a brief bio of your awesome pet :)">
-                                </div>
-                        
-                        
-                        <!-- ----- Pet PROFILE PICTURE ----- -->
-        				<div id="profPicInput">
-                           
-                                <div id="profPicInputChoice" style="padding-bottom: 5px;">
-                                
-                            <form id="profPicChoice">
-                                <span class="inputLabel"> </span>
-                                <span class="inputField">
-                                <input type="radio" name="profPicChoose" id="imageUpload"value="upload" onclick="chooseMedia(this.value)" checked=true> Upload </input>
-                                </span>
-                                &nbsp; 
-                                <span class="inputField">
-                                <input type="radio" name="profPicChoose" id="imageURL" value="url" onclick="chooseMedia(this.value)"> From URL </input>
-                                </span>
-                            </form>
-                                
-                                </div> <!-- end mediaInputChoice -->
-
-                                
-                            <div id="profPicURLInput" class="inputField">
-                                <span class="inputLabel">
-                                    Profile Picture URL:
-                                </span>
-                                <input type="url" id="input-media-url" name="media" placeholder="http://...yourimagelink.png" />
-                            </div>
-        					
-        					<div id="profPicUploadInput" class="inputField">
-                                <span class="inputLabel">
-                                    Upload Profile Picture:
-                                </span>
-                                <input type="file" id="input-media-upload" name="media"/>
-                            </div>
-                                
-        				</div> <!-- end mediaInput -->
-                        
-                        
-                        <!-- ----- JOIN DATE will default to current date/time ----- -->
-                        <div id="birthdateInput" class="inputField">
-                            Approx Pet Birthdate:
-                            <input type="date" id="input-petBirthdate" placeholder="YYYY-MM-DD">
-                        </div>
-                        
-                        
-                    </div> <!-- end modal-body -->
-                    
-                    
-                    <div class="modal-footer">
-                        <a class="btn" data-dismiss="modal">Cancel</a> <!-- Close --> <!-- href="#"  -->
-                        <a id="modal-form-submit" class="btn btn-primary" onclick="addPetProfile()" data-dismiss="modal">Submit</a> <!-- href="#"  -->
-                        <!-- added data-dismiss to hide after click submit, doesn't clear the fields though-->
-                        
-                    </div> <!-- end modal-footer -->
-                    
-                    
-                </div> <!-- end add-event modal -->
-            </form>
             
-            <!--
-            <p>
-            <a id="btn-add-profile" data-toggle="modal" href="#add-profile" class="btn btn-primary"> <!--style="margin: auto auto;"--
-                <big>+</big> Add a miPet profile
-            </a>
-            </p>
-                -->
-            <!-- ----- END Add Event modal dialog box ----- -->
-
+            <h1 class='timelineTitle'> User Profiles </h1>
             
-            
-            <!-- list the pet profiles here -->
-            
-            
-            <!-- ----- Pet profiles list ----- -->
+            <!-- ----- User profiles list ----- -->
             {% load timeline_tags %}
             {% for user in users %}
                 <!--profile pet.joined_date Joined 1/1/11.... but not really join, more like started timeline? From 1/1/11? -->
-                <div class="petProfile" style="display: inline-block; float: left; padding: 30px; ">
+                <div> <!-- class="petProfile" style="display: inline-block; float: left; padding: 30px; "-->
                     <a href='{% url user user.id %}'>
-                        <img class='profilePic'
+                        <!--img class='profilePic'
                             {% if user.prof_pic %}
                                 src="{{ user.prof_pic }}">
                             {% else %}
@@ -169,12 +75,12 @@
                     				src='/static/img/miPetUserL1v{{user.id|modulo:4|add:"1"}}.png' >
                     			{% else %}
                     				src='/static/img/miPetUserL1v{{user.id}}.png' >
-                    			{% endif %}
+                    			{% endif %} 
                             {% endif %}
-                            
+                         -->
                         
                         <br/>
-                            Link to the profile of {{ user.user }}
+                            <!--Link to the profile of--> {{ user.user }}
                     </a>
                 </div>
             {% endfor %}
@@ -201,18 +107,13 @@
         <script type="text/javascript" src="/static/js/models.js"> </script>
         <script type="text/javascript" src="/static/js/views.js"> </script>
         
-    	<script>
+    	<!--script>
             //$('#input-media-upload').hide();
             $('#profPicURLInput').hide();
              
             function chooseMedia(choice)
             {
-                /*
-                if ($('#imageUpload').checked)
-                {
-                    
-                }
-                 */
+                
                 if (choice == "url")
                 {
                     $('#profPicURLInput').show();
@@ -224,7 +125,7 @@
                     $('#profPicURLInput').hide();
                 }
     		} 
-    	</script>
+    	</script-->
     	
     	
         <!-- put this style sheet AFTER personalized ones - otherwise weird header formatting padding -->

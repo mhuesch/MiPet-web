@@ -1,5 +1,5 @@
 
-// -------------------- User View -------------------//
+// ------------------------- User View ------------------------//
 var UserView = Backbone.View.extend({
 
     initialize:function () {
@@ -31,12 +31,12 @@ var UserView = Backbone.View.extend({
 
 // Global variables - naughty!
 // But don't know how to have accessor functions...
-var PetName = ""; // This pet's name
-var PetBirthdate = ""; // Pet's joined date
+var PetName = "";       // This pet's name
+var PetBirthdate = "";  // Pet's joined date
 var PetBio = "";
 var PetProfPicURL = "";
 
-// -------------------- Pet View --------------------//
+// ------------------------- Pet View -------------------------//
 var PetView = Backbone.View.extend({
 
     el:$('#pet-info'),

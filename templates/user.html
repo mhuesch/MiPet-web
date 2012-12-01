@@ -17,10 +17,11 @@
 
         <!-- Styles -->
         <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
-        <link href="/static/bootstrap/css/jasny-bootstrap-fileupload.css" rel="stylesheet">
+       
+            <!--<link href="/static/bootstrap/css/jasny-bootstrap-fileupload.css" rel="stylesheet">
 
         
-        <!--<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
+        <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
          <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">-->
          
 
@@ -175,7 +176,7 @@
                                 <!--class="img-circle"-->
                                 {% endif %}
                             <br/>
-                                Link to the profile of {{ pet.name }}
+                                <!--Link to the profile of--> {{ pet.name }}
                         </a>
                     </div>
 
@@ -206,9 +207,9 @@
 
         <script type="text/html" id="user_template">
             <div>
-                <h1 class='timelineTitle' id='userName'><%= name %></h1>
-                <p><%= bio %><p>
-                <img class='profilePic' id='petProfilePic' src=<%= prof_pic %>>
+                <h1 class='timelineTitle' id='userName'><%= name %>'s Pets:</h1>
+                <!--p><%= bio %><p>
+                <img class='profilePic' id='petProfilePic' src=<%= prof_pic %>-->
             </div>
         </script>
         
@@ -228,15 +229,10 @@
         <script>
             //$('#input-media-upload').hide();
             $('#profPicUploadInput').hide();
-             
+            
             function chooseMedia(choice)
             {
-                /*
-                if ($('#imageUpload').checked)
-                {
-                    
-                }
-                 */
+                
                 if (choice == "url")
                 {
                     $('#profPicURLInput').show();
