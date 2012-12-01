@@ -131,6 +131,18 @@ div id="add-profile"
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;    
 }
 
+.navbar-logo {
+    padding: 0px;
+    margin: 0px;
+    width: 50px;
+
+}
+
+.milestone-img {
+  padding-left: 4px;
+  width: 20px;
+}
+
 h1.timelineTitle { font-size: 16pt;}
 
 #profile-info-button { 

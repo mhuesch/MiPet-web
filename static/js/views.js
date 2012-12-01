@@ -114,7 +114,8 @@ var EventView = Backbone.View.extend({
         // 4 is the none milestone
         if(milestone != 1 && milestone != null && milestone != 'none')
         {
-            outputString += "<i class='icon-star'></i>";
+            outputString += "<img class='milestone-img' src='/static/img/icon-milestone.png'>";
+            //outputString += "<i class='icon-star'></i>";
         }
 
         outputString += "<span class='eventTitle' id='eventTitle-"+eventID+"'>"+this.model.get('title')+"</span>";
@@ -131,11 +132,12 @@ var EventView = Backbone.View.extend({
 
         outputString += "<div class='event-body'>";
 
-       /* if(milestone != 1 && milestone != null && milestone != 'none')
+       // if(milestone != 1 && milestone != null && milestone != 'none')
+        if(milestone == 1)
         {
             outputString += "<span class='milestone'> Milestone: " + milestone_name + "</span> <br/>";
         } 
-        */
+        
                                      
         outputString += "<span class='eventDesc' id='eventDesc-"+eventID+"'>"+this.model.get('description')+"</span>"; 
 
