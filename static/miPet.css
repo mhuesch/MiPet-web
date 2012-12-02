@@ -253,7 +253,7 @@ h1.timelineTitle { font-size: 16pt;}
 }
 
 .profilePic {
-    height: 140px;
+    width: 140px;
     display:inline-block;
     float: left;
     padding: 10px;
