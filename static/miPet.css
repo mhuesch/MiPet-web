@@ -19,6 +19,21 @@ container {
     width = 100%;
 }
 
+
+h1.timelineTitle { font-size: 16pt;}
+
+.navbar-logo {
+    padding: 0px;
+    margin: 0px;
+    width: 50px;
+}
+
+.milestone-img {
+  padding-left: 4px;
+  width: 20px;
+}
+
+
 .navbar {
   /* *position: relative;
   *z-index: 2;
@@ -173,22 +188,22 @@ hex #777777 --> HSL is 0, 0, 47
 
 
 
-.petProfile {
-    min-height: 200px;
-}
+
 
  
 
 
 /*-------------------------- Create profile css -------------------------------*/
+
+/* --------------- ADD Pet Profile --------------- */
+
+/*
+.petProfile
+.profilePic
+*/
+
+/* href link for modal dialog box */
 add-profile { }
-
-
-input[type=text]#input-petName { }
-
-input[type=text]#input-petBio { }
-
-input[type=url]#input-petProfPic { }
 
 #btn-add-profile
 {
@@ -197,62 +212,20 @@ input[type=url]#input-petProfPic { }
  /* height: 45px;*/
 }
 
+nameInput, bioInput, profPicInput, birthdateInput { }
 
+/*input[type=text]*/
+#prof-input-petName, #input-petName { width: 150px;}
 
-/*
-a id="btn-add-profile"
+/*input[type=text]*/
+#prof-input-petBio, #input-petBio { }
 
+#prof-input-petBirthdate, #input-petBirthdate { width: 115px; }
 
-div id="add-profile"
+#user_container { }
 
- <!-- added data-dismiss to hide after click submit, doesn't clear the fields though-->…..
-
-<div id="nameInput" class="inputField">
-<input type="text" id="input-petName"
-
-<div id="bioInput" class="inputField">
-<input type="text" id="input-petBio" 
-
-<div id="profPicInput" class="inputField">
-<input type="url" id="input-petProfPic"
-*/
-
-
-
-/*-------------------------- Profile info/heading -------------------------------*/
-
-#pet-info {
-    /*height: 150px;*/
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;    
-}
-
-.navbar-logo {
-    padding: 0px;
-    margin: 0px;
-    width: 50px;
-
-}
-
-.milestone-img {
-  padding-left: 4px;
-  width: 20px;
-}
-
-h1.timelineTitle { font-size: 16pt;}
-
-#profile-info-button { 
-    display: inline-block;
-    float: right;
-    float: left; 
-    margin-right: 7px; 
-    margin-top: 7px; 
-    display: inline;
-  }
-
-.milestone {
-    color: black;
-    text-transform: lowercase;
-    font-variant: small-caps;
+.petProfile {
+    min-height: 240px;
 }
 
 .profilePic {
@@ -261,6 +234,8 @@ h1.timelineTitle { font-size: 16pt;}
     float: left;
     padding: 10px;
 }
+
+
 
 .petBio { 
     color: #999;
@@ -278,12 +253,40 @@ h1.timelineTitle { font-size: 16pt;}
     font-size: 11px;
 }
 
+
+
+/*-------------------------- Profile info/heading -------------------------------*/
+
+#pet-info {
+    /*height: 150px;*/
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;    
+}
+
+
+#profile-info-button { 
+    display: inline-block;
+    float: right;
+    float: left; 
+    margin-right: 7px; 
+    margin-top: 7px; 
+    display: inline;
+  }
+
+.milestone {
+    color: black;
+    text-transform: lowercase;
+    font-variant: small-caps;
+}
+
 .editEvent { float: right; }
 
-/*-------------------------- Create event css -------------------------------*/
+
+
+/* --------------- ADD Event --------------- */
 
 /*modal { width: 400px;}
-addEvent { }*/
+href for modal dialog
+add-event { }*/
 
 #btn-add-event { }
 
@@ -365,6 +368,8 @@ input[type=url]#input-media {
 
 /* type=file */
 #input-media-upload {}
+
+/* --------------- EDIT Event css --------------- */
 
 
 

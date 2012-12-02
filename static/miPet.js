@@ -58,10 +58,10 @@ function openEditProfileInfo(petID)
 	//alert('open edit prof info with petid: ' + petID);
 	//the model for the pet is stored as a global variable, so just use that instead of 
 	//using getElementById for this funtion
-	document.getElementById("prof-input-name").value = pet.get('name');
-	document.getElementById("prof-input-bio").value = pet.get('bio');
+	document.getElementById("prof-input-petName").value = pet.get('name');
+	document.getElementById("prof-input-petBio").value = pet.get('bio');
 	document.getElementById("prof-input-media-url").value = pet.get('prof_pic'); 
-	document.getElementById("prof-input-birthdate").value = pet.get('birthdate');
+	document.getElementById("prof-input-petBirthdate").value = pet.get('birthdate');
 }
 
 
@@ -175,9 +175,9 @@ function editProfile(petid)
 	pet = window.pet;
 	//get the new name/bio/etc 
 	var params = new Object();
-	params.name = document.getElementById("prof-input-name").value; 
-	params.bio = document.getElementById("prof-input-bio").value;
-	params.birthdate = document.getElementById("prof-input-birthdate").value;
+	params.name = document.getElementById("prof-input-petName").value; 
+	params.bio = document.getElementById("prof-input-petBio").value;
+	params.birthdate = document.getElementById("prof-input-petBirthdate").value;
     
     if (document.getElementById('profile-imageURL').checked)//if URL button is checked, otherwise need to upload. 
 	{
@@ -415,15 +415,6 @@ function addMedia(url, eventID)
  */
 function addPetProfile(owner_id)
 {
-	/*
-    var inputs = "";
-    inputs += "input-petName: " + document.getElementById("input-petName").value + "\n";
-    inputs += "input-petBio: " + document.getElementById("input-petBio").value + "\n";
-    inputs += "input-petProfPic: " + document.getElementById("input-petProfPic").value + "\n";
-    inputs += "input-petBirthdate: " + document.getElementById("input-petBirthdate").value + "\n";
-	
-    alert(inputs);
-    */
     
 	//changed creating object with default fields to just creating an object. 
 	//makes validation easier
