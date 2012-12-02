@@ -19,7 +19,7 @@
 
     <!-- Styles -->
     <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="/static/bootstrap/css/jasny-bootstrap-fileupload.css" rel="stylesheet">
+    <!--link href="/static/bootstrap/css/jasny-bootstrap-fileupload.css" rel="stylesheet"-->
 
     
     <!--<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
@@ -40,14 +40,7 @@
     <div class="navbar navbar-fixed-top"> <!--navbar-inverse" -->
         <div class="navbar-inner">
             <div class="container">
-                
-
-                <!-- calendar button for choosing different date/time
-                 - not implemented yet - to jump to diff part of timeline -->
-                 <!-- <a class="btn btn-inverse" style="float:right; display: inline;">
-                 <i class="icon-calendar icon-white"></i>
-                 </a> -->
-                
+                         
                 <!-- dropdown about hackyness is no longer working, so get rid of this icon for now --
                 <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                     <i class="icon-info-sign icon-white"></i>
@@ -57,17 +50,10 @@
                 <img class="navbar-logo" src="/static/img/logo-miPet.png">
                 </a>
                 
-                <div class="nav-collapse collapse">
-                    <ul class="nav">
-                        <li>
-                            <a> Document your pet's life with miPet. </a>
-                        </li>
-                    </ul>
-                </div> <!-- END nav-collapse collapse /.nav-collapse -->
-                
+
             </div> <!-- END container-->
         </div> <!-- END navbar-inner -->
-    </div> <!-- END navbar navbar-inverse navbar-fixed-top -->
+    </div> <!-- END navbar navbar-fixed-top -->
     
     <div class="container">
         
@@ -87,22 +73,15 @@
                 <div class="modal-body">
                     
                     
-                    <!-- --- TITLE --- -->
-                    <div id="titleInput" class="inputField">
-                        <span class="inputLabel">
-                            Event Title:
-                        </span>
-                        <input type="text" id="input-title" placeholder="Title of Event" />
-                    </div>
-                    
-                    
-                    <!-- --- TEXT/description --- -->
+                    <!-- --- TITLE/TEXT/Description --- -->
                     <div id="textInput" class="inputField">
                         <span class="inputLabel">
                             Description:
                         </span>
                         <input type="text" id="input-text" name="text" placeholder="Describe this epic event in your pet's life!" />
                     </div>
+                    
+
                     
                     <!-- --- DATE (defaults to current) --- -->
                     <div id="dateInput" class="inputField">
@@ -119,35 +98,20 @@
                         <span class="inputLabel">
                             Milestone:
                         </span>
+                        <input type="checkbox" id="input-milestone" name="milestone">
+                        <!--
                         <select id='input-milestone'>
                         </select>
+                        -->
                     </div>
                     
-                   <!-- <div id="milestoneInput" class="inputField">
-                        <span class="inputLabel">
-                            Milestone: 
-                        </span>
-                            
-                        <input type="checkbox" id="input-milestone" name="milestone"> This event is a milestone
-                        </input>
-                        
-                        <!--
-                        <select name="milestones" id="input-milestone">
-                            <option selected="selected"> none </option>
-                            <option>  </option>
-                            <option>  </option>
-                        </select>
-                        
-                        
-                    </div> -->
-
-
+                
                     
                     <!-- --- MEDIA - UPLOAD/URL --- -->
                     
                     <div id="mediaInput">
                    
-                        <div id="mediaInputChoice" style="padding-bottom: 5px;">
+                    <div id="mediaInputChoice" style="padding-bottom: 5px;">
                         
                     <form id="imageChoice">
                         <span class="inputLabel"> </span>
@@ -160,9 +124,9 @@
                         </span>
                     </form>
                         
-                        </div> <!-- end mediaInputChoice -->
+                    </div> <!-- end mediaInputChoice -->
 
-                        
+                   <!-- --- URL Media -->     
                     <div id="mediaURLInput" class="inputField">
                         <span class="inputLabel">
                             Image URL:
@@ -170,6 +134,7 @@
                         <input type="url" id="input-media-url" name="media" placeholder="http://...yourimagelink.png" />
                     </div>
 					
+                     <!-- --- UPLOAD Media -->   
 					<div id="mediaUploadInput" class="inputField">
                         <span class="inputLabel">
                             Upload image:
@@ -180,30 +145,12 @@
                     </div> <!-- end mediaInput -->
 
 
-                    
-                    <!-- ----- More inputs accordion -- isn't quite working....
-                     <a class="btn accordion-toggle" data-toggle="collapse"
-                     href="#moreInputs"> More inputs... </a>
-                     
-                     <div id="moreInputs" class="collapse"> <!-- class="accordion-body collapse in"-->
-                    
-                <!--
-                <input type="checkbox" id="input-seeMore" name="" value="" onclick="seeMore(this.checked)"> See more options [optional] </input>
-
-                    <div id="moreInputs">
-                        
-                        
-                       
-                   <!-- </div> <!--  end moreInputs div ---------- -->
-
-                    
                 </div> <!-- end modal-body -->
-                
-        
+                        
                 
                 <div class="modal-footer">
                     <a class="btn" data-dismiss="modal">Cancel</a> <!-- Close --> <!-- href="#"  -->
-                    <a id="modal-form-submit" class='btn btn-primary' onclick="addEvent({{pet_id}})" data-dismiss="modal">Submit</a> <!-- href="#"  -->
+                    <a id="modal-form-submit" class='btn btn-red' onclick="addEvent({{pet_id}})" data-dismiss="modal">Submit</a> <!-- href="#"  -->
                     <!-- added data-dismiss to hide after click submit, doesn't clear the fields though-->
                     
                 </div> <!-- end modal-footer -->
@@ -428,17 +375,10 @@
         
         
         
-    	<div id="pet-info">
-        </div>
+    	<div id="pet-info"> </div>
         
         
-    	<div id="events">
-        <!-- load ?? 
-         for event in eventList
-         create the html for hte listing 
-         create the html for the modal edit event box with values filled in
-         -->
-        </div>
+    	<div id="events"> </div>
         
         
     </div> <!-- end container -->

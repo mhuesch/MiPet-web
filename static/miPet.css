@@ -41,6 +41,8 @@ container {
   color: navy;
 }
 
+
+
 /* pretty blue button from info classes */
 /*.navbar-inner {
   /*min-height: 30px;  40px;*/
@@ -171,7 +173,10 @@ hex #777777 --> HSL is 0, 0, 47
 
 
 
+.petProfile {
+    min-height: 240px;
 
+}
 
  
 
@@ -190,7 +195,7 @@ input[type=url]#input-petProfPic { }
 {
   margin: auto auto;
   width: 100px;
-  height: 45px;
+ /* height: 45px;*/
 }
 
 
@@ -279,15 +284,12 @@ h1.timelineTitle { font-size: 16pt;}
 
 /*-------------------------- Create event css -------------------------------*/
 
-/*modal { width: 400px;}*/
-addEvent { }
+/*modal { width: 400px;}
+addEvent { }*/
 
-.inputLabel { 
-  width: 85px; 
-  text-align: right; 
-  display: inline-block;
-}
+#btn-add-event { }
 
+/* div for each input in form */
 .inputField {
     color: teal;
     font-size: 9.5pt;
@@ -295,10 +297,20 @@ addEvent { }
     margin: 0px; 
 }
 
+/* span for different input field labels */
+.inputLabel { 
+ /* width: 85px; */
+  text-align: right; 
+  display: inline-block;
+}
+
+
 #input-type-title {
     float: right;
     display: inline;
 }
+
+
 
  /* description */
 input[type=text]#input-text {
@@ -314,19 +326,49 @@ input[type=text]#input-text {
 }
 
 /*media*/
-input[type=url]#input-asset {
+/*input[type=url]#input-asset {
     height: 20px;
     width: 300px; 
 }
 
 input[type=url]#input-media {
     
+}*/
+
+
+/*input[type=text]#input-title { }
+  input[type=date]#input-date { }
+  input[type=text]#input-text {
+*/
+
+#input-text {
+    width: 260px; 
+    color: #666;
 }
 
-#input-media-url {}
-#input-media-upload {}
+/* type=date */
+#input-date {
+    width: 150px;
+}
+
+/* type=checkbox */
+#input-milestone {
+    width: 50px;
+}
 
 #mediaInputChoice {padding-bottom: 5px;}
+
+#mediaURLInput { }
+
+#mediaUploadInput { }
+
+/* type=url */
+#input-media-url {}
+
+/* type=file */
+#input-media-upload {}
+
+
 
 /*-------------------------- Event display css -------------------------------*/        
     
