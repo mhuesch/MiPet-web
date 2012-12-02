@@ -342,18 +342,18 @@ input[type=url]#input-media {
   input[type=text]#input-text {
 */
 
-#input-text {
+#edit-input-text, #input-text {
     width: 260px; 
     color: #666;
 }
 
 /* type=date */
-#input-date {
+#edit-input-date, #input-date {
     width: 150px;
 }
 
 /* type=checkbox */
-#input-milestone {
+#edit-input-milestone, #input-milestone {
     width: 50px;
 }
 
