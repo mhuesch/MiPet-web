@@ -112,7 +112,7 @@ var EventView = Backbone.View.extend({
         outputString += "<div class='event-listing-title'>";
 
         // 4 is the none milestone
-        if(milestone != 1 && milestone != null && milestone != 'none')
+        if(milestone != 2 && milestone != null && milestone != 'none')
         {
             outputString += "<img class='milestone-img' src='/static/img/icon-milestone.png'>";
             //outputString += "<i class='icon-star'></i>";

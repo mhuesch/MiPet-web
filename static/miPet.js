@@ -262,14 +262,18 @@ function addEvent(id)
 	var eventObject = new Object();
 
 	eventObject.pets = [petID]; //parseInt is a built-in javascript function
-	eventObject.title = document.getElementById("input-title").value; 
-	eventObject.description = document.getElementById("input-text").value;
+	eventObject.title = document.getElementById("input-text").value; 
+	eventObject.description = "";
 	// Media is an array because there can be multiple media objects with an event
 	eventObject.media = [];
 
 	//eventObject.milestone = 4;
-	eventObject.milestone = document.getElementById("input-milestone").value;
-
+	if(document.getElementById("input-milestone").checked)
+	{
+		eventObject.milestone = 3;
+	}else{
+		eventObject.milestone = 2;
+	};
 	var moment = document.getElementById("input-date").value;
 	if(moment != null && moment != ""){
 		eventObject.moment = moment;
