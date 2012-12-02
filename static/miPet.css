@@ -225,7 +225,7 @@ nameInput, bioInput, profPicInput, birthdateInput { }
 #user_container { }
 
 .petProfile {
-    min-height: 240px;
+    min-height: 180px;
 }
 
 .profilePic {
