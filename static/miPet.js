@@ -1,24 +1,3 @@
-function loadMilestoneOptions()
-{
-    var all_milestones = new MilestoneCollection();
-    all_milestones.fetch({
-        success:function () {
-            all_milestones.models.forEach(function(element, index, array) {
-                var milestone_id = element.get('pk');
-                var milestone_name = element.get('name');
-                var selected_string;
-                if (milestone_id == 1) {
-                    selected_string = "selected";
-                } else {
-                    selected_string = "";
-                }
-                $('#input-milestone').append("<option " + selected_string + " value=" + milestone_id + ">" + milestone_name + " </option>");
-                $('#input-milestone-edit').append("<option " + selected_string + " value=" + milestone_id + ">" + milestone_name + " </option>");
-            });
-        }
-    });
-}
-
 function openEditEvent(eventID)
 {   
 	var tempEvent = petEvents.get(eventID);
@@ -41,12 +20,20 @@ function openEditEvent(eventID)
 
    // alert(outputString);
 	*/
-	document.getElementById("edit-input-title").value = document.getElementById(title).innerHTML; 
-	document.getElementById("edit-input-text").value = document.getElementById(desc).innerHTML;
+	//document.getElementById("edit-input-title").value = document.getElementById(title).innerHTML; 
+	document.getElementById("edit-input-text").value = tempEvent.get('title');
 
 	var date_field = document.getElementById(date).innerHTML;
 	document.getElementById("edit-input-date").value = moment(date_field).format("YYYY-MM-DD");
-	$('#input-milestone-edit').val(tempEvent.get('milestone'));
+	var isMilestone;
+	if(tempEvent.get('milestone')!=2)
+	{
+		isMilestone=true;
+	}else{
+		isMilestone=false;
+	}
+	
+	document.getElementById("edit-input-milestone").checked = isMilestone;
 	document.getElementById("edit-event-id").value =  eventID;
   //  edit-input-media-url
   //  edit-input-media-upload*/
@@ -106,12 +93,17 @@ function editEvent()
 	var event = window.petEvents.get(eventID);
 	
 	var params = new Object();
-	params.title = document.getElementById("edit-input-title").value;
-	params.description = document.getElementById("edit-input-text").value;
+	params.title = document.getElementById("edit-input-text").value;
+	params.description = "";
     var userDate = document.getElementById("edit-input-date").value;
     params.moment = moment(userDate).format("YYYY-MM-DDTHH:mm:ssZ");
-    var newMilestone = document.getElementById("input-milestone-edit").value;
-    params.milestone = newMilestone;
+    var isMilestone = document.getElementById("edit-input-milestone").checked;
+    if(isMilestone)
+    {
+    	params.milestone = 3;
+    }else{
+    	params.milestone = 2;
+    }
     
 	
 	/*if new media is present/checked 
