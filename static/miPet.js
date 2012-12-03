@@ -41,10 +41,12 @@ function openEditEvent(eventID)
   //  edit-input-media-upload*/
 
     var medias = tempEvent.get('media');
-    if (medias) {
+    if (medias.length != 0) {
         var mediaPK = medias[0];
         var media = "eventMedia-" + mediaPK;
         document.getElementById("edit-input-media-url").value = document.getElementById(media).src;
+    } else {
+        document.getElementById("edit-input-media-url").value = "";
     }
 
 }
