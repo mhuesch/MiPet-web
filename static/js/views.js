@@ -107,7 +107,11 @@ var EventView = Backbone.View.extend({
         var eventID = this.model.get('pk');    
         var milestone = this.model.get('milestone');
         var milestone_name = this.model.get('milestone_name');
+        var date_time = moment(this.model.get('moment'));
+
         var outputString = "";
+        
+        /* START OLD DISPLAY
         outputString += "<div class='event-listing'>";
         outputString += "<div class='event-listing-title'>";
 
@@ -137,8 +141,7 @@ var EventView = Backbone.View.extend({
         {
             outputString += "<span class='milestone'> Milestone: " + milestone_name + "</span> <br/>";
         } 
-        
-                                     
+                            
         outputString += "<span class='eventDesc' id='eventDesc-"+eventID+"'>"+this.model.get('description')+"</span>"; 
 
         outputString += '<div id="media'+this.model.get('pk')+'"class="event-media"></div>';
@@ -154,9 +157,51 @@ var EventView = Backbone.View.extend({
         right now we need the ID for the event to get the media associated with the event.
         When the event is created from a collection, I don't think it has an ID associated with it.
         We need this ID to get the media.
-        */
+        *
         //outputString += ""+this.model.media_url+"";
         outputString += "</div> <!-- end event-body --> </div> <!-- end event-listing -->";
+        END OLD DISPLAY*/
+
+        //outputString += "<div class='event-listing'>";
+        var eventTitle = this.model.get('title');
+        var eventDesc = this.model.get('description');
+
+        outputString += "<div class='event'>";
+        outputString += "<hr class='eventDivider'/>";
+        outputString += "<div class='event-header'>";
+
+        // really treated as a boolean field, 1 = true, it is a milestone
+        if(milestone != 2 && milestone != null && milestone != 'none')
+        {
+            outputString += "<img class='milestone-img' src='/static/img/icon-milestone.png'>";
+            //outputString += "<i class='icon-star'></i>";
+        }
+   
+        outputString += "<span class='eventDate'>"+date_time.format("MMM Do YYYY")+"</span>";   
+        
+        outputString += "<span class='editEvent' id='editEvent-"+eventID+"'>";
+        outputString += "<a class='btn btn-mini edit-button disabled' id='btn-edit-event'";
+        outputString += " data-toggle='modal' href='#edit-event' onclick='openEditEvent("+eventID+")'>";
+        outputString += "<i class='icon-pencil'></i> </a>";
+        outputString += "</span>";
+
+        outputString += "</div> <!-- end event-header-->";
+        outputString += "<br/><br/>";
+        outputString += "<div class='event-body'>";
+        outputString += "<div class='eventText'>";
+        outputString += "<span class='eventTitle' id='eventTitle-"+eventID+"'> Title: "+eventTitle+"</span>";
+        outputString += "<br/>";
+        outputString += "<span class='eventDesc' id='eventDesc-"+eventID+"'> Text: "+eventDesc+"</span>"; 
+        outputString += "</div> <!-- end eventText-->";
+
+        outputString += '<div id="media'+eventID+'"class="event-media"></div>';
+        
+        outputString += "</div> <!-- end event-body --> </div> <!-- end event-listing -->";
+
+
+
+
+
         $(this.el).html(outputString);
         var eventID = this.model.get('pk')
         var myMedia = this.model.get('media');
