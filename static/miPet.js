@@ -21,9 +21,10 @@ function openEditEvent(eventID)
    // alert(outputString);
 	*/
 	//document.getElementById("edit-input-title").value = document.getElementById(title).innerHTML; 
-	document.getElementById("edit-input-text").value = tempEvent.get('title');
+	document.getElementById("edit-input-text").value = tempEvent.get('description');
 
-	var date_field = document.getElementById(date).innerHTML;
+	//var date_field = document.getElementById(date).innerHTML;
+    var date_field = tempEvent.get('moment');
 	document.getElementById("edit-input-date").value = moment(date_field).format("YYYY-MM-DD");
 	var isMilestone;
 	if(tempEvent.get('milestone')!=2)
@@ -93,8 +94,8 @@ function editEvent()
 	var event = window.petEvents.get(eventID);
 	
 	var params = new Object();
-	params.title = document.getElementById("edit-input-text").value;
-	params.description = "";
+	params.title = "";
+	params.description = document.getElementById("edit-input-text").value;
     var userDate = document.getElementById("edit-input-date").value;
     params.moment = moment(userDate).format("YYYY-MM-DDTHH:mm:ssZ");
     var isMilestone = document.getElementById("edit-input-milestone").checked;

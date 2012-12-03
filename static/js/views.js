@@ -189,9 +189,9 @@ var EventView = Backbone.View.extend({
         outputString += "<br/><br/>";
         outputString += "<div class='event-body'>";
         outputString += "<div class='eventText'>";
-        outputString += "<span class='eventTitle' id='eventTitle-"+eventID+"'> Title: "+eventTitle+"</span>";
-        outputString += "<br/>";
-        outputString += "<span class='eventDesc' id='eventDesc-"+eventID+"'> Text: "+eventDesc+"</span>"; 
+        //outputString += "<span class='eventTitle' id='eventTitle-"+eventID+"'> Title: "+eventTitle+"</span>";
+        //outputString += "<br/>";
+        outputString += "<span class='eventDesc' id='eventDesc-"+eventID+"'>"+eventDesc+"</span>"; 
         outputString += "</div> <!-- end eventText-->";
 
         outputString += '<div id="media'+eventID+'"class="event-media"></div>';
