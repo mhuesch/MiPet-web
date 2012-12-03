@@ -499,7 +499,7 @@ event-list { }*/
 }
 
 .edit-button .icon-pencil {
-    opacity: .7; /* display grey on grey button, not jarring black */
+   /* opacity: .7; /* display grey on grey button, not jarring black */
 }
 
 .event-body {
