@@ -26,8 +26,8 @@ class Pet(models.Model):
 class Event(models.Model):
     pets = models.ManyToManyField(Pet, related_name='events')
     moment = models.DateTimeField(default=datetime.now, blank=True)
-    title = models.CharField(max_length=50)         # required
-    description = models.CharField(max_length=700, blank=True)  # --> can be null!
+    title = models.CharField(max_length=50, blank=True)         # required
+    description = models.CharField(max_length=700)
     milestone = models.ForeignKey('Milestone', blank=True, null=True)
 
     def __unicode__(self):
