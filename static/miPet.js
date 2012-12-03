@@ -254,8 +254,8 @@ function addEvent(id)
 	var eventObject = new Object();
 
 	eventObject.pets = [petID]; //parseInt is a built-in javascript function
-	eventObject.title = document.getElementById("input-text").value; 
-	eventObject.description = "";
+	eventObject.description = document.getElementById("input-text").value; 
+	eventObject.title = "";
 	// Media is an array because there can be multiple media objects with an event
 	eventObject.media = [];
 
