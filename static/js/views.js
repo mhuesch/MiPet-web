@@ -166,8 +166,8 @@ var EventView = Backbone.View.extend({
         var eventTitle = this.model.get('title');
         var eventDesc = this.model.get('description');
 
-        outputString += "<div class='event'>";
         outputString += "<hr class='eventDivider'/>";
+        outputString += "<div class='event'>";
         outputString += "<div class='event-header'>";
 
         // really treated as a boolean field, 1 = true, it is a milestone

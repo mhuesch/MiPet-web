@@ -457,6 +457,8 @@ event-list { }*/
 
 .event { 
    /* max-width: 720px; */
+  /* padding-left: 20px;
+   padding-right: 20px;*/
 }
 
 
@@ -465,7 +467,8 @@ event-list { }*/
     padding: 0px;
     /*padding-top: 10px;*/
     margin: 0px;
-    /*border: .75em solid #9A1D1F;*/
+    border-color: lightgrey;
+    /*border: .1em solid #9A1D1F;*/
 }
 
 .event-header { }
@@ -520,6 +523,8 @@ event-list { }*/
 
 
 .eventDesc { 
+  color: mediumvioletred; 
+    font-weight: bold;
    /* color: steelblue; */
     
     /*padding-top: 39px;
