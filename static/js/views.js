@@ -307,7 +307,7 @@ var MediaView = Backbone.View.extend({
         // check if these extensions exist in the url string(index >= 0)
         if(mediaURL.indexOf('.png') >=0 || mediaURL.indexOf('.jpg') >= 0 || mediaURL.indexOf('.jpeg') >= 0 || mediaURL.indexOf('.gif') >= 0 )
         {
-            outputString += "<img class='eventMedia' src='" + mediaURL + "' >";
+            outputString += "<img class='eventMedia' id='eventMedia-" + this.model.get('pk') +"' src='" + mediaURL + "' >";
         }
         else if(mediaURL.indexOf('youtube.com') >=0 || mediaURL.indexOf('youtu.be') >=0 )
         {

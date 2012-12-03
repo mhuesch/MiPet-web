@@ -38,6 +38,14 @@ function openEditEvent(eventID)
 	document.getElementById("edit-event-id").value =  eventID;
   //  edit-input-media-url
   //  edit-input-media-upload*/
+
+    var medias = tempEvent.get('media');
+    if (medias) {
+        var mediaPK = medias[0];
+        var media = "eventMedia-" + mediaPK;
+        document.getElementById("edit-input-media-url").value = document.getElementById(media).src;
+    }
+
 }
 
 
