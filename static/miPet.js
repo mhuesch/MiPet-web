@@ -4,6 +4,7 @@ function openEditEvent(eventID)
 	var title = "eventTitle-"+eventID;
 	var desc = "eventDesc-"+eventID;
 	var date = "eventDateTime-"+eventID;
+	var isMilestone;
 
    /* var outputString = ""; 
 //    outputString += "edit-input-title: " + document.getElementById("edit-input-title").value + "\n";
@@ -26,8 +27,8 @@ function openEditEvent(eventID)
 	//var date_field = document.getElementById(date).innerHTML;
     var date_field = tempEvent.get('moment');
 	document.getElementById("edit-input-date").value = moment(date_field).format("YYYY-MM-DD");
-	var isMilestone;
-	if(tempEvent.get('milestone')!=2)
+	
+	if(tempEvent.get('milestone')==3)
 	{
 		isMilestone=true;
 	}else{
