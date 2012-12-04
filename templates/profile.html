@@ -179,12 +179,12 @@
                 <div class="modal-body">
                     
                     
-                    
                     <!-- --- TITLE/TEXT/Description --- -->
                     <div id="textInput" class="inputField">
                         <span class="inputLabel">
                             Description:
                         </span>
+                        <span class="required"> (* Required) </span> <br/>
                         <input type="text" id="edit-input-text" name="text" placeholder="Describe this epic event in your pet's life!" />
                     </div>
 
@@ -265,7 +265,7 @@
 
 
 
-         <!-- ---------- start PROFILE INFO modal dialog box ---------- -->
+         <!-- ---------- start EDIT PROFILE INFO modal dialog box ---------- -->
         <form id="modal-form" accept-charset="UTF-8" data-remote="true"
             method="post"> <!-- action="/tagging" -->
             <div id="edit-profileInfo" class="modal hide fade in" style="display:none;">
@@ -355,9 +355,9 @@
                     <a id="modal-form-submit" class='btn btn-red' onclick="editProfile({{pet_id}})" data-dismiss="modal">Submit</a> <!-- href="#"  -->
                 </div> <!-- end modal-footer -->
                 
-            </div> <!-- end edit-event modal --> 
+            </div> <!-- end edit-profileInfo modal --> 
         </form>
-        <!-- ---------- end PROFILE INFO modal dialog box ---------- -->
+        <!-- ---------- end EDIT PROFILE INFO modal dialog box ---------- -->
         
         
         
