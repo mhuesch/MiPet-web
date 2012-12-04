@@ -85,6 +85,12 @@
                             Description:
                             <input type="text" id="input-petBio" placeholder="Brief bio of your awesome pet :)">
                         </div>
+
+                        <!-- ----- JOIN DATE will default to current date/time ----- -->
+                        <div id="birthdateInput" class="inputField">
+                            Approx Pet Birthdate:
+                            <input type="date" id="input-petBirthdate" placeholder="YYYY-MM-DD">
+                        </div>
                         
                         
                         <!-- ----- Pet PROFILE PICTURE ----- -->
@@ -120,18 +126,14 @@
                         </div> <!-- end mediaInput -->
                         
                         
-                        <!-- ----- JOIN DATE will default to current date/time ----- -->
-                        <div id="birthdateInput" class="inputField">
-                            Approx Pet Birthdate:
-                            <input type="date" id="input-petBirthdate" placeholder="YYYY-MM-DD">
-                        </div>
+
                           
                     </div> <!-- end modal-body -->
                     
                     
                     <div class="modal-footer">
                         <a class="btn" data-dismiss="modal">Cancel</a> <!-- Close --> <!-- href="#"  -->
-                        <a id="modal-form-submit" class="btn btn-primary" onclick="addPetProfile({{ user_id }})" data-dismiss="modal">Submit</a> <!-- href="#"  -->
+                        <a id="modal-form-submit" class="btn btn-red" onclick="addPetProfile({{ user_id }})" data-dismiss="modal">Submit</a> <!-- href="#"  -->
                         <!-- added data-dismiss to hide after click submit, doesn't clear the fields though-->
                         
                     </div> <!-- end modal-footer -->
@@ -171,7 +173,7 @@
                 {% endfor %}
             </div>    
 			<div style="margin-left:10%">
-                <a id="btn-add-profile" data-toggle="modal" href="#add-profile" class="btn btn-primary">
+                <a id="btn-add-profile" data-toggle="modal" href="#add-profile" class="btn btn-red">
                     <big>+</big> Add a Pet
                 </a>
             </div>

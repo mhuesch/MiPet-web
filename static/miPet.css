@@ -28,7 +28,10 @@ h1.timelineTitle { font-size: 16pt;}
     width: 50px;
 }
 
+a { color: #9A1D1F ;}
+a:hover { color: #777777;}
 
+input[type=date] { width: 115px; font-size: 13px;}
 
 
 .navbar {
@@ -231,12 +234,12 @@ add-profile { }
 nameInput, bioInput, profPicInput, birthdateInput { }
 
 /*input[type=text]*/
-#prof-input-petName, #input-petName { width: 150px;}
+#prof-input-petName, #input-petName { width: 175px;}
 
 /*input[type=text]*/
-#prof-input-petBio, #input-petBio { }
+#prof-input-petBio, #input-petBio { width: 250px;}
 
-#prof-input-petBirthdate, #input-petBirthdate { width: 115px; }
+#prof-input-petBirthdate, #input-petBirthdate { }
 
 #user_container { }
 
@@ -261,7 +264,7 @@ nameInput, bioInput, profPicInput, birthdateInput { }
 }
 
 
-.joinDate { 
+.birthdate { 
     display: inline-block;
     float: right;
     color: #666;
@@ -269,6 +272,7 @@ nameInput, bioInput, profPicInput, birthdateInput { }
     font-size: 11px;
 }
 
+#prof-input-media-url, #prof-input-media-upload { width: 175px; font-size: 13px;}
 
 
 /*-------------------------- Profile info/heading -------------------------------*/
@@ -300,15 +304,19 @@ nameInput, bioInput, profPicInput, birthdateInput { }
 
 /* --------------- ADD Event --------------- */
 
-/*modal { width: 400px;}
-href for modal dialog
+/* adjusting this makes it not center though...*/
+/*.modal { max-width: 400px;}
+.modal-header {max-width: 400px;}
+.modal-footer {max-width: 400px;}*/
+
+/*href for modal dialog
 add-event { }*/
 
 #btn-add-event { }
 
 /* div for each input in form */
 .inputField {
-    color: teal;
+    color: #777777; /*teal;*/
     font-size: 9.5pt;
     padding: 0px;
     margin: 0px; 
@@ -321,24 +329,28 @@ add-event { }*/
   display: inline-block;
 }
 
-
+/*
 #input-type-title {
     float: right;
     display: inline;
+}*/
+
+.required {
+    /*float: right;*/
+    font-size: 11px;
+    color: #9A1D1F;
 }
 
 
-
- /* description */
 input[type=text]#input-text {
-    width: 260px; /* 300 */
+    /*width: 257px; /* 300 */
     /*
     height: 30px;
     font-size: 15px;
     font-weight: normal;
     line-height: 20px; */
     /*margin-bottom: 20px;*/
-    color: #666;
+    /*color: #666;*/
     /*font-family: "Georgia",Times New Roman,Times,serif !important; */
 }
 
@@ -358,14 +370,17 @@ input[type=url]#input-media {
   input[type=text]#input-text {
 */
 
+
+ /* description */
+ /* type=text */
 #edit-input-text, #input-text {
-    width: 260px; 
+    width: 250px;  /* 260 */
     color: #666;
 }
 
 /* type=date */
 #edit-input-date, #input-date {
-    width: 150px;
+    /*width: 150px;*/
 }
 
 /* type=checkbox */
@@ -489,6 +504,8 @@ event-list { }*/
 
     padding-top: 5px;
     font-variant: small-caps;
+    font-weight: bold;
+    color: #9A1D1F;
     /*font-family: "Georgia",Times New Roman,Times,serif !important; */
 }
 
@@ -512,18 +529,18 @@ event-list { }*/
     display: block;
     font-weight: normal;
     font-size: 12px;
-    color: #9A1D1F;
+    color: #777777; /*color: #9A1D1F;*/
 }
 
 .eventTitle { 
     /*padding-left: 7px;*/
-    color: mediumvioletred; 
+    /*color: mediumvioletred; */
     font-weight: bold;
 }
 
 
 .eventDesc { 
-  color: mediumvioletred; 
+  /*color: mediumvioletred; */
     font-weight: bold;
    /* color: steelblue; */
     

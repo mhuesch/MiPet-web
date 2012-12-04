@@ -78,10 +78,10 @@
                         <span class="inputLabel">
                             Description:
                         </span>
-                        <input type="text" id="input-text" name="text" placeholder="Describe this epic event in your pet's life!" />
+                        <span class="required"> (* Required) </span> <br/>
+                        <input type="text" id="input-text" name="text" placeholder="Describe this event in your pet's life!" />
                     </div>
                     
-
                     
                     <!-- --- DATE (defaults to current) --- -->
                     <div id="dateInput" class="inputField">
@@ -92,17 +92,12 @@
                     </div>
 
 
-                    
                     <!-- --- MILESTONE --- -->
                     <div id="milestoneInput" class="inputField">
                         <span class="inputLabel">
                             Milestone:
                         </span>
                         <input type="checkbox" id="input-milestone" name="milestone">
-                        <!--
-                        <select id='input-milestone'>
-                        </select>
-                        -->
                     </div>
                     
                 
@@ -256,7 +251,7 @@
                 <div class="modal-footer">
                     <a class='btn btn-danger' onclick="deleteEvent()" style="float: left;"> Delete event </a>
                     <a class="btn" data-dismiss="modal">Cancel</a> <!-- Close --> <!-- href="#"  -->
-                    <a id="modal-form-submit" class='btn btn-primary' onclick="editEvent({{pet_id}})" data-dismiss="modal">Submit</a> <!-- href="#"  -->
+                    <a id="modal-form-submit" class='btn btn-red' onclick="editEvent({{pet_id}})" data-dismiss="modal">Submit</a> <!-- href="#"  -->
                     <!-- added data-dismiss to hide after click submit, doesn't clear the fields though-->
                 </div> <!-- end modal-footer -->
                 
@@ -357,7 +352,7 @@
                 
                 <div class="modal-footer">
                     <a class="btn" data-dismiss="modal">Cancel</a> <!-- Close --> <!-- href="#"  -->
-                    <a id="modal-form-submit" class='btn btn-primary' onclick="editProfile({{pet_id}})" data-dismiss="modal">Submit</a> <!-- href="#"  -->
+                    <a id="modal-form-submit" class='btn btn-red' onclick="editProfile({{pet_id}})" data-dismiss="modal">Submit</a> <!-- href="#"  -->
                 </div> <!-- end modal-footer -->
                 
             </div> <!-- end edit-event modal --> 

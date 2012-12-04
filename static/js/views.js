@@ -32,11 +32,11 @@ var UserView = Backbone.View.extend({
 // Global variables - naughty!
 // But don't know how to have accessor functions...
 var PetName = "";       // This pet's name
-var PetBirthdate = "";  // Pet's joined date
+var PetBirthdate = "";  // Pet's approx birthdate
 var PetBio = "";
 var PetProfPicURL = "";
 
-// ------------------------- Pet View -------------------------//
+// ------------------------- Pet View (top of page) -------------------------//
 var PetView = Backbone.View.extend({
 
     el:$('#pet-info'),
@@ -57,7 +57,7 @@ var PetView = Backbone.View.extend({
         petID = this.model.get('id');
 
         var outputHTML = "";
-        outputHTML += "<a class='btn btn-mini btn-info profile-info-button' style='float: left; margin-right: 7px; margin-top: 7px; display: inline;'";
+        outputHTML += "<a class='btn btn-mini btn-red profile-info-button' style='float: left; margin-right: 7px; margin-top: 7px; display: inline;'";
         outputHTML += " data-toggle='modal' href='#edit-profileInfo' onclick='openEditProfileInfo("+petID+")'>";
         outputHTML += "<i class='icon-info-sign icon-white'></i> </a>";
         
@@ -70,10 +70,7 @@ var PetView = Backbone.View.extend({
         outputHTML+="<h1 class='timelineTitle' id='petName'> "+PetName+" </h1>";
 
         //outputHTML+="<span class='petBio' id='petBio'> "+PetBio+" </span>";
-
-        
-
-        //outputHTML += "<span class='birthdate joinDate'> Approx Birthdate: " + PetBirthdate + " </span>"
+        //outputHTML += "<span class='birthdate'> Approx Birthdate: " + PetBirthdate + " </span>";
 
         $(this.el).html(outputHTML);
         //var myEvents = this.model.get('events');
@@ -239,7 +236,7 @@ var EventListView = Backbone.View.extend({
     render:function () {
         var self = this;
         // we had these displaying for awhile, so if you're looking for them... yeah
-        //$(this.el).append("<span class='birthdate joinDate'> Pet's Birthday: " + PetBirthdate + "</span> ");
+        //$(this.el).append("<span class='birthdate'> Pet's Birthday: " + PetBirthdate + "</span> ");
         //$(this.el).append("<br/> Events in "+ PetName +"'s timeline:");
 
         $(this.el).append("<div id='eventlist'></div>");
