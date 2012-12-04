@@ -140,11 +140,7 @@
                 </div> <!-- end add-event modal -->
             </form>
 
-            <p>
-                <a id="btn-add-profile" data-toggle="modal" href="#add-profile" class="btn btn-primary" style="float: right;">
-                    <big>+</big> Add a Pet
-                </a>
-            </p>
+            
             
             
             <div id="user_container"></div>
@@ -174,6 +170,11 @@
 
                 {% endfor %}
             </div>    
+			<div style="margin-left:10%">
+                <a id="btn-add-profile" data-toggle="modal" href="#add-profile" class="btn btn-primary">
+                    <big>+</big> Add a Pet
+                </a>
+            </div>
         </div> <!-- end container -->
 
 
@@ -198,11 +199,11 @@
 
 
         <script type="text/html" id="user_template">
-            <div>
+            <!--<div>
                 <h1 class='timelineTitle' id='userName'><%= name %>'s Pets:</h1>
-                <!--p><%= bio %><p>
-                <img class='profilePic' id='petProfilePic' src=<%= prof_pic %>-->
-            </div>
+                <p><%= bio %><p>
+                <img class='profilePic' id='petProfilePic' src=<%= prof_pic %>
+            </div>-->
         </script>
         
         <script type="text/javascript">
