@@ -278,10 +278,10 @@ var EventListView = Backbone.View.extend({
 
 /* reference:
 http://stackoverflow.com/questions/7168987/how-to-convert-a-youtube-video-url-to-the-iframe-embed-code-using-jquery-on-pag */
-function youtubeToEmbed(mediaURL)
+function youtubeToEmbed(mediaURL, id)
 {
     return mediaURL.replace(/(?:http:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g,
-                '<iframe width="420" height="345" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen></iframe>');
+                "<iframe width='420' height='345' id='eventMedia-" + id +"' src='http://www.youtube.com/embed/$1' frameborder='0' allowfullscreen></iframe>");
 }
 
 
@@ -315,7 +315,7 @@ var MediaView = Backbone.View.extend({
             //outputString += "<iframe width='640' height='480' src='" + mediaURL + '" ';
             //outputString += "frameborder='0' allowfullscreen> </iframe>";
 
-            outputString += youtubeToEmbed(mediaURL);
+            outputString += youtubeToEmbed(mediaURL, this.model.get('pk'));
             
             outputString += "</div> <!-- end video-container -->";
             outputString += "</div> <!-- end video-wrapper -->";
@@ -323,7 +323,7 @@ var MediaView = Backbone.View.extend({
         else
         {
             // Just turn the media link into a link w/ URL as its text
-            outputString += "<a target='_blank' href='" + mediaURL + "' >"+ mediaURL +" </a>";
+            outputString += "<a target='_blank' id='eventMedia-" + this.model.get('pk') +"' href='" + mediaURL + "' >"+ mediaURL +" </a>";
         }
 
         $(this.el).html(outputString);  

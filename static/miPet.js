@@ -54,7 +54,12 @@ function openEditEvent(eventID)
     if (medias.length != 0) {
         var mediaPK = medias[0];
         var media = "eventMedia-" + mediaPK;
-        document.getElementById("edit-input-media-url").value = document.getElementById(media).src;
+        var tempURL = document.getElementById(media).src;
+        if(tempURL){
+        	document.getElementById("edit-input-media-url").value = tempURL;
+        }else{
+        	document.getElementById("edit-input-media-url").value = document.getElementById(media).href;
+        }
     } else {
         document.getElementById("edit-input-media-url").value = "";
     }
@@ -423,6 +428,20 @@ function addMedia(url, eventID)
 }
 
 //---------------------- methods for creating a new pet ----------------------------//
+
+//validation for adding a pet profile
+function validateAddPet(owner_id)
+{
+	var x=document.getElementById("input-petName").value;
+	if (x==null || x=="")
+	{
+		alert("Pet name must be filled out");
+	}
+	else{
+		addPetProfile(owner_id);
+	}
+	
+}
 
 
 /* 
