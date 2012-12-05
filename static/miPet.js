@@ -434,7 +434,13 @@ function addPetProfile(owner_id)
     if(bday != null && bday != ""){
     	petProfileObject.birthdate = bday;
     }
-    petProfileObject.bio = document.getElementById("input-petBio").value;
+    var bio = document.getElementById("input-petBio").value;
+    if(bio)
+    {
+    	petProfileObject.bio = bio;
+    }else{
+    	petProfileObject.bio = "";
+    }
     petProfileObject.events = [];
     //set owner to default for now
     petProfileObject.owner = owner_id;
