@@ -66,9 +66,17 @@
             
             <div class="modal-header">
                 <a class="close" data-dismiss="modal">×</a>
-                <h3>Add an Event</h3>
-            </div> <!-- end modal-header -->
+            <span><h3 style="display: inline;">Edit Event</h3></span>
             
+                <!-- --- MILESTONE --- -->
+                <div id="milestoneInput" class="inputField" style="float: right; padding-top: 7px;">
+                    <span class="inputLabel">
+                        Milestone
+                    </span>
+                    <input type="checkbox" id="input-milestone" name="milestone" style="margin-bottom: 7px;">
+                </div>
+                
+                </div> <!-- end modal-header -->
             
                 <div class="modal-body">
                     
@@ -92,13 +100,13 @@
                     </div>
 
 
-                    <!-- --- MILESTONE --- -->
+                    <!-- --- MILESTONE --- --
                     <div id="milestoneInput" class="inputField">
                         <span class="inputLabel">
                             Milestone:
                         </span>
                         <input type="checkbox" id="input-milestone" name="milestone">
-                    </div>
+                    </div> -->
                     
                 
                     
@@ -116,10 +124,15 @@
                         &nbsp; 
                         <span class="inputField">
                         <input type="radio" name="mediaChoose" id="event-imageURL" value="url" onclick="chooseMedia(this.value)"> From URL </input>
+                            
+                        <a class='btn-link' onclick="imgURLTooltip()"> <i class="icon-question-sign"></i></a>
                         </span>
                     </form>
                         
                     </div> <!-- end mediaInputChoice -->
+                        
+                        
+                         
 
                    <!-- --- URL Media -->     
                     <div id="mediaURLInput" class="inputField">
@@ -127,6 +140,8 @@
                             Image URL:
                         </span>
                         <input type="url" id="input-media-url" name="media" placeholder="http://...yourimagelink.png" />
+                        
+                       
                     </div>
 					
                      <!-- --- UPLOAD Media -->   
@@ -172,7 +187,15 @@
                 
                 <div class="modal-header">
                     <a class="close" data-dismiss="modal">×</a>
-                    <h3>Edit Event</h3>
+                    <span><h3 style="display: inline;">Edit Event</h3></span>
+                    
+                    <!-- --- MILESTONE --- -->
+                     <div id="milestoneInput" class="inputField" style="float: right; padding-top: 7px;">
+                     <span class="inputLabel">
+                     Milestone
+                     </span>
+                     <input type="checkbox" id="edit-input-milestone" name="milestone" style="margin-bottom: 7px;">
+                     </div>
                     
                 </div> <!-- end modal-header -->
                 
@@ -198,13 +221,13 @@
                     </div>
                     
                     
-                    <!-- --- MILESTONE --- -->
+                    <!-- --- MILESTONE --- --
                     <div id="milestoneInput" class="inputField">
                         <span class="inputLabel">
                             Milestone:
                         </span>
                         <input type="checkbox" id="edit-input-milestone" name="milestone">
-                    </div>
+                    </div> -->
                     
                     
                     <!-- --- MEDIA - UPLOAD/URL -->
@@ -220,6 +243,9 @@
                                 &nbsp;
                                 <span class="inputField">
                                     <input type="radio" name="mediaChoose" id="edit-event-imageURL" value="url" onclick="chooseMedia(this.value)" checked=true> From URL </input>
+                                    
+                                    <a class='btn-link' onclick="imgURLTooltip()"> <i class="icon-question-sign"></i></a>
+                                </span>
                                 </span>
                             </form>
                             
@@ -325,6 +351,9 @@
                                 &nbsp;
                                 <span class="inputField">
                                     <input type="radio" name="mediaChoose" id="profile-imageURL" value="url" onclick="chooseMedia(this.value)" checked=true> From URL </input>
+                                    
+                                    <a class='btn-link' onclick="imgURLTooltip()"> <i class="icon-question-sign"></i></a>
+                                </span>
                                 </span>
                             </form>
                             
@@ -378,15 +407,22 @@
     <!-- Placed at the end of the document so the pages load faster -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-modal.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-alert.js"></script>
+    <script src="http://twitter.github.com/bootstrap/assets/js/jquery.js"> </script>
+    
     <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-transition.js"> </script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/jquery.js"> </script>
+    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-alert.js"></script>
+    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-modal.js"></script>
+
     <!--<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-popover.js"> </script>-->
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-button.js"> </script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/jquery.js"> </script>
+
+    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-tooltip.js"></script>
+    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-popover.js"></script>
+    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-button.js"></script>
+
     <script src="http://underscorejs.org/underscore-min.js"> </script>
     <script src="http://backbonejs.org/backbone-min.js"> </script>
+    
+    
     
     <script src="/static/bootstrap/js/bootstrap-fileupload.js"> </script>
     
@@ -465,7 +501,11 @@
                 $('#prof-mediaUploadInput').show();
                 $('#prof-mediaURLInput').hide();
             }
-         } 
+         }
+        
+        function imgURLTooltip(){
+            alert('Valid image URLs end with .png, .jpg, .jpeg or .gif.\n\nYou can also use a YouTube link in the form of:\nhttp://www.youtube.com/watch?v=-zVCYdrw-1o\n OR http://youtu.be/-zVCYdrw-1o');
+        }
 	</script>
 
     
