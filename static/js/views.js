@@ -108,7 +108,7 @@ var EventView = Backbone.View.extend({
 
         var outputString = "";
         
-        /* START OLD DISPLAY
+        /* START OLD DISPLAY..........
         outputString += "<div class='event-listing'>";
         outputString += "<div class='event-listing-title'>";
 

@@ -234,10 +234,10 @@ add-profile { }
 nameInput, bioInput, profPicInput, birthdateInput { }
 
 /*input[type=text]*/
-#prof-input-petName, #input-petName { width: 175px;}
+#prof-input-petName, #input-petName { width: 185px;}
 
 /*input[type=text]*/
-#prof-input-petBio, #input-petBio { width: 250px;}
+#prof-input-petBio, #input-petBio { width: 225px;}
 
 #prof-input-petBirthdate, #input-petBirthdate { }
 
