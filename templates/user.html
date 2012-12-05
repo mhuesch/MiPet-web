@@ -108,6 +108,8 @@
                                     <span class="inputField">
                                     <input type="radio" name="profPicChoose" id="imageURL" value="url" onclick="chooseMedia(this.value)">
 									<label class="inputLabel" for="imageURL">From URL</label>
+                                        
+                                        <a class='btn-link' onclick="profImgURLTooltip()"> <i class="icon-question-sign"></i></a>
                                     </span>
                                 </form>
                             </div> <!-- end mediaInputChoice -->
@@ -240,7 +242,14 @@
                     $('#profPicUploadInput').show();
                     $('#profPicURLInput').hide();
                 }
-    		} 
+    		}
+            
+            function profImgURLTooltip()
+            {
+                var outputString = "";
+                outputString += "Valid image URLs end with .png, .jpg, .jpeg or .gif.\n";
+                alert(outputString);
+            }
     	</script>
         
 

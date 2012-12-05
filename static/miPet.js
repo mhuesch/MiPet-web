@@ -1,3 +1,13 @@
+function imgURLTooltip()
+{
+	var outputString = "";
+	outputString += "Valid image URLs end with .png, .jpg, .jpeg or .gif.\n\n";
+	outputString += "You can also use a YouTube link in the form of:\n";
+	outputString += "http://www.youtube.com/watch?v=-zVCYdrw-1o\n";
+    outputString += "OR http://youtu.be/-zVCYdrw-1o";
+    alert(outputString);
+}
+
 function openEditEvent(eventID)
 {   
 	var tempEvent = petEvents.get(eventID);

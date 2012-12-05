@@ -352,7 +352,7 @@
                                 <span class="inputField">
                                     <input type="radio" name="mediaChoose" id="profile-imageURL" value="url" onclick="chooseMedia(this.value)" checked=true> From URL </input>
                                     
-                                    <a class='btn-link' onclick="imgURLTooltip()"> <i class="icon-question-sign"></i></a>
+                                    <a class='btn-link' onclick="profImgURLTooltip()"> <i class="icon-question-sign"></i></a>
                                 </span>
                                 </span>
                             </form>
@@ -503,9 +503,24 @@
             }
          }
         
-        function imgURLTooltip(){
-            alert('Valid image URLs end with .png, .jpg, .jpeg or .gif.\n\nYou can also use a YouTube link in the form of:\nhttp://www.youtube.com/watch?v=-zVCYdrw-1o\n OR http://youtu.be/-zVCYdrw-1o');
+        
+        function imgURLTooltip()
+        {
+            var outputString = "";
+            outputString += "Valid image URLs end with .png, .jpg, .jpeg or .gif.\n\n";
+            outputString += "You can also use a YouTube link in the form of:\n";
+            outputString += "http://www.youtube.com/watch?v=-zVCYdrw-1o\n";
+            outputString += "OR http://youtu.be/-zVCYdrw-1o";
+            alert(outputString);
         }
+        
+        function profImgURLTooltip()
+        {
+            var outputString = "";
+            outputString += "Valid image URLs end with .png, .jpg, .jpeg or .gif.\n";
+            alert(outputString);
+        }
+        
 	</script>
 
     
