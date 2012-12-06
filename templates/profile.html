@@ -160,7 +160,7 @@
                 
                 <div class="modal-footer">
                     <a class="btn" data-dismiss="modal">Cancel</a> <!-- Close --> <!-- href="#"  -->
-                    <a id="modal-form-submit" class='btn btn-red' onclick="addEvent({{pet_id}})" data-dismiss="modal">Submit</a> <!-- href="#"  -->
+                    <a id="modal-form-submit" class='btn btn-red' onclick="validateAddEvent({{pet_id}})" data-dismiss="modal">Submit</a> <!-- href="#"  -->
                     <!-- added data-dismiss to hide after click submit, doesn't clear the fields though-->
                     
                 </div> <!-- end modal-footer -->
@@ -277,7 +277,7 @@
                 <div class="modal-footer">
                     <a class='btn btn-danger' onclick="deleteEvent()" style="float: left;"> Delete event </a>
                     <a class="btn" data-dismiss="modal">Cancel</a> <!-- Close --> <!-- href="#"  -->
-                    <a id="modal-form-submit" class='btn btn-red' onclick="editEvent({{pet_id}})" data-dismiss="modal">Submit</a> <!-- href="#"  -->
+                    <a id="modal-form-submit" class='btn btn-red' onclick="validateEditEvent({{pet_id}})" data-dismiss="modal">Submit</a> <!-- href="#"  -->
                     <!-- added data-dismiss to hide after click submit, doesn't clear the fields though-->
                 </div> <!-- end modal-footer -->
                 

@@ -103,13 +103,18 @@ function deleteEvent(eventID){
 	
 }
 
-
-/*function deleteEvent(petid)
+//simple event validation
+function validateEditEvent(id)
 {
-	// can we add an "are you sure?" box...?
-	// does it delete the media as well, hold a link to it, what?
-	alert('delete event called with petid: '+petid);
-}*/
+	var x=document.getElementById("edit-input-text").value;
+	if (x==null || x=="")
+	{
+		alert("Description must be filled out");
+	}
+	else{
+		editEvent(id);
+	}
+}
 
 function editEvent()
 {
@@ -206,8 +211,6 @@ function editProfile(petid)
 		var uploadPic = document.getElementById("prof-input-media-upload").files[0];
 		uploadNewProfilePicture(uploadPic, params);
 	}
-	
-	
 }
 
 function uploadNewProfilePicture(file, params) {
@@ -251,6 +254,18 @@ function saveProfile(params)
 }
 
 //------------- methods for creating a new event (with and without media ---------------//
+//simple event validation
+function validateAddEvent(id)
+{
+	var x=document.getElementById("input-text").value;
+	if (x==null || x=="")
+	{
+		alert("Description must be filled out");
+	}
+	else{
+		addEvent(id);
+	}
+}
 
 /* 
  * Name:    addEvent
@@ -261,23 +276,9 @@ function saveProfile(params)
  */
 function addEvent(id)
 {
-	//if(!document.getElementById("input-isInterval").checked){
-   //     document.getElementById("input-end").value = document.getElementById("input-start").value;
-   // }
-	
-	/*
-	var inputs = "";
-	inputs += "input-title: " + document.getElementById("input-title").value + "\n";
-	inputs += "input-text: " + document.getElementById("input-text").value + "\n";
-	inputs += "input-date: " + document.getElementById("input-date").value + "\n";
-	//inputs += "input-media: " + document.getElementById("input-media").value + "\n";
-	alert(inputs);
-	*/
-
 	// Getting the Pet ID from the url
 	var petID = id;
 	
-
 	var eventObject = new Object();
 
 	eventObject.pets = [petID]; //parseInt is a built-in javascript function
@@ -302,7 +303,6 @@ function addEvent(id)
 	// even though there should only be one input visible/chosen
 	// ...hopefully this doesn't break it if null...??....
 	var mediaURL = document.getElementById("input-media-url").value;
-	//console.log(mediaURL);
 	//for uploading: sets media to the first file that's been uploaded
 	// (i.e. if multiple entered, will only use first)
 	var mediaUpload = document.getElementById("input-media-upload").files[0];
@@ -315,9 +315,7 @@ function addEvent(id)
 	//if using existing image at given url...
 	if (document.getElementById('event-imageURL').checked)
 	{
-		
 		media = mediaURL;
-		
 	}
 	else // if uploading...
 	{
@@ -332,8 +330,6 @@ function addEvent(id)
 	event.save(eventObject, {
 		success: function (event, response){
 			eventID = response.pk;
-
-
 			//change this to if there is media, somehow......
 			
 			// checking for equal because both could have values
@@ -361,9 +357,7 @@ function addEvent(id)
 		error: function (event){
 			alert('Adding event failed :( Sorry about that.');
 		}
-	});
-	
-	
+	});	
 }
 
 /*	
@@ -373,8 +367,6 @@ function addEvent(id)
             eventID
  * Returns: continues the media creation path
 */
-
-
 function uploadEventMedia(file, eventID) {
    // file is from a <input> tag or from Drag'n Drop
    // Is the file an image?
@@ -440,7 +432,6 @@ function validateAddPet(owner_id)
 	else{
 		addPetProfile(owner_id);
 	}
-	
 }
 
 
@@ -452,7 +443,6 @@ function validateAddPet(owner_id)
  */
 function addPetProfile(owner_id)
 {
-    
 	//changed creating object with default fields to just creating an object. 
 	//makes validation easier
 	var petProfileObject = new Object(owner_id);
@@ -486,7 +476,6 @@ function addPetProfile(owner_id)
 		}else{//if it's blank
 			createPet("",petProfileObject);
 		}
-		
 	}
 	else // if uploading...
 	{
